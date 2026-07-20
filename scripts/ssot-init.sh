@@ -67,7 +67,6 @@ echo -e "${COLOR_GREEN}[1/5]${COLOR_NC} 获取 SSOT 方法论模板..."
 # 检查是否有本地方法论仓库（更快）
 LOCAL_METHODOLOGY=""
 for candidate in \
-    "$HOME/王圣滔/C主要项目/ssot-methodology" \
     "$HOME/ssot-methodology" \
     "$(dirname "$0")/../ssot-methodology" \
     "$(pwd)/ssot-methodology"; do
@@ -135,14 +134,6 @@ if [ ! -f "$TARGET/.gitignore" ]; then
     echo "  ✅ .gitignore"
 else
     echo "  ⏭️  .gitignore 已存在，跳过"
-fi
-
-# AI_USAGE.md
-if [ ! -f "$TARGET/AI_USAGE.md" ]; then
-    cp "$METHODOLOGY_DIR/AI_USAGE.md" "$TARGET/AI_USAGE.md" 2>/dev/null || true
-    echo "  ✅ AI_USAGE.md"
-else
-    echo "  ⏭️  AI_USAGE.md 已存在，跳过"
 fi
 
 # ─── 创建目录结构 ──────────────────────────────────

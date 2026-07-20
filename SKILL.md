@@ -180,7 +180,7 @@ ls -la /path/to/existing-project/AGENTS.md 2>/dev/null && echo "⚠️ AGENTS.md
 如果从 GitHub 拉取模板失败，可以：
 ```bash
 # 检查是否有本地方法论仓库
-ls ~/王圣滔/C主要项目/ssot-methodology/scripts/bootstrap-project.sh 2>/dev/null && echo "本地模板可用"
+ls "$HOME/ssot-methodology/scripts/bootstrap-project.sh" 2>/dev/null && echo "本地模板可用"
 # 如果本地有，直接用本地模板
 ```
 
