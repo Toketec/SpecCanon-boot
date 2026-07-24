@@ -1,13 +1,13 @@
 ---
 name: ssot-bootstrap
-description: "SSOT 项目引导：从 GitHub 模板一键新建 SSOT 项目或迁移现有项目。支持两种模式：new <path> [name] 创建新项目，migrate <path> [name] 往现有项目嵌入 SSOT 骨架。"
-version: 1.0.0
+description: "SSOT 项目引导 — 通用一行命令初始化，支持 Hermes/Claude Code/Cursor/Codex/Trae 等所有 AI 环境。自动检测当前 AI 并生成对应约定文件（AGENTS.md / CLAUDE.md / .cursorrules / ...）。"
+version: 2.0.0
 author: Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [ssot, bootstrap, template, project-init, migration]
+    tags: [ssot, bootstrap, template, project-init, migration, multi-ai]
     trigger_phrases: [
       "ssot-bootstrap",
       "ssot new",
@@ -15,149 +15,131 @@ metadata:
       "创建ssot项目",
       "迁移到ssot",
       "ssot引导",
+      "新建项目",
     ]
 ---
 
-# SSOT Bootstrap — 项目引导 Skill
+# SSOT Bootstrap v2 — 通用项目引导 Skill
 
-> **一句话**: 用 SSOT 方法论模板快速创建新项目，或给现有项目嵌入 SSOT 骨架。
-
----
-
-## 触发条件
-
-当用户说以下任意内容时，**必须加载本 skill**：
-- "ssot-bootstrap new ../my-app" 或类似
-- "ssot-bootstrap migrate ../existing-app" 或类似
-- "用 SSOT 创建项目"、"新建 SSOT 项目"
-- "把 X 项目迁移到 SSOT 规范"
-- 任何包含 "ssot" + "创建"/"新建"/"迁移"/"引导" 的请求
-- 模糊请求如 "帮我初始化项目" 且之前提到过 SSOT 方法论
+> **通用 Skill**：不仅是 Hermes skill，也是 Claude Code / Cursor / Codex CLI / Trae / OpenClaw / WorkBuddy 等**所有 AI 环境**的初始化入口。
+> 一份方法论，自动适配各 AI 的约定文件名。
 
 ---
 
-## 两种操作模式
+## 使用方式
 
-| 模式 | 命令 | 效果 |
-|:----|:----|:----|
-| **`new`** | `ssot-bootstrap new <目标路径> [项目名称]` | 创建完整的新项目 + SSOT 骨架 |
-| **`migrate`** | `ssot-bootstrap migrate <目标路径> [项目名称]` | 在现有项目中嵌入 SSOT 骨架（不修改代码） |
+### 🔵 手动（一行命令，不克隆任何东西）
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Toketec/ssot-bootstrap/main/init.sh | bash -s new ./my-app "我的项目"
+```
+
+自动检测当前运行的 AI 环境，生成对应约定文件。
+
+### 🔵 手动 + 指定 AI
+
+```bash
+curl ... | bash -s new ./my-app "项目名" --ai cursor
+curl ... | bash -s migrate ./legacy-project --ai claude-code
+```
+
+### 🟣 Hermes Agent 内使用
+
+```bash
+# 加载本 skill 后直接调用
+ssot-bootstrap new ../photo-app "学校照片SaaS"
+ssot-bootstrap migrate ../legacy-project
+ssot-bootstrap new ./app --ai codex
+```
+
+### 🟢 其他 AI 内使用
+
+在任何 AI 终端中，直接运行：
+```bash
+# AI 会自动检测当前环境
+/init.sh new ./my-app "我的项目"
+```
+或让 AI 运行 `curl | bash` 一行命令。
 
 ---
 
-## 步骤
+## 支持的 AI 环境
 
-### Step 0: 确认用户的意图
+| AI | 约定文件 | 说明 |
+|:---|:---------|:-----|
+| **Hermes Agent** | `AGENTS.md` | 原生支持 |
+| **Claude Code** | `CLAUDE.md` | Anthropic CLI |
+| **Cursor IDE** | `.cursorrules` | Cursor 项目级规则 |
+| **Codex CLI** | `CODEX.md` | OpenAI 终端 |
+| **Trae** | `.trae/rules/ssot.md` | 字节跳动 AI IDE |
+| **OpenClaw** | `OPENCLAW.md` | |
+| **WorkBuddy** | `WORKBUDDY.md` | |
 
-先确认用户要什么模式，以及目标项目路径和名称。示例：
+> 不指定 `--ai` 时自动检测（环境变量 → 父进程名 → 全生成）。
 
-> 用户: "帮我用 SSOT 新建个项目"
-> AI: 好的，项目放哪里？项目名叫什么？
->
-> 用户: "ssot-bootstrap new ../photo-app 学校照片系统"
-> AI: 收到，开始创建。先获取模板...
+---
 
-### Step 1: 获取 SSOT 方法论模板
+## 核心流程
 
-本 skill 携带一个自包含的引导脚本。执行它：
+所有 AI 共享同一套方法论（`conventions/ssot-skill.md`）：
 
-```bash
-# 找到本 skill 目录下的脚本
-SKILL_DIR="$(dirname "$(find ~/.hermes/skills -name "SKILL.md" -exec grep -l "ssot-bootstrap" {} \;)")"
-SCRIPT="$SKILL_DIR/scripts/ssot-init.sh"
-
-if [ ! -f "$SCRIPT" ]; then
-  # 如果 skill 没有嵌入脚本（通过 curator install 安装的纯文本 skill），
-  # 直接从 GitHub 拉取
-  echo "从 GitHub 获取 ssot-init.sh..."
-  curl -sL https://github.com/Toketec/ssot-bootstrap/raw/main/scripts/ssot-init.sh -o /tmp/ssot-init.sh
-  chmod +x /tmp/ssot-init.sh
-  SCRIPT="/tmp/ssot-init.sh"
-fi
+```
+Step 1 │ PM 独作: docs/ + sprints/ (产品设计)
+Step 2 │ Dev+AI 独作: ADR/ + 模块/specs/ (架构+规格)
+Step 3 │ PM+Dev 碰面评审
+Step 4 │ AI 按 spec 编码 → 自检 → 展示 → 等确认
+Step 5 │ Dev 收尾 → QA
 ```
 
-> **原理**: `ssot-init.sh` 会从 GitHub 下载最新的 ssot-methodology 模板到临时目录，然后运行引导脚本。如果你的机器上有本地 ssot-methodology 仓库，也可以直接使用。
+详见项目内的 `AGENTS.md` / `CLAUDE.md` / 等（以当前 AI 对应的文件名）。
 
-### Step 2: 创建或迁移
+---
 
-#### 🔹 模式 new — 创建新项目
+## Hermes Skill API
 
-```bash
-bash "$SCRIPT" new /absolute/path/to/new-project "项目名称"
+| 命令 | 说明 |
+|:----|:------|
+| `ssot-bootstrap new <路径> [名称] [--ai <AI>]` | 创建新项目 |
+| `ssot-bootstrap migrate <路径> [名称] [--ai <AI>]` | 迁移现有项目 |
+| `ssot-bootstrap list-ai` | 列出所有支持的 AI 环境 |
+
+`ssot-bootstrap` 是 `init.sh` 的别名，行为完全一致。
+
+---
+
+## 目录结构
+
 ```
-
-脚本会自动：
-1. 从 GitHub 拉取最新的 ssot-methodology 模板
-2. 复制核心骨架（AGENTS.md, .gitignore）
-3. 创建目录结构（apps/, businesses/, tools/, ADR/, docs/sprints/）
-4. 复制 sprint 模板（_template + sprint-000_initial）
-5. 替换所有 `{项目名}` 占位符为实际项目名
-
-**完成后告诉用户：**
-```
-✅ SSOT 项目已创建: /path/to/new-project
-
-下一步做什么？
-1. cd /path/to/new-project
-2. 编辑 docs/product-overview.md — 写产品概览
-3. 创建第一个 sprint: cp -r docs/sprints/_template docs/sprints/sprint-001_name
-4. 需要后端服务: cp -r businesses/_template businesses/my-service
-5. 完整规范: cat ssot-convention.zh.md
-```
-
-#### 🔹 模式 migrate — 迁移现有项目
-
-```bash
-bash "$SCRIPT" migrate /absolute/path/to/existing-project "项目名称"
-```
-
-脚本会：
-1. **不修改任何现有代码或文件**
-2. 只添加 SSOT 骨架文件（如 AGENTS.md、目录结构、模板）
-3. 如果已有 .gitignore 则保留，不覆盖
-
-**完成后告诉用户：**
-```
-✅ SSOT 骨架已嵌入: /path/to/existing-project
-
-迁移四阶段：
-Phase 0: 骨架就位（已完成 ✅）
-Phase 1: 为最核心的 3 个模块写 Retrospec
-  - 在 apps/{module}/specs/ 或 businesses/{module}/specs/ 中
-  - 只写 requirements + tasks + check（不写 plan.md）
-  - 记录当前行为作为基线
-Phase 2: 新功能强制走完整 SSOT 流程
-  - PM 写 sprint → Dev 写 spec → AI 编码
-Phase 3: 每次 sprint 选 1 个模块补 Retrospec
-```
-
-**⚠️ 迁移的关键规则**：
-- 不要重写项目的现有文件
-- 不要改变项目的现有目录结构
-- 只添加 `AGENTS.md`、`docs/sprints/_template/`、`apps/`/`businesses/`/`tools/` 骨架目录
-- 如果项目已有 src/ 目录，不要移动它
-
-### Step 3: 后续引导
-
-项目创建/迁移完成后，根据用户的技术栈和需求，引导下一步：
-
-```bash
-# 如果你知道用户的技术栈，直接生成建议：
-# 前端: React / Vue / Next.js?
-# 后端: Node.js / Go / Python?
-# 数据库: PostgreSQL / MySQL / SQLite?
+project/
+├── AGENTS.md                    # 通用 AI 方法论（本文档）
+├── CLAUDE.md                    # Claude Code 版（自动生成）
+├── .cursorrules                 # Cursor 版
+├── ...                          # 其他 AI 约定文件（按需）
+├── docs/
+│   ├── product-overview.md
+│   ├── sprints/_template/
+│   └── sprints/sprint-000_initial/
+├── apps/
+├── businesses/
+├── tools/
+├── ADR/
+├── ssot-convention.zh.md
+└── README.md
 ```
 
 ---
 
-## 注意事项
+## AI 手动初始化（不通过本 skill 时）
 
-### 1. 路径必须是绝对路径或相对当前工作目录的路径
+如果某个 AI 终端加载本 skill 失败，直接把以下内容写入项目根目录的对应文件：
 
-```bash
-# ✅ 正确
-bash ssot-init.sh new /home/user/projects/my-app "我的应用"
+| 文件 | 内容来源 |
+|:----|:---------|
+| `AGENTS.md` | `conventions/ssot-skill.md`（通用方法论） |
+| `CLAUDE.md` | 同上 + 文件头注释 |
+| `.cursorrules` | 同上 + 文件头注释 |
 
+<<<<<<< HEAD
 # ✅ 正确（如果 cwd 是 /home/user/projects）
 bash ssot-init.sh new ./my-app "我的应用"
 
@@ -204,14 +186,19 @@ ls ADR/_template/ADR.md
 # 项目名已替换（如果是新建项目）
 grep "{项目名}" AGENTS.md 2>/dev/null && echo "⚠️ 还有未替换的占位符" || echo "✅ 占位符已替换"
 ```
+=======
+所有 AI 读同一份方法论，只是文件名不同。
+>>>>>>> 9bc03ef (feat: v2.0 — 通用多 AI 初始化系统)
 
 ---
 
 ## 相关资源
 
 | 资源 | 链接 |
-|:----|:----|
-| 本 skill 源码 | https://github.com/Toketec/ssot-bootstrap |
-| SSOT 方法论模板 | https://github.com/Toketec/ssot-methodology |
-| 完整规范手册 | `ssot-convention.zh.md`（在项目中） |
-| Hermes 文档 | https://hermes-agent.nousresearch.com/docs |
+|:----|:------|
+| 本仓库 | https://github.com/Toketec/ssot-bootstrap |
+| 一行命令入口 | `init.sh`（项目根目录） |
+| 方法论模板仓库 | https://github.com/Toketec/ssot-methodology |
+| 通用 AI 方法论 | `conventions/ssot-skill.md` |
+| AI 映射表 | `ai-bridge/manifest.json` |
+| 完整规范 | `ssot-convention.zh.md`（在项目中） |

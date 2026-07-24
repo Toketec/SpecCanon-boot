@@ -1,136 +1,152 @@
 # SSOT Bootstrap
 
-> 用 SSOT（Single Source of Truth）方法论快速创建项目或迁移现有项目的 Hermes Agent skill。
+> **通用项目引导工具** — 一行命令创建 SSOT 项目，自动适配所有 AI 环境。
+>
+> Hermes / Claude Code / Cursor / Codex CLI / Trae / OpenClaw / WorkBuddy 通用
 
----
 
-## 这是什么？
+## 核心设计
 
-**SSOT Bootstrap** 是一个 [Hermes Agent](https://hermes-agent.nousresearch.com) skill，让你一句话完成：
+**一份方法论，适配所有 AI。**
 
-```bash
-# 新建 SSOT 项目
-ssot-bootstrap new ../photo-app "学校照片SaaS"
-
-# 迁移现有项目
-ssot-bootstrap migrate ../legacy-project "遗留项目"
+```
+conventions/ssot-skill.md         ← 唯一的 SSOT 方法论源头
+        │
+        ├── → AGENTS.md           (Hermes Agent)
+        ├── → CLAUDE.md           (Claude Code)
+        ├── → .cursorrules        (Cursor IDE)
+        ├── → CODEX.md            (Codex CLI)
+        ├── → .trae/rules/ssot.md (Trae)
+        ├── → OPENCLAW.md         (OpenClaw)
+        └── → WORKBUDDY.md        (WorkBuddy)
 ```
 
-无需手动复制模板、无需记忆目录结构、无需替换占位符。AI 自动完成。
+不再维护 N 套内容不同的约定文件。AI 初始化时根据 `ai-bridge/manifest.json` 的映射，把同一份方法论写入对应文件名。
 
----
 
-## 安装
+## 一行命令（人手动用）
 
-### 方式 1：通过 Hermes 安装（推荐）
+不克隆任何东西，直接在当前目录初始化：
+
+```bash
+# 创建新项目
+curl -fsSL https://raw.githubusercontent.com/Toketec/ssot-bootstrap/main/init.sh | bash -s new ./my-app "我的项目"
+
+# 指定 AI 环境
+curl ... | bash -s new ./my-app "项目名" --ai cursor
+
+# 迁移现有项目
+curl ... | bash -s migrate ./legacy-project --ai claude-code
+
+# 查看支持的 AI
+curl ... | bash -s --list-ai
+```
+
+**自动检测规则**：优先环境变量（`HERMES_AGENT` / `CLAUDE_CODE` / `CURSOR` 等）→ 父进程名 → 兜底全生成。
+
+
+## AI 用（通用 skill）
+
+项目初始化后，当前 AI 会自动读取对应约定文件：
+
+| AI | 读取文件 | 初始化命令 |
+|:---|:---------|:-----------|
+| **Hermes Agent** | `AGENTS.md` | `ssot-bootstrap new ./app "项目名"` |
+| **Claude Code** | `CLAUDE.md` | `/init.sh new ./app "项目名"` |
+| **Cursor IDE** | `.cursorrules` | `/init.sh new ./app "项目名" --ai cursor` |
+| **Codex CLI** | `CODEX.md` | `/init.sh new ./app "项目名" --ai codex` |
+| **Trae** | `.trae/rules/ssot.md` | `/init.sh new ./app "项目名" --ai trae` |
+| **OpenClaw** | `OPENCLAW.md` | `/init.sh new ./app "项目名" --ai openclaw` |
+| **WorkBuddy** | `WORKBUDDY.md` | `/init.sh new ./app "项目名" --ai workbuddy` |
+
+所有 AI 共享同一套五步流程：PM 出产品文档 → Dev+AI 出架构规格 → 评审 → AI 编码 → QA 验收。
+
+
+## 安装（Hermes Agent）
 
 ```bash
 hermes curator install https://github.com/Toketec/ssot-bootstrap
 ```
 
-然后在任何 Hermes 会话中：
+然后直接使用：
 
 ```
-ssot-bootstrap new ../my-project "我的项目"
+ssot-bootstrap new ../photo-app "学校照片SaaS"
+ssot-bootstrap migrate ../legacy-project --ai trae
 ```
 
-### 方式 2：手动安装
 
-```bash
-git clone https://github.com/Toketec/ssot-bootstrap.git
-cp -r ssot-bootstrap ~/.hermes/skills/
-```
+## 其它 AI 安装
 
----
-
-## 用法
-
-### 创建新项目
+无需安装。直接运行上文的一行命令，或让 AI 代理帮你执行：
 
 ```
-ssot-bootstrap new <目标路径> [项目名称]
+请帮我用 SSOT Bootstrap 创建一个新项目 ./photo-app，名称叫"照片SaaS"
 ```
 
-| 参数 | 必填 | 说明 |
-|:----|:----:|:-----|
-| `new` | ✅ | 创建模式 |
-| `<目标路径>` | ✅ | 项目存放路径（相对或绝对） |
-| `[项目名称]` | ❌ | 默认使用目录名 |
+AI 会自动下载最新模板并生成项目骨架 + 适合当前 AI 的约定文件。
 
-### 迁移现有项目
+
+## 项目结构
 
 ```
-ssot-bootstrap migrate <目标路径> [项目名称]
+ssot-bootstrap/
+├── init.sh                 ★ 通用入口（curl-pipe-bash 安全）
+├── SKILL.md                Hermes Skill 描述（通用 AI 代理也可参考）
+├── README.md               本文件
+├── LICENSE
+├── scripts/
+│   └── ssot-init.sh        ★ 核心初始化引擎
+├── ai-bridge/
+│   └── manifest.json        AI → 文件名映射表
+├── conventions/
+│   └── ssot-skill.md        ★ 通用 AI 方法论（唯一源头）
+└── references/              参考文件
 ```
 
-迁移规则：
-- ✅ 只添加 SSOT 骨架文件（AGENTS.md、模板目录等）
-- ⛔ 不修改现有代码
-- ⛔ 不改变现有目录结构
-- ✅ 保留原有的 .gitignore、AGENTS.md（如已存在）
 
----
-
-## 目录结构
-
-新项目创建后：
+## 新项目生成后的目录结构
 
 ```
-project/
-├── docs/                         # 稳定层：全版本通用产品文档
-│   ├── product-overview.md       # 产品概览（模板）
-│   ├── non-functional-reqs.md    # 非功能需求（模板）
-│   ├── visual-design.md          # 视觉设计规范（模板）
-│   └── sprints/                  # 版本层：每次迭代的完整设计容器
-│       ├── _template/            # 冲刺模板（6文档+原型）
-│       └── sprint-000_initial/   # v1.0 初始版本基线
-│
-├── apps/                         # 前端应用（含 specs/）
-├── businesses/                   # 后端服务（含 specs/）
-├── tools/                        # 工具脚本（含 specs/）
-├── ADR/                          # 架构决策记录
-├── AGENTS.md                     # AI 协作入口
-├── ssot-convention.zh.md         # 完整规范手册
-└── AI_USAGE.md                   # AI 使用指南
+my-app/
+├── AGENTS.md                通用 AI 方法论（所有 AI 都读这份）
+├── CLAUDE.md                自动生成（如果是 Claude Code 环境）
+├── .cursorrules             自动生成（如果是 Cursor 环境）
+├── ...                      其他 AI 约定文件
+├── docs/
+│   ├── product-overview.md
+│   ├── non-functional-reqs.md
+│   ├── visual-design.md
+│   └── sprints/
+│       ├── _template/
+│       └── sprint-000_initial/
+├── apps/
+├── businesses/
+├── tools/
+├── ADR/
+├── ssot-convention.zh.md
+└── README.md
 ```
 
----
 
-## 工作流程
+## 五步开发流程
 
 ```
-Step 1 │ PM 写产品文档 + sprint 描述
-       │ AI 辅助润色、画图、生成原型
-       ▼
-Step 2 │ Dev 给方向 → AI 写架构设计 + 规格四文件
-       ▼
+Step 1 │ PM 写产品文档 + 交互原型（纯业务，无技术方案）
+Step 2 │ Dev 给方向 → AI 写 ADR + specs 四文件（架构设计）
 Step 3 │ PM + Dev 评审（AI 不参与）
-       ▼
 Step 4 │ AI 按 spec 编码 → 自检 → 展示改动 → 等确认
-       ▼
 Step 5 │ Dev 收尾 → QA 验收
 ```
 
-详见项目内的 `AGENTS.md` 和 `ssot-convention.zh.md`。
-
----
-
-## 依赖
-
-- [Hermes Agent](https://hermes-agent.nousresearch.com) — AI 代理运行环境
-- 网络连接（首次运行时从 GitHub 下载模板）
-- `git`、`curl`、`bash`（标准工具）
-
----
-
-## 相关项目
-
-| 项目 | 说明 |
-|:----|:-----|
-| [ssot-methodology](https://github.com/Toketec/ssot-methodology) | SSOT 完整方法论模板（本 skill 拉取的源） |
-
----
 
 ## License
 
 MIT
+
+
+## 相关项目
+
+| 项目 | 说明 |
+|:-----|:------|
+| [ssot-methodology](https://github.com/Toketec/ssot-methodology) | SSOT 完整方法论模板（本工具拉取的源） |

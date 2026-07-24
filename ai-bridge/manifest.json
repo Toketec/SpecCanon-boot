@@ -1,0 +1,55 @@
+{
+  "comment": "AI Convention File Mapping — maps AI agent names to their expected project-root files",
+  "version": "1.0.0",
+  "mappings": {
+    "hermes": {
+      "file": "AGENTS.md",
+      "description": "Hermes Agent native convention file",
+      "detect_env": "HERMES_AGENT",
+      "detect_proc": ["hermes"]
+    },
+    "claude-code": {
+      "file": "CLAUDE.md",
+      "description": "Anthropic Claude Code project instructions",
+      "detect_env": "CLAUDE_CODE",
+      "detect_proc": ["claude"]
+    },
+    "codex": {
+      "file": "CODEX.md",
+      "description": "OpenAI Codex CLI project instructions",
+      "detect_env": "CODEX_CLI",
+      "detect_proc": ["codex"]
+    },
+    "cursor": {
+      "file": ".cursorrules",
+      "description": "Cursor IDE AI rules file",
+      "detect_env": "CURSOR",
+      "detect_proc": ["cursor"]
+    },
+    "openclaw": {
+      "file": "OPENCLAW.md",
+      "description": "OpenClaw AI project instructions",
+      "detect_env": "OPENCLAW",
+      "detect_proc": ["openclaw"]
+    },
+    "workbuddy": {
+      "file": "WORKBUDDY.md",
+      "description": "WorkBuddy AI project instructions",
+      "detect_env": "WORKBUDDY",
+      "detect_proc": ["workbuddy", "work-buddy"]
+    },
+    "trae": {
+      "file": ".trae/rules/ssot.md",
+      "description": "Trae (ByteDance) AI rules file",
+      "detect_env": "TRAE",
+      "detect_proc": ["trae"]
+    }
+  },
+  "aliases": {
+    "claude": "claude-code",
+    "anthropic": "claude-code",
+    "openai": "codex",
+    "bydance": "trae"
+  },
+  "manual_default": "claude-code"
+}
