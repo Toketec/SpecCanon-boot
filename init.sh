@@ -4,7 +4,7 @@
 # ============================================================================
 # 一行命令创建 SSOT 项目（无需克隆任何仓库）:
 #
-#   curl -fsSL https://raw.githubusercontent.com/Toketec/ssot-bootstrap/main/init.sh | bash -s new ./my-app "项目名"
+#   curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/init.sh | bash -s new ./my-app "项目名"
 #
 # 模式:
 #   new     — 创建全新 SSOT 项目
@@ -20,7 +20,7 @@
 #   curl ... | bash -s migrate ./existing-project --ai claude-code
 # ============================================================================
 # 此脚本是自包含的——不依赖本地文件、不克隆仓库、仅需 curl+git+bash。
-# 它从 GitHub 获取最新的 ssot-methodology 模板，然后创建项目骨架。
+# 它从 GitHub 获取最新的 SpecCanon 模板，然后创建项目骨架。
 # 完成后，自动根据当前 AI 环境生成对应的约定文件（AGENTS.md / CLAUDE.md / ...）。
 # ============================================================================
 
@@ -36,8 +36,8 @@ echo -e "${C_CYAN}╚═══════════════════�
 echo ""
 
 # ─── 配置常量 ────────────────────────────────────
-SSOT_REPO="https://github.com/Toketec/ssot-methodology.git"
-BOOTSTRAP_REPO="https://github.com/Toketec/ssot-bootstrap.git"
+SSOT_REPO="https://github.com/Toketec/SpecCanon.git"
+BOOTSTRAP_REPO="https://github.com/Toketec/SpecCanon-boot.git"
 
 # ─── AI 映射表（与 ai-bridge/manifest.json 同步） ──
 declare -A AI_FILE
@@ -92,7 +92,7 @@ usage() {
     echo "  --list-ai    列出所有支持的 AI 环境"
     echo ""
     echo "一行命令示例:"
-    echo "  curl -fsSL https://raw.githubusercontent.com/Toketec/ssot-bootstrap/main/init.sh | bash -s new ./photo-app '照片SaaS'"
+    echo "  curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/init.sh | bash -s new ./photo-app '照片SaaS'"
     exit 1
 }
 
@@ -217,14 +217,14 @@ echo -e "${C_GREEN}[1/5] 获取 SSOT 方法论模板...${C_NC}"
 TMPDIR=$(mktemp -d)
 echo "  ↓ 从 GitHub 克隆模板..."
 
-if git clone --depth 1 "$SSOT_REPO" "$TMPDIR/ssot-methodology" 2>/dev/null; then
+if git clone --depth 1 "$SSOT_REPO" "$TMPDIR/SpecCanon" 2>/dev/null; then
     echo "  ✅ 模板下载完成"
 else
     echo -e "${C_RED}  ❌ 下载失败。检查网络连接。${C_NC}"
     exit 1
 fi
 
-METHODOLOGY_DIR="$TMPDIR/ssot-methodology"
+METHODOLOGY_DIR="$TMPDIR/SpecCanon"
 
 # ─── 步骤 2: 准备目标目录 ─────────────────────
 echo -e "${C_GREEN}[2/5] 准备目标目录...${C_NC}"
@@ -244,13 +244,13 @@ echo -e "${C_GREEN}[3/5] 复制核心文件...${C_NC}"
 
 # AGENTS.md（用通用 skill 内容）
 if [ ! -f "$TARGET/AGENTS.md" ]; then
-    if curl -fsSL "https://raw.githubusercontent.com/Toketec/ssot-bootstrap/main/conventions/ssot-skill.md" -o "$TARGET/AGENTS.md" 2>/dev/null; then
+    if curl -fsSL "https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/conventions/ssot-skill.md" -o "$TARGET/AGENTS.md" 2>/dev/null; then
         echo "  ✅ AGENTS.md（通用方法论）"
     else
         echo -e "${C_YELLOW}  ⚠ 从 GitHub 获取 AGENTS.md 失败，克隆后再拷贝...${C_NC}"
-        git clone --depth 1 "$BOOTSTRAP_REPO" "$TMPDIR/ssot-bootstrap" 2>/dev/null || true
-        if [ -f "$TMPDIR/ssot-bootstrap/conventions/ssot-skill.md" ]; then
-            cp "$TMPDIR/ssot-bootstrap/conventions/ssot-skill.md" "$TARGET/AGENTS.md"
+        git clone --depth 1 "$BOOTSTRAP_REPO" "$TMPDIR/SpecCanon-boot" 2>/dev/null || true
+        if [ -f "$TMPDIR/SpecCanon-boot/conventions/ssot-skill.md" ]; then
+            cp "$TMPDIR/SpecCanon-boot/conventions/ssot-skill.md" "$TARGET/AGENTS.md"
             echo "  ✅ AGENTS.md（通用方法论）"
         fi
     fi
@@ -338,11 +338,11 @@ generate_ai_file() {
     mkdir -p "$(dirname "$target_path")"
 
     # 内容：直接用通用 skill + AI 名称注释
-    content=$(cat "$TARGET/AGENTS.md" 2>/dev/null || cat "$TMPDIR/ssot-bootstrap/conventions/ssot-skill.md" 2>/dev/null || true)
+    content=$(cat "$TARGET/AGENTS.md" 2>/dev/null || cat "$TMPDIR/SpecCanon-boot/conventions/ssot-skill.md" 2>/dev/null || true)
 
     if [ -z "$content" ]; then
         # 最后 fallback
-        if curl -fsSL "https://raw.githubusercontent.com/Toketec/ssot-bootstrap/main/conventions/ssot-skill.md" -o "$target_path" 2>/dev/null; then
+        if curl -fsSL "https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/conventions/ssot-skill.md" -o "$target_path" 2>/dev/null; then
             echo "  ✅ $source_file (${AI_NAME[$ai]:-$ai})"
         fi
         return
@@ -363,8 +363,8 @@ generate_ai_file() {
 
 # 获取通用 skill 内容供生成用（如果没有提前下载）
 if [ ! -f "$TARGET/AGENTS.md" ]; then
-    mkdir -p "$TMPDIR/ssot-bootstrap"
-    git clone --depth 1 "$BOOTSTRAP_REPO" "$TMPDIR/ssot-bootstrap" 2>/dev/null || true
+    mkdir -p "$TMPDIR/SpecCanon-boot"
+    git clone --depth 1 "$BOOTSTRAP_REPO" "$TMPDIR/SpecCanon-boot" 2>/dev/null || true
 fi
 
 if [ "$SELECTED_AI" = "all" ]; then

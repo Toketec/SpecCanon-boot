@@ -15,8 +15,8 @@
 
 set -euo pipefail
 
-SSOT_REPO="https://github.com/Toketec/ssot-methodology.git"
-BOOTSTRAP_REPO="https://github.com/Toketec/ssot-bootstrap.git"
+SSOT_REPO="https://github.com/Toketec/SpecCanon.git"
+BOOTSTRAP_REPO="https://github.com/Toketec/SpecCanon-boot.git"
 COLOR_GREEN='\033[0;32m'
 COLOR_YELLOW='\033[1;33m'
 COLOR_CYAN='\033[0;36m'
@@ -140,16 +140,16 @@ echo -e "${COLOR_GREEN}[1/5]${COLOR_NC} 获取 SSOT 方法论模板..."
 LOCAL_METHODOLOGY=""
 <<<<<<< HEAD
 for candidate in \
-    "$HOME/ssot-methodology" \
-    "$(dirname "$0")/../ssot-methodology" \
-    "$(pwd)/ssot-methodology"; do
+    "$HOME/SpecCanon" \
+    "$(dirname "$0")/../SpecCanon" \
+    "$(pwd)/SpecCanon"; do
     if [ -f "$candidate/scripts/bootstrap-project.sh" ]; then
         LOCAL_METHODOLOGY="$candidate"
         echo "  找到本地模板: $LOCAL_METHODOLOGY"
         break
     fi
 =======
-for candidate in "$HOME/ssot-methodology" "$(dirname "$0")/../ssot-methodology" "$(pwd)/ssot-methodology"; do
+for candidate in "$HOME/SpecCanon" "$(dirname "$0")/../SpecCanon" "$(pwd)/SpecCanon"; do
     [ -f "$candidate/scripts/bootstrap-project.sh" ] && { LOCAL_METHODOLOGY="$candidate"; break; }
 >>>>>>> 9bc03ef (feat: v2.0 — 通用多 AI 初始化系统)
 done
@@ -161,13 +161,13 @@ if [ -n "$LOCAL_METHODOLOGY" ]; then
 else
     TMPDIR="$(mktemp -d)"
     echo "  ↓ 从 GitHub 下载模板..."
-    if git clone --depth 1 "$SSOT_REPO" "$TMPDIR/ssot-methodology" 2>/dev/null; then
-        METHODOLOGY_DIR="$TMPDIR/ssot-methodology"
+    if git clone --depth 1 "$SSOT_REPO" "$TMPDIR/SpecCanon" 2>/dev/null; then
+        METHODOLOGY_DIR="$TMPDIR/SpecCanon"
         echo "  ✅ 模板下载完成"
     else
         echo -e "${COLOR_RED}  ❌ 从 GitHub 克隆失败。检查网络连接或代理。${COLOR_NC}"
         echo "  你也可以先手动克隆:"
-        echo "    git clone $SSOT_REPO \$HOME/ssot-methodology"
+        echo "    git clone $SSOT_REPO \$HOME/SpecCanon"
         exit 1
     fi
 fi

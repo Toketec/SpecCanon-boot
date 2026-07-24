@@ -1,4 +1,4 @@
-# SSOT Bootstrap
+# SpecCanon-boot
 
 > **通用项目引导工具** — 一行命令创建 SSOT 项目，自动适配所有 AI 环境。
 >
@@ -30,7 +30,7 @@ conventions/ssot-skill.md         ← 唯一的 SSOT 方法论源头
 
 ```bash
 # 创建新项目
-curl -fsSL https://raw.githubusercontent.com/Toketec/ssot-bootstrap/main/init.sh | bash -s new ./my-app "我的项目"
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/init.sh | bash -s new ./my-app "我的项目"
 
 # 指定 AI 环境
 curl ... | bash -s new ./my-app "项目名" --ai cursor
@@ -51,7 +51,7 @@ curl ... | bash -s --list-ai
 
 | AI | 读取文件 | 初始化命令 |
 |:---|:---------|:-----------|
-| **Hermes Agent** | `AGENTS.md` | `ssot-bootstrap new ./app "项目名"` |
+| **Hermes Agent** | `AGENTS.md` | `spec-canon-boot new ./app "项目名"` |
 | **Claude Code** | `CLAUDE.md` | `/init.sh new ./app "项目名"` |
 | **Cursor IDE** | `.cursorrules` | `/init.sh new ./app "项目名" --ai cursor` |
 | **Codex CLI** | `CODEX.md` | `/init.sh new ./app "项目名" --ai codex` |
@@ -65,14 +65,14 @@ curl ... | bash -s --list-ai
 ## 安装（Hermes Agent）
 
 ```bash
-hermes curator install https://github.com/Toketec/ssot-bootstrap
+hermes curator install https://github.com/Toketec/SpecCanon-boot
 ```
 
 然后直接使用：
 
 ```
-ssot-bootstrap new ../photo-app "学校照片SaaS"
-ssot-bootstrap migrate ../legacy-project --ai trae
+spec-canon-boot new ../photo-app "学校照片SaaS"
+spec-canon-boot migrate ../legacy-project --ai trae
 ```
 
 
@@ -90,7 +90,7 @@ AI 会自动下载最新模板并生成项目骨架 + 适合当前 AI 的约定�
 ## 项目结构
 
 ```
-ssot-bootstrap/
+SpecCanon-boot/
 ├── init.sh                 ★ 通用入口（curl-pipe-bash 安全）
 ├── SKILL.md                Hermes Skill 描述（通用 AI 代理也可参考）
 ├── README.md               本文件
@@ -149,4 +149,4 @@ MIT
 
 | 项目 | 说明 |
 |:-----|:------|
-| [ssot-methodology](https://github.com/Toketec/ssot-methodology) | SSOT 完整方法论模板（本工具拉取的源） |
+| [SpecCanon](https://github.com/Toketec/SpecCanon) | SSOT 完整方法论模板（本工具拉取的源） |

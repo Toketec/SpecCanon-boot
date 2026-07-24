@@ -1,6 +1,6 @@
 ---
-name: ssot-bootstrap
-description: "SSOT 项目引导 — 通用一行命令初始化，支持 Hermes/Claude Code/Cursor/Codex/Trae 等所有 AI 环境。自动检测当前 AI 并生成对应约定文件（AGENTS.md / CLAUDE.md / .cursorrules / ...）。"
+name: spec-canon-boot
+description: "SpecCanon 项目引导 — 基于 SSOT 规格驱动方法论的通用项目初始化工具。一行命令创建，自动适配 Hermes/Claude Code/Cursor/Codex/Trae 等所有 AI 环境。"
 version: 2.0.0
 author: Hermes Agent
 license: MIT
@@ -9,17 +9,19 @@ metadata:
   hermes:
     tags: [ssot, bootstrap, template, project-init, migration, multi-ai]
     trigger_phrases: [
-      "ssot-bootstrap",
-      "ssot new",
-      "ssot migrate",
-      "创建ssot项目",
+      "spec-canon-boot",
+      "SpecCanon boot",
+      "SpecCanon new",
+      "SpecCanon migrate",
+      "spec canon boot",
+      "创建SpecCanon项目",
       "迁移到ssot",
       "ssot引导",
       "新建项目",
     ]
 ---
 
-# SSOT Bootstrap v2 — 通用项目引导 Skill
+# SpecCanon-boot — 通用项目引导 Skill
 
 > **通用 Skill**：不仅是 Hermes skill，也是 Claude Code / Cursor / Codex CLI / Trae / OpenClaw / WorkBuddy 等**所有 AI 环境**的初始化入口。
 > 一份方法论，自动适配各 AI 的约定文件名。
@@ -31,7 +33,7 @@ metadata:
 ### 🔵 手动（一行命令，不克隆任何东西）
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Toketec/ssot-bootstrap/main/init.sh | bash -s new ./my-app "我的项目"
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/init.sh | bash -s new ./my-app "我的项目"
 ```
 
 自动检测当前运行的 AI 环境，生成对应约定文件。
@@ -47,9 +49,9 @@ curl ... | bash -s migrate ./legacy-project --ai claude-code
 
 ```bash
 # 加载本 skill 后直接调用
-ssot-bootstrap new ../photo-app "学校照片SaaS"
-ssot-bootstrap migrate ../legacy-project
-ssot-bootstrap new ./app --ai codex
+spec-canon-boot new ../photo-app "学校照片SaaS"
+spec-canon-boot migrate ../legacy-project
+spec-canon-boot new ./app --ai codex
 ```
 
 ### 🟢 其他 AI 内使用
@@ -99,11 +101,11 @@ Step 5 │ Dev 收尾 → QA
 
 | 命令 | 说明 |
 |:----|:------|
-| `ssot-bootstrap new <路径> [名称] [--ai <AI>]` | 创建新项目 |
-| `ssot-bootstrap migrate <路径> [名称] [--ai <AI>]` | 迁移现有项目 |
-| `ssot-bootstrap list-ai` | 列出所有支持的 AI 环境 |
+| `spec-canon-boot new <路径> [名称] [--ai <AI>]` | 创建新项目 |
+| `spec-canon-boot migrate <路径> [名称] [--ai <AI>]` | 迁移现有项目 |
+| `spec-canon-boot list-ai` | 列出所有支持的 AI 环境 |
 
-`ssot-bootstrap` 是 `init.sh` 的别名，行为完全一致。
+`spec-canon-boot` 是 `init.sh` 的别名，行为完全一致。
 
 ---
 
@@ -162,7 +164,7 @@ ls -la /path/to/existing-project/AGENTS.md 2>/dev/null && echo "⚠️ AGENTS.md
 如果从 GitHub 拉取模板失败，可以：
 ```bash
 # 检查是否有本地方法论仓库
-ls "$HOME/ssot-methodology/scripts/bootstrap-project.sh" 2>/dev/null && echo "本地模板可用"
+ls "$HOME/SpecCanon/scripts/bootstrap-project.sh" 2>/dev/null && echo "本地模板可用"
 # 如果本地有，直接用本地模板
 ```
 
@@ -196,9 +198,9 @@ grep "{项目名}" AGENTS.md 2>/dev/null && echo "⚠️ 还有未替换的占�
 
 | 资源 | 链接 |
 |:----|:------|
-| 本仓库 | https://github.com/Toketec/ssot-bootstrap |
+| 本仓库 | https://github.com/Toketec/SpecCanon-boot |
 | 一行命令入口 | `init.sh`（项目根目录） |
-| 方法论模板仓库 | https://github.com/Toketec/ssot-methodology |
+| 方法论模板仓库 | https://github.com/Toketec/SpecCanon |
 | 通用 AI 方法论 | `conventions/ssot-skill.md` |
 | AI 映射表 | `ai-bridge/manifest.json` |
 | 完整规范 | `ssot-convention.zh.md`（在项目中） |
