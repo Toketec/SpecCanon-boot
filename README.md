@@ -6,6 +6,10 @@
   <img src="https://img.shields.io/badge/curl-▶%20bash-blue?style=flat-square" alt="curl | bash">
 </p>
 
+<p align="center">
+  🇨🇳 <b>中文</b> · <a href="README.en.md">🇬🇧 English</a>
+</p>
+
 <h1 align="center">🚀 SpecRocket</h1>
 
 <p align="center">
@@ -210,7 +214,8 @@ SpecRocket/
 │   ├── ADR/                     ← 架构决策模板
 │   ├── apps/ / businesses/ / tools/  ← 模块模板
 │   └── ...
-└── README.md                 ← 就是你现在看的
+├── README.md                 ← 🇨🇳 中文版（就是你现在看的）
+└── README.en.md              ← 🇬🇧 English version
 ```
 
 ---
