@@ -106,5 +106,6 @@ Step 5 │ Dev 收尾
 ├── tools/_template/specs/       ← 工具规格模板
 ├── AGENTS.md                    ← AI 协作入口
 ├── CLAUDE.md                    ← Agent 指令文件
+├── SSOT-开发方法论-培训.pptx  ← 培训 PPT（宣传用）
 └── ssot-convention.zh.md        ← 完整规范手册
 ```
