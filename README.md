@@ -151,7 +151,7 @@ SpecCanon-boot 设计为 **任何 AI 编码代理均可驱动**。
 
 | 资源 | 位置 | 说明 |
 |:----|:----|:-----|
-| SSOT 完整规范手册 | `template/ssot-convention.zh.md` | 580 行全流程规范（建议新成员阅读） |
+| SSOT 完整规范手册 | `ssot-convention.zh.md` | 580 行全流程规范（建议新成员阅读） |
 | SSOT 培训 PPT | `SSOT-开发方法论-培训.pptx` | 团队培训用演示文稿 |
 | AI 协作规范 | `template/AGENTS.md` | AI 在五步流程中的角色和边界 |
 | 克隆后用 | `git clone --recursive https://github.com/Toketec/SpecCanon-boot.git` | 包含 template submodule |
