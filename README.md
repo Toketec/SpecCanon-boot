@@ -1,4 +1,4 @@
-# SpecCanon-boot
+# SpecRocket
 
 > **AI 时代的规格驱动开发（SSOT）引导工具** — 一键初始化规范项目，任何 AI 编码代理皆可驱动。
 
@@ -8,9 +8,9 @@
 
 ## 🚀 这是什么
 
-**SpecCanon** 是一套**规格驱动开发（Specification-Driven Development）方法论**，专为 AI 时代的人机协作设计。
+**SpecRocket** 是一套**规格驱动开发（Specification-Driven Development）方法论**，专为 AI 时代的人机协作设计。
 
-**SpecCanon-boot** 是入门口 — 一行命令即可创建一个完整遵循 SSOT 规范的骨架项目，你（或任何 AI）可以立即开始协作开发。
+**SpecRocket** 是入门口 — 一行命令即可创建一个完整遵循 SSOT 规范的骨架项目，你（或任何 AI）可以立即开始协作开发。
 
 ---
 
@@ -67,13 +67,13 @@ SSOT 是一种 **规格驱动开发（Spec-Driven Development）** 方法论，�
 | 组件 | 位置 | 用途 |
 |:----|:----|:-----|
 | **`spec-canon` CLI** | 根目录 | 一行命令初始化/引导/预览，**宣传入口** |
-| **SpecCanon 框架模板** | `template/`（submodule） | SSOT 完整骨架文件 + 规范手册 + 培训 PPT，**浏览/初始化参考** |
+| **SpecRocket 框架模板** | `template/`（submodule） | SSOT 完整骨架文件 + 规范手册 + 培训 PPT，**浏览/初始化参考** |
 
 ```
-SpecCanon-boot/
+SpecRocket/
 ├── spec-canon               ← CLI 脚本（curl | bash）
 ├── CLAUDE.md                ← Agent 指令（自动识别）
-├── template/ (submodule)    ← SpecCanon 框架模板
+├── template/ (submodule)    ← SpecRocket 框架模板
 │   ├── ssot-convention.zh.md    ← 完整规范手册（580行）
 │   ├── AGENTS.md                ← AI 协作入口
 │   ├── SSOT-开发方法论-培训.pptx ← 培训 PPT
@@ -92,16 +92,16 @@ SpecCanon-boot/
 
 ```bash
 # 初始化新项目（任意目录执行）
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/spec-canon | bash -s init "项目名"
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s init "项目名"
 
 # 引导填写产品文档 + 创建第一个 sprint
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/spec-canon | bash -s brainstorm
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s brainstorm
 
 # 给现有项目嵌入 SSOT 骨架（不修改代码）
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/spec-canon | bash -s migrate
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s migrate
 
 # 生成 dark-theme 项目预览页（浏览器打开 docs/preview.html）
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/spec-canon | bash -s preview
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s preview
 ```
 
 > 🔥 **无需克隆、无需安装**，任何终端可用。
@@ -129,7 +129,7 @@ curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/spec-ca
 
 ## 🤖 Agent 兼容性
 
-SpecCanon-boot 设计为 **任何 AI 编码代理均可驱动**。
+SpecRocket 设计为 **任何 AI 编码代理均可驱动**。
 
 | Agent | 识别方式 |
 |:------|:---------|
@@ -142,7 +142,7 @@ SpecCanon-boot 设计为 **任何 AI 编码代理均可驱动**。
 | OpenClaw | `CLAUDE.md` 兼容 |
 | Codex CLI | `CLAUDE.md` 兼容 |
 | Aider | `CONVENTIONS.md` |
-| Hermes Agent | `hermes curator install https://github.com/Toketec/SpecCanon-boot` |
+| Hermes Agent | `hermes curator install https://github.com/Toketec/SpecRocket` |
 | Cursor | `CLAUDE.md` 自动加载 |
 
 ---
@@ -154,7 +154,7 @@ SpecCanon-boot 设计为 **任何 AI 编码代理均可驱动**。
 | SSOT 完整规范手册 | `ssot-convention.zh.md` | 580 行全流程规范（建议新成员阅读） |
 | SSOT 培训 PPT | `SSOT-开发方法论-培训.pptx` | 团队培训用演示文稿 |
 | AI 协作规范 | `template/AGENTS.md` | AI 在五步流程中的角色和边界 |
-| 克隆后用 | `git clone --recursive https://github.com/Toketec/SpecCanon-boot.git` | 包含 template submodule |
+| 克隆后用 | `git clone --recursive https://github.com/Toketec/SpecRocket.git` | 包含 template submodule |
 
 ---
 
@@ -176,4 +176,4 @@ MIT — 属于 [Toketec](https://github.com/Toketec) 组织。
 
 ---
 
-> **SpecCanon 框架模板**托管在独立的 [Toketec/SpecCanon](https://github.com/Toketec/SpecCanon) 仓库，作为本仓库的 submodule 引入。
+> **SpecRocket 框架模板**托管在独立的 [Toketec/SpecRocket-template](https://github.com/Toketec/SpecRocket-template) 仓库，作为本仓库的 submodule 引入。

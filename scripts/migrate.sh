@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # ============================================================================
-# spec-canon migrate — 在当前项目嵌入 SpecCanon 骨架
+# spec-canon migrate — 在当前项目嵌入 SpecRocket 骨架
 # ============================================================================
 # 不修改现有代码，只添加规范文件（AGENTS.md、目录模板）。
 # ============================================================================
 
 set -euo pipefail
 
-TEMPLATE_REPO="https://github.com/Toketec/SpecCanon.git"
+TEMPLATE_REPO="https://github.com/Toketec/SpecRocket-template.git"
 G='\033[0;32m'; C='\033[0;36m'; Y='\033[1;33m'; R='\033[0;31m'; N='\033[0m'
 
 TARGET="$(pwd)"
@@ -25,15 +25,15 @@ trap cleanup EXIT
 # 获取模板
 echo -e "${G}[1/2]${N} 获取模板..."
 METHODOLOGY_DIR=""
-for d in "$HOME/SpecCanon" "$(dirname "$0")/../SpecCanon" "$(pwd)/SpecCanon"; do
+for d in "$HOME/SpecRocket" "$(dirname "$0")/../SpecRocket" "$(pwd)/SpecRocket"; do
     [ -f "$d/docs/product-overview.md" ] && { METHODOLOGY_DIR="$d"; break; }
 done
 if [ -z "$METHODOLOGY_DIR" ]; then
     TMPDIR=$(mktemp -d)
-    if ! git clone --depth 1 "$TEMPLATE_REPO" "$TMPDIR/SpecCanon" 2>/dev/null; then
+    if ! git clone --depth 1 "$TEMPLATE_REPO" "$TMPDIR/SpecRocket" 2>/dev/null; then
         echo -e "${R}❌ 下载模板失败${N}"; exit 1
     fi
-    METHODOLOGY_DIR="$TMPDIR/SpecCanon"
+    METHODOLOGY_DIR="$TMPDIR/SpecRocket"
 fi
 
 # 嵌入骨架（只添加不存在的文件）

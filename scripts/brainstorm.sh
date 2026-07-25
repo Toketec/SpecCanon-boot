@@ -5,7 +5,7 @@
 # 用法: spec-canon brainstorm
 #
 # 效果:
-#   1. 检查当前目录是否是 SpecCanon 项目
+#   1. 检查当前目录是否是 SpecRocket 项目
 #   2. 引导你回答几个关键问题
 #   3. 生成 docs/product-overview.md + 第一个 sprint
 # ============================================================================
@@ -22,7 +22,7 @@ echo ""
 
 # ─── 检查项目是否已初始化 ────────────────────
 if [ ! -f "$ROOT/docs/product-overview.md" ]; then
-    echo -e "${Y}⚠ 当前目录不是 SpecCanon 项目。先运行:${N}"
+    echo -e "${Y}⚠ 当前目录不是 SpecRocket 项目。先运行:${N}"
     echo "  spec-canon init"
     echo "  或 curl ... | bash -s init"
     exit 1

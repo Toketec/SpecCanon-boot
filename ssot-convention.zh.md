@@ -9,7 +9,7 @@
 
 ## 一、目录结构总览
 
-> ★ = SpecCanon 骨架文件（`init` 时创建）
+> ★ = SpecRocket 骨架文件（`init` 时创建）
 > ✦ = 开发过程中创建的文件/目录
 
 ```text
@@ -546,7 +546,7 @@ T01 | 实现注册 API | plan.md | @dev_a | 30min | ☐ → ✅ (2026-07-20, cur
 **Phase 0 (30min)**: 使用引导脚本创建骨架
 ```bash
 # 从方法论项目运行引导脚本
-path/to/SpecCanon/scripts/bootstrap-project.sh migrate ../my-existing-project "项目名"
+path/to/SpecRocket/scripts/bootstrap-project.sh migrate ../my-existing-project "项目名"
 
 # 或手动创建
 mkdir -p apps/ businesses/ tools/ ADR/ docs/sprints/

@@ -3,14 +3,14 @@
 # spec-canon init — 在当前目录创建空壳项目 + git init
 # ============================================================================
 # 用法: spec-canon init [项目名]
-#   curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/spec-canon | bash -s init
+#   curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s init
 # ============================================================================
 # 只做三件事：①下载模板 ②复制骨架 ③git init。不写文档、不猜需求。
 # ============================================================================
 
 set -euo pipefail
 
-TEMPLATE_REPO="https://github.com/Toketec/SpecCanon.git"
+TEMPLATE_REPO="https://github.com/Toketec/SpecRocket-template.git"
 G='\033[0;32m'; C='\033[0;36m'; Y='\033[1;33m'; R='\033[0;31m'; N='\033[0m'
 
 TARGET="."
@@ -28,17 +28,17 @@ TMPDIR=""; cleanup() { [ -n "$TMPDIR" ] && rm -rf "$TMPDIR" 2>/dev/null || true;
 trap cleanup EXIT
 
 # 1. 获取模板
-echo -e "${G}[1/3]${N} 获取 SpecCanon 模板..."
+echo -e "${G}[1/3]${N} 获取 SpecRocket 模板..."
 METHODOLOGY_DIR=""
-for d in "$HOME/SpecCanon" "$(dirname "$0")/../SpecCanon" "$(pwd)/SpecCanon"; do
+for d in "$HOME/SpecRocket" "$(dirname "$0")/../SpecRocket" "$(pwd)/SpecRocket"; do
     [ -f "$d/docs/product-overview.md" ] && { METHODOLOGY_DIR="$d"; break; }
 done
 if [ -z "$METHODOLOGY_DIR" ]; then
     TMPDIR=$(mktemp -d)
-    if ! git clone --depth 1 "$TEMPLATE_REPO" "$TMPDIR/SpecCanon" 2>/dev/null; then
+    if ! git clone --depth 1 "$TEMPLATE_REPO" "$TMPDIR/SpecRocket" 2>/dev/null; then
         echo -e "${R}❌ 下载模板失败，检查网络${N}"; exit 1
     fi
-    METHODOLOGY_DIR="$TMPDIR/SpecCanon"
+    METHODOLOGY_DIR="$TMPDIR/SpecRocket"
 fi
 echo "  ✅ 模板就绪"
 
@@ -66,7 +66,7 @@ echo -e "${G}[3/3]${N} git init..."
 cd "$TARGET"
 git init -b main 2>/dev/null
 git add -A 2>/dev/null
-git commit -m "init: project created from SpecCanon template" --allow-empty 2>/dev/null || true
+git commit -m "init: project created from SpecRocket template" --allow-empty 2>/dev/null || true
 cd - >/dev/null
 echo "  ✅ git init + 初始提交"
 

@@ -2,7 +2,7 @@
 # ============================================================================
 # spec-canon preview — 生成项目可视化预览页
 # ============================================================================
-# 扫描当前 SpecCanon 项目，生成一份 HTML 预览页面：
+# 扫描当前 SpecRocket 项目，生成一份 HTML 预览页面：
 #   🎯 产品预览 — 一句话定位、用户画像、核心场景
 #   🗺️ 业务地图 — 模块清单、Sprint 路线图
 #   🏗️ 技术架构 — ADR 决策树、技术栈、数据流
@@ -101,7 +101,7 @@ cat > "$OUTPUT" <<HTML
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>$PROJECT_NAME — SpecCanon 预览</title>
+<title>$PROJECT_NAME — SpecRocket 预览</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0f172a;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:40px;line-height:1.6}

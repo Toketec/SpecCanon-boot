@@ -16,13 +16,13 @@ metadata:
     ]
 ---
 
-# `/spec-canon` — SpecCanon 项目引导命令
+# `/spec-canon` — SpecRocket 项目引导命令
 
 > **本文件是 Hermes Agent 的 skill 安装入口。**
-> SpecCanon-boot 本身是 agent 无关的 CLI 工具，任何 AI 编码代理均可驱动。
+> SpecRocket 本身是 agent 无关的 CLI 工具，任何 AI 编码代理均可驱动。
 >
 > - **Claude Code / Cursor / Cline / Windsurf / Trae / Workbudy / OpenClaw / Codex** → 读 `CLAUDE.md`
-> - **Hermes Agent** → `hermes curator install https://github.com/Toketec/SpecCanon-boot`
+> - **Hermes Agent** → `hermes curator install https://github.com/Toketec/SpecRocket`
 > - **纯终端手动** → `curl ... | bash -s init`（见 README）
 
 ## 子命令
@@ -77,7 +77,7 @@ metadata:
 
 ## `/spec-canon migrate` — 嵌入骨架
 
-给现有项目添加 SpecCanon 骨架文件。**不修改现有代码。**
+给现有项目添加 SpecRocket 骨架文件。**不修改现有代码。**
 
 ---
 
@@ -89,7 +89,7 @@ metadata:
 
 ## 关于 Step 2（写 Spec）
 
-**SpecCanon 不做 `/spec-canon plan` 自动写 spec。** 理由：
+**SpecRocket 不做 `/spec-canon plan` 自动写 spec。** 理由：
 
 Step 2 是 Dev 的核心能力。正确的流程是：
 
@@ -129,7 +129,7 @@ PM + Dev 评审
 ## 一行命令（手动用）
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/spec-canon | bash -s init
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s init
 curl ... | bash -s brainstorm
 curl ... | bash -s migrate
 curl ... | bash -s preview

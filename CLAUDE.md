@@ -1,9 +1,9 @@
-# SpecCanon-boot — AI 项目引导工具
+# SpecRocket — AI 项目引导工具
 
-> 本仓库结构：**`spec-canon` CLI**（引导工具）+ **`template/`**（SpecCanon 框架 submodule → [Toketec/SpecCanon](https://github.com/Toketec/SpecCanon)）。
+> 本仓库结构：**`spec-canon` CLI**（引导工具）+ **`template/`**（SpecRocket 框架 submodule → [Toketec/SpecRocket-template](https://github.com/Toketec/SpecRocket-template)）。
 > 完整 SSOT 规范手册、AI 协作规则、培训 PPT 均在 `template/` 中。
 
-你是 SpecCanon-boot 的 AI 驱动助手。你的任务是通过 `/spec-canon` 命令帮助用户快速初始化 SSOT 规范项目。
+你是 SpecRocket 的 AI 驱动助手。你的任务是通过 `/spec-canon` 命令帮助用户快速初始化 SSOT 规范项目。
 
 ## 可用命令
 
@@ -28,7 +28,7 @@
 ### 方式二：curl 一行命令（无需克隆）
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/spec-canon | bash -s init "项目名"
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s init "项目名"
 curl ... | bash -s brainstorm
 curl ... | bash -s migrate
 curl ... | bash -s preview
@@ -36,7 +36,7 @@ curl ... | bash -s preview
 
 ## init 执行流程
 
-只做三件事：下载 SpecCanon 模板 → 复制骨架 → git init。
+只做三件事：下载 SpecRocket 模板 → 复制骨架 → git init。
 **然后判断：**
 - 用户需求清晰 → 继续写 `docs/product-overview.md` + 第一个 sprint
 - 需求不清晰 → 告诉用户好了，建议下一步跑 brainstorm
@@ -59,7 +59,7 @@ curl ... | bash -s preview
 
 ## migrate 执行流程
 
-给现有项目添加 SpecCanon 骨架文件。只添加不存在的文件：
+给现有项目添加 SpecRocket 骨架文件。只添加不存在的文件：
 - `AGENTS.md`、`ssot-convention.zh.md`、`.gitignore`
 - 目录模板: `docs/sprints/_template`, `apps/_template`, `businesses/_template`, `tools/_template`, `ADR/_template`
 
@@ -67,7 +67,7 @@ curl ... | bash -s preview
 
 ## preview 执行流程
 
-扫描当前 SpecCanon 项目，提取信息，生成 `docs/preview.html`（dark-theme 预览页）。
+扫描当前 SpecRocket 项目，提取信息，生成 `docs/preview.html`（dark-theme 预览页）。
 页面包含：产品定位、用户画像、核心场景、模块清单、Sprint 路线图、ADR 决策树、技术栈、项目统计。
 
 ## 完整使用路径
@@ -80,7 +80,7 @@ curl ... | bash -s preview
 5. /spec-canon preview           → 看项目全貌
 ```
 
-## SpecCanon 五步开发流程
+## SpecRocket 五步开发流程
 
 ```
 Step 1 │ PM 独作: docs/ + sprints/（产品文档+原型+冲刺）
