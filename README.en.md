@@ -164,13 +164,21 @@ The project skeleton is ready. You can edit `docs/product-overview.md` to start 
 
 ### 🤖 AI (with AI agent)
 
-Clone SpecRocket to install the skill, then start your AI agent here:
+Different AI agents install skills differently — pick yours:
+
+| AI Tool | Install skill |
+|:--------|:-------------|
+| **Hermes Agent** | `hermes skills install spec-rocket` |
+| **Claude Code** | Clone repo → run `claude` in project directory |
+| **Trae / Cursor / Windsurf** | Clone repo → open project directory in the tool |
+| **OpenClaw** | Clone repo → run `claw` in project directory |
+| **Other (prompt-based)** | Inject `CLAUDE.md` or `AGENTS.md` content as system prompt |
 
 ```bash
+# Universal step: clone first, then start your AI
 git clone --recursive https://github.com/Toketec/SpecRocket.git
 cd SpecRocket
-# Start your AI agent here (Claude Code, Cursor, Cline, Hermes, etc.)
-# SpecRocket's CLAUDE.md will teach the AI all slash commands automatically
+# Start your AI tool here
 ```
 
 Once set up, type slash commands in your AI chat:

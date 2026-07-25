@@ -169,13 +169,21 @@ cd 项目名
 
 ### 🤖 AI 使用（有 AI 工具）
 
-先在 SpecRocket 仓库目录安装 skill，然后启动 AI agent：
+不同 AI agent 安装 skill 的方式不同，选你的工具：
+
+| AI 工具 | 安装 skill |
+|:--------|:----------|
+| **Hermes Agent** | `hermes skills install spec-rocket` |
+| **Claude Code** | 克隆仓库 → 在项目目录启动 `claude` |
+| **Trae / Cursor / Windsurf** | 克隆仓库 → 用工具打开项目目录 |
+| **OpenClaw** | 克隆仓库 → 在项目目录启动 `claw` |
+| **其他（通用提示词方式）** | 将项目中的 `CLAUDE.md` 或 `AGENTS.md` 内容作为系统提示词注入即可 |
 
 ```bash
+# 通用步骤：先克隆，再启动 AI
 git clone --recursive https://github.com/Toketec/SpecRocket.git
 cd SpecRocket
-# 在此目录启动你的 AI agent（Claude Code、Cursor、Cline、Hermes 等）
-# SpecRocket 自带的 CLAUDE.md 会自动教 AI 全部斜杠命令
+# 然后在此目录启动你的 AI 工具
 ```
 
 装好后，在 AI 对话中直接输入斜杠命令：
