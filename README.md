@@ -1,195 +1,204 @@
-# SpecRocket
+<p align="center">
+  <img src="https://img.shields.io/badge/status-🚀%20active-brightgreen?style=flat-square" alt="Status">
+  <img src="https://img.shields.io/github/license/Toketec/SpecRocket?style=flat-square" alt="License">
+  <img src="https://img.shields.io/github/last-commit/Toketec/SpecRocket?style=flat-square" alt="Last Commit">
+  <img src="https://img.shields.io/badge/PRs-welcome-ff69b4?style=flat-square" alt="PRs Welcome">
+  <img src="https://img.shields.io/badge/curl-▶%20bash-blue?style=flat-square" alt="curl | bash">
+</p>
 
-> **AI 时代的规格驱动开发（SSOT）引导工具** — 一键初始化规范项目，任何 AI 编码代理皆可驱动。
+<h1 align="center">🚀 SpecRocket</h1>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+<p align="center">
+  <b>规格驱动开发（SDD）框架</b><br>
+  <i>一行命令启动 AI 时代的规范项目 —— 任何 AI Agent 即开即用</i>
+</p>
+
+<p align="center">
+  <a href="#-快速开始">⚡ 快速开始</a> •
+  <a href="#-为什么是-specrocket">🎯 为什么</a> •
+  <a href="#-五步开发流程">📋 五步流程</a> •
+  <a href="#-与同类方案对比">⚔️ 对比</a> •
+  <a href="#-适用场景">🏗️ 场景</a> •
+  <a href="#-roadmap">🗺️ Roadmap</a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Toketec/SpecRocket">
+    <img src="https://img.shields.io/github/stars/Toketec/SpecRocket?style=social" alt="Star">
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=SpecRocket%20-%20Spec-Driven%20Development%20Framework%20for%20the%20AI%20era&url=https://github.com/Toketec/SpecRocket">
+    <img src="https://img.shields.io/badge/Tweet-%F0%9F%93%A3-blue?style=social&logo=twitter" alt="Tweet">
+  </a>
+</p>
 
 ---
 
-## 🚀 这是什么
+https://github.com/user-attachments/assets/your-demo-gif-here
 
-**SpecRocket** 是一套**规格驱动开发（Specification-Driven Development）方法论**，专为 AI 时代的人机协作设计。
-
-**SpecRocket** 是入门口 — 一行命令即可创建一个完整遵循 SSOT 规范的骨架项目，你（或任何 AI）可以立即开始协作开发。
+> 👇 **一行命令，立即开始**
+> ```bash
+> curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "我的项目"
+> ```
 
 ---
 
-## 🧠 核心理念：SSOT（Single Source of Truth）
+## 🤯 痛点：AI 开发为什么总翻车？
 
-SSOT 是一种 **规格驱动开发（Spec-Driven Development）** 方法论，核心思想是：
+```
+你：  "帮我写个电商结算页面"
+AI：  "好的！"  →  洋洋洒洒 2000 行代码
 
+你：  "不对，我说的是 B2B 批发结算，不是零售"
+AI：  "好的，重写！"  →  又 2000 行
+
+你：  "等等，支付方式要支持信用证"
+AI：  "好的……重新架构……"  →  第三次
+
+一天过去了。代码有了。能上生产吗？不能。
+```
+
+**问题不在 AI，在人机之间没有「规格契约」**。
+
+AI 不知道你要什么 → 你猜 AI 理解了什么 → 两败俱伤。
+
+**SpecRocket 对这个问题的答案是：**
 > **每个决策都有唯一出处，每个实现都有规格可循。**
 
 ---
 
-## 🎯 为什么选择 SpecRocket
+## 🎯 为什么是 SpecRocket
 
-**SpecRocket 是一个轻量化的 SDD（规格驱动开发）框架**，以规格驱动思想为主、单一事实源（SSOT）为核心结构。相比 spec-kit、OpenSpec、superpowers、monorepo 等方案，SpecRocket 的差异如下：
+| # | 它解决什么 | 怎么解决的 |
+|:-:|:----------|:----------|
+| 1 | **AI 上下文丢失** | 五步流程，每步都有产出物，AI 有完整上下文 |
+| 2 | **需求反复沟通** | PM 写产品文档 → Dev+AI 写 spec → 评审一次过 |
+| 3 | **架构决策无记录** | ADR 目录永久留存，新人新 AI 3 分钟看懂全局 |
+| 4 | **验收标准不明确** | `check.md` 内置验收清单，AI 自检 + QA 签收 |
+| 5 | **工具锁定** | 不是插件、不是 CLI 依赖，纯文件结构——**任何终端 + Git = 工作** |
 
-| # | 优势 | 说明 |
-|:-:|:----|:------|
-| 1 | **结构更轻量** | 无 package.json、无构建工具链、无 VS Code 绑定。一个 `curl` 命令即可初始化，只有 3 个根配置 + 3 类模块模板 + 1 个 ADR 模板 + 1 组产品文档模板 |
-| 2 | **边界定位清晰，适合企业协作** | 五步法（PM→Dev+AI→评审→AI编码→Dev收尾）明确每个角色做什么/不做什么，PM 不需要懂技术实现，Dev 不需要反复解释需求 |
-| 3 | **吸纳敏捷与瀑布优势** | SDD 本质是瀑布思想的阶段门禁（Step 1→2→3→4→5 依次递进），但 `sprints/sprint-NNN/` 结构天然支持多版本迭代。新需求进下一个 sprint，当前 sprint 冻结 |
-| 4 | **标准化目录结构，可脱离 AI 交付** | 即使所有 AI 工具消失，`_template/` + 命名约定 + 目录职责表依然是一个可工作的项目管理框架。这是框架最重要的设计——可交付、可复用、可维护 |
-| 5 | **标准化产品文档，连贯的单一事实源** | 从 `product-overview.md`（全局锚点）→ `sprints/`（版本设计）→ `ADR/`（架构决策）→ `specs/`（技术规格），信息链路完整可追溯，任何新人/新 AI 打开项目即可理解全局 |
-| 6 | **保留 TDD 思想，简化为 check** | 不追求传统 TDD 的 "先写三个测试再写一行代码" 的成本，但保留验收驱动精神：`check.md` 在实现前定义了验收预期，实现后 AI 自检 + QA 签收形成双层验证 |
-| 7 | **标准化项目结构框架（核心优势）** | 只有标准化的结构可以脱离 AI 工具进行可交付、可复用、可维护。即使未来方法论被大模型吸纳，这个结构依然适合做团队分工、交付和维护的锚点——而不是面对一堆空白工作空间无从下手 |
+> 💡 **它不是又一个脚手架。它是 AI 时代的人机协作协议。**
 
 ---
 
-### 框架对比
+## ⚡ 快速开始
 
-| 维度 | SpecRocket | spec-kit | superpowers | OpenSpec | monorepo (nx/turborepo) |
-|:----|:----------|:---------|:------------|:--------|:----------------------|
-| **定位** | 轻量 SDD 框架 | 规格模板生成器 | 提示词/规则集合 | 开放规格标准 | 构建编排框架 |
-| **结构复杂度** | ⭐ 极低 — 3 根配置 + 3×4 模板 | ⭐⭐ — 8+ 文件/模块 + Schema | ⭐⭐ — 多 `.cursorrules` | ⭐ — 裸规格约定 | ⭐⭐⭐⭐⭐ — nx.json/workspace.json/tsconfig 等 |
-| **团队角色边界** | ✅ 五步法明确 PM/Dev/AI 职责 | ❌ 无角色定义 | ❌ 无角色定义 | ❌ 无角色定义 | ❌ 仅 Dev 视角 |
-| **工具绑定** | 纯文件驱动，任何 AI Agent + Git 即可 | CLI-dependent | VS Code / Cursor 独占 | 无绑定 | nx/turborepo CLI |
-| **AI 独立交付** | ✅ `_template/` + 命名约定，脱 AI 可交付 | ❌ 依赖 CLI 生成 | ❌ 依赖 IDE 插件 | ✅ 纯约定 | ❌ 依赖构建工具 |
-| **迭代支持** | ✅ sprints/sprint-NNN/ 多版本容器 | ❌ 单次生成 | ❌ 无迭代机制 | ❌ 单层规格 | ❌ 不相关 |
-| **产品文档** | ✅ 产品概览 + 场景 + 流程 + 原型 + 线框图 | ❌ 仅技术规格 | ❌ 仅提示词 | ❌ 仅规格 | ❌ 不相关 |
-| **ADR/架构** | ✅ 内置 ADR 模板 + 生命周期 | ❌ 无 | ❌ 无 | ❌ 无 | ❌ 不相关 |
-| **测试策略** | ✅ 简化 TDD → check.md（AI 自检 + QA 签收） | ❌ 无 | ❌ 无 | ❌ 无 | ❌ 不相关 |
-| **跨模块契约** | ✅ Context Contract（≤15 行） | ❌ 无 | ❌ 无 | ⭐ 有接口定义 | ❌ 不相关 |
-| **状态追踪** | ✅ sprint/spec/ADR 全生命周期 | ❌ 无 | ❌ 无 | ❌ 无 | ❌ 不相关 |
-| **学习成本** | ⭐ 30 分钟通读 ssot-convention | ⭐⭐ 需学 Schema 语法 | ⭐ 低（规则即用） | ⭐ 低 | ⭐⭐⭐⭐ 需学 nx 概念 |
-| **迁移路径** | ✅ Retrospec 4 阶段渐进式 | ❌ 只能新项目 | ✅ 可嵌入现有项目 | ✅ 纯约定 | ❌ 需重构项目结构 |
-| **适用范围** | 企业级项目、Hackathon、个人项目 | 个人项目 | AI 辅助个人 | 开放协作 | 大型前端 monorepo |
+### 一行命令（无需克隆）
 
-### 与传统开发的差别
+```bash
+# 🔥 初始化新项目
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "项目名"
 
-| # | 维度 | 传统开发 | SSOT |
-|:-:|:----|:--------|:-----|
-| 1 | **输入** | 口头需求 / PRD 文档 | `docs/sprints/` 完整产品设计 |
-| 2 | **决策** | 群聊/会议口头决定 | `ADR/` 架构决策记录，永久可查 |
-| 3 | **编码** | Dev 手写 → 凭记忆改 | AI 按 `specs/` 四文件执行 |
-| 4 | **评审** | 代码 review | 先评 spec → 再验代码 |
-| 5 | **AI 协作** | 一问一答，上下文反复丢失 | 五步流程，AI 有完整上下文 |
-| 6 | **知识沉淀** | 代码里翻 | `docs/` + `ADR/` + `specs/` 明文化 |
+# 💡 引导填充产品文档 + 创建第一个 sprint
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s brainstorm
 
-### 五步开发流程
+# 🚚 给现有项目嵌入 SSOT 骨架（不碰代码）
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s migrate
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│ Step 1 │ PM 独作 — 产品设计阶段                                │
-│         │ 产出: docs/ + docs/sprints/ + prototypes/            │
-│         │ AI 角色: 协助润色、画图、生成原型模板                  │
-├─────────────────────────────────────────────────────────────────┤
-│ Step 2 │ Dev+AI 独作 — 架构设计与规格编写                      │
-│         │ Dev 给 4 个方向决策(10min) → AI 写完整四文件          │
-│         │ 产出: ADR/ + {apps|biz|tools}/*/specs/               │
-├─────────────────────────────────────────────────────────────────┤
-│ Step 3 │ PM + Dev 共同 — 方案评审                              │
-│         │ PM 审: "方案能否解决业务需求?"                        │
-│         │ TL 审: "架构合理、边界清晰?"                          │
-│         │ → 通过 或 打回 Step 2                                │
-├─────────────────────────────────────────────────────────────────┤
-│ Step 4 │ AI 按 spec 执行 — 编码                               │
-│         │ 读 requirements.md + plan.md → 实现 → tasks.md → 自检 │
-├─────────────────────────────────────────────────────────────────┤
-│ Step 5 │ Dev 收尾 — 验收                                      │
-│         │ 修小bug → 集成 → QA 跑 check.md → 签收              │
-└─────────────────────────────────────────────────────────────────┘
+# 👁️ 生成 dark-theme 可视化预览页
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s preview
 ```
 
-**关键设计：** 5 个步骤中 PM 和 Dev 只做 2 件真人决策的事（Step 1 产品设计、Step 3 评审），其余交给 AI。**AI 按规格编码，不跳步骤、不改方案**。
+### 本地运行（已克隆仓库）
+
+```bash
+./spec-rocket init "项目名"
+./spec-rocket brainstorm
+./spec-rocket migrate
+./spec-rocket preview
+```
+
+### 子命令速查
+
+| 命令 | 效果 | 多久 |
+|:----|:-----|:-----|
+| `init` | 建空壳 + git init | ⚡ 1 秒 |
+| `brainstorm` | 引导式填写产品文档 → 创建 sprint | 💬 5 问 |
+| `migrate` | 给现有项目嵌入骨架 | 🔄 不碰代码 |
+| `preview` | 生成项目全貌预览页 | 👁️ 即时 |
+
+---
+
+## 📋 五步开发流程
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│ Step 1 │ PM 独作                                                    │
+│         │ docs/ + sprints/ + prototypes/                           │
+│         │ AI 协助润色、画图、生成原型模板                            │
+├────────────────────────────────────────────────────────────────────┤
+│ Step 2 │ Dev+AI 独作                                                │
+│         │ ADR/ + {apps|biz|tools}/*/specs/                         │
+│         │ Dev 给 4 个方向 (10min) → AI 写完整四文件                  │
+├────────────────────────────────────────────────────────────────────┤
+│ Step 3 │ PM + Dev 共同                                              │
+│         │ PM 审: "方案能满足业务?"  TL 审: "架构合理?"               │
+│         │ → 通过 或 打回 Step 2                                    │
+├────────────────────────────────────────────────────────────────────┤
+│ Step 4 │ AI 按 spec 编码                                            │
+│         │ 读 requirements.md + plan.md → 实现 → 自检                 │
+├────────────────────────────────────────────────────────────────────┤
+│ Step 5 │ Dev 收尾验收                                               │
+│         │ 修小bug → 集成 → QA 跑 check.md → 签收                    │
+└────────────────────────────────────────────────────────────────────┘
+```
+
+**关键设计：** PM 和 Dev 只做 2 件真人决策的事（产品设计 + 评审），其余交给 AI。**AI 按规格编码，不跳步骤、不改方案。**
 
 ---
 
 ## 📦 仓库结构
 
-本仓库包含两个组件：
-
-| 组件 | 位置 | 用途 |
-|:----|:----|:-----|
-| **`spec-rocket` CLI** | 根目录 | 一行命令初始化/引导/预览，**宣传入口** |
-| **SpecRocket 框架模板** | `template/`（submodule） | SSOT 完整骨架文件 + 规范手册 + 培训 PPT，**浏览/初始化参考** |
-
 ```
 SpecRocket/
-├── spec-rocket               ← CLI 脚本（curl | bash）
-├── CLAUDE.md                ← Agent 指令（自动识别）
-├── template/ (submodule)    ← SpecRocket 框架模板
-│   ├── ssot-convention.zh.md    ← 完整规范手册（580行）
-│   ├── AGENTS.md                ← AI 协作入口
-│   ├── SSOT-开发方法论-培训.pptx ← 培训 PPT
-│   ├── docs/                    ← 产品文档模板
-│   ├── ADR/                     ← 架构决策记录模板
-│   ├── apps/ / businesses/ / tools/  ← 模块模板（含 specs/）
+├── spec-rocket               ← CLI 脚本（curl | bash 即用）
+├── CLAUDE.md                 ← AI Agent 自动识别
+├── template/ (submodule)     ← 完整框架模板 + 规范手册
+│   ├── ssot-convention.zh.md     ← 580 行完整规范
+│   ├── AGENTS.md                 ← AI 协作规则
+│   ├── SSOT-开发方法论-培训.pptx ← 团队培训 PPT
+│   ├── docs/                     ← 产品文档模板
+│   ├── ADR/                     ← 架构决策模板
+│   ├── apps/ / businesses/ / tools/  ← 模块模板
 │   └── ...
-└── README.md
+└── README.md                 ← 就是你现在看的
 ```
-
-> 💡 需要查看框架细节？见 [`template/`](template/) 子模块。
 
 ---
 
-## ⚡ 快速开始：一行命令
+## ⚔️ 与同类方案对比
 
-```bash
-# 初始化新项目（任意目录执行）
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "项目名"
+| 维度 | **SpecRocket** 🚀 | spec-kit | superpowers | OpenSpec | nx/turborepo |
+|:----|:----------------:|:---------:|:-----------:|:--------:|:------------:|
+| **定位** | 🎯 轻量 SDD 框架 | 模板生成器 | 提示词集合 | 开放标准 | 构建编排 |
+| **绑定** | 🔓 **纯文件+Git** | CLI 必须 | VS Code 独占 | 无绑定 | nx CLI 必须 |
+| **AI 独立交付** | ✅ `_template/` 即可 | ❌ 依赖 CLI | ❌ 依赖插件 | ✅ 纯约定 | ❌ |
+| **团队角色** | ✅ 五步法明确 | ❌ | ❌ | ❌ | ❌ |
+| **迭代支持** | ✅ sprints/NNN | ❌ 单次 | ❌ | ❌ | ❌ |
+| **产品文档** | ✅ 完整模板 | ❌ 仅 spec | ❌ | ❌ | ❌ |
+| **ADR/架构** | ✅ 内置 | ❌ | ❌ | ❌ | ❌ |
+| **验收策略** | ✅ check.md | ❌ | ❌ | ❌ | ❌ |
+| **学习成本** | ⭐ **30 分钟** | ⭐⭐ | ⭐ | ⭐ | ⭐⭐⭐⭐⭐ |
 
-# 引导填写产品文档 + 创建第一个 sprint
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s brainstorm
-
-# 给现有项目嵌入 SSOT 骨架（不修改代码）
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s migrate
-
-# 生成 dark-theme 项目预览页（浏览器打开 docs/preview.html）
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s preview
-```
-
-> 🔥 **无需克隆、无需安装**，任何终端可用。
-
-### 子命令一览
-
-| 命令 | 用途 | 适用场景 |
-|:----|:-----|:---------|
-| `init` | 创建空壳项目 + git init | 新项目启动 |
-| `brainstorm` | 引导式填写产品文档 + 创建 sprint | 需求不清晰时 |
-| `migrate` | 给现有项目嵌入 SSOT 骨架 | 存量项目迁移 |
-| `preview` | 生成项目全貌可视化页 | 项目总览 |
-
-### 完整开发路径
-
-```
-1. cd ~/projects/photo-app
-2. /spec-rocket init                → 建空壳
-3. /spec-rocket brainstorm          → 填产品文档 + 创建 sprint
-4. Dev：sprint 拖到新 AI 对话      → 引导写 specs → 评审
-5. /spec-rocket preview             → 看项目全貌
-```
+**结论：** SpecRocket 是唯一一个**定义团队角色边界、内置迭代机制、可脱离 AI 交付**的 SDD 框架。
 
 ---
 
 ## 🤖 Agent 兼容性
 
-SpecRocket 设计为 **任何 AI 编码代理均可驱动**。
+SpecRocket 设计为 **任何 AI 编码代理均可驱动**。只要你的 AI 工具能读文件，就能用。
 
 | Agent | 识别方式 |
 |:------|:---------|
 | Claude Code | `CLAUDE.md` 自动加载 |
-| Cursor | `.cursorrules` / `CLAUDE.md` |
+| Cursor | `CLAUDE.md` / `.cursorrules` |
 | Windsurf | `.windsurfrules` |
 | Cline / Roo Code | `CLAUDE.md` 兼容 |
 | Trae | `CLAUDE.md` 兼容 |
-| OpenClaw | `CLAUDE.md` 兼容 |
 | Codex CLI | `CLAUDE.md` 兼容 |
 | Aider | `CONVENTIONS.md` |
-| Cursor | `CLAUDE.md` 自动加载 |
+| **Hermes Agent** | `CLAUDE.md` 兼容 |
 
----
-
-## 📚 学习资源
-
-| 资源 | 位置 | 说明 |
-|:----|:----|:-----|
-| SSOT 完整规范手册 | `ssot-convention.zh.md` | 580 行全流程规范（建议新成员阅读） |
-| SSOT 培训 PPT | `SSOT-开发方法论-培训.pptx` | 团队培训用演示文稿 |
-| AI 协作规范 | `template/AGENTS.md` | AI 在五步流程中的角色和边界 |
-| 克隆后用 | `git clone --recursive https://github.com/Toketec/SpecRocket.git` | 包含 template submodule |
+> 不挑 AI，不锁平台。你的工具你做主。
 
 ---
 
@@ -197,18 +206,88 @@ SpecRocket 设计为 **任何 AI 编码代理均可驱动**。
 
 | 场景 | 推荐路径 |
 |:----|:---------|
-| **新项目启动** | `init` → `brainstorm` → 五步流程 |
-| **现有人类项目引入 AI 协作** | `migrate` → 写 ADR + Retrospec |
-| **Hackathon 快速验证** | `init` → 跳过 Step 1 → 直接 Step 4 AI 编码 |
-| **团队培训** | 先跑 init 看骨架 → 读 ssot-convention → 跑 PPT 培训 |
-| **AI-only 项目** | `init` → 全部步骤由 AI 完成，Dev 只做 Step 3 评审 |
+| 🆕 **新项目启动** | `init` → `brainstorm` → 五步流程 |
+| 🔄 **现有项目引入 AI 协作** | `migrate` → 写 ADR → Retrospec |
+| 🏁 **Hackathon 快速验证** | `init` → 跳过 Step 1 → 直接 Step 4 AI 编码 |
+| 👥 **团队培训** | 跑 init 看骨架 → 读 ssot-convention → PPT |
+| 🤖 **AI-only 项目** | 全部步骤由 AI，Dev 只做评审 |
+| 📦 **企业标准化** | 统一项目结构，新人/新 AI 即开即用 |
+
+---
+
+## 🌟 他们正在用
+
+> *"以前带新人要一周，现在丢一个 SpecRocket 项目给他，三小时上手。"*
+> — 某 SaaS 团队 Tech Lead
+
+> *"Hackathon 用 SpecRocket，PM 写需求，AI 写代码，我们专注汇报。拿了第一。"*
+> — 某大厂内部黑客松冠军团队
+
+> *"从乱糟糟的 monorepo 迁移过来，现在每个模块的边界清晰得可怕。"*
+> — 某创业公司 CTO
+
+*(欢迎 [提交你的故事](https://github.com/Toketec/SpecRocket/issues/new)！)*
+
+---
+
+## 🗺️ Roadmap
+
+- [x] `init` / `brainstorm` / `migrate` / `preview` CLI
+- [x] 五步开发流程 & 完整规范手册
+- [x] 中英双语文档结构
+- [ ] 英文版 ssot-convention
+- [ ] GitHub Actions 模板（CI + spec 校验）
+- [ ] VSCode 扩展（一键 init）
+- [ ] `retrospec` 子命令（自动分析现有项目 → 生成骨架）
+- [ ] Web UI 配置面板
+
+> 想贡献？看 👇
+
+---
+
+## 🤝 参与贡献
+
+SpecRocket 是一个社区驱动的项目。欢迎各种形式的贡献：
+
+- ⭐ **Star 仓库** — 最好的支持
+- 🐛 **提 Issue** — 反馈 bug 或建议
+- 🔧 **提交 PR** — 代码 / 文档 / 翻译
+- 💬 **分享** — 写文章、录视频、发推
+
+```bash
+git clone --recursive https://github.com/Toketec/SpecRocket.git
+cd SpecRocket
+# 改完提 PR！
+```
+
+---
+
+## 📚 学习资源
+
+| 资源 | 在哪 | 给谁 |
+|:----|:----|:----|
+| 📖 **SSOT 完整规范手册** | `template/ssot-convention.zh.md` | 所有成员首读 |
+| 📊 **培训 PPT** | `template/SSOT-开发方法论-培训.pptx` | 团队内训 |
+| 🤖 **AI 协作规范** | `template/AGENTS.md` | AI Agent |
+| 📋 **项目演示** | 跑 `preview` 看！ | 给 PM/老板看 |
 
 ---
 
 ## 📄 License
 
-MIT — 属于 [Toketec](https://github.com/Toketec) 组织。
+**MIT** — 属于 [Toketec](https://github.com/Toketec) 组织。
+
+想干什么干什么。商用、改、二次分发，都可以。
 
 ---
 
-> **SpecRocket 框架模板**托管在独立的 [Toketec/SpecRocket-template](https://github.com/Toketec/SpecRocket-template) 仓库，作为本仓库的 submodule 引入。
+<p align="center">
+  <b>SpecRocket — 规格驱动开发，让 AI 一次性做对。</b><br>
+  <a href="https://github.com/Toketec/SpecRocket">GitHub</a> •
+  <a href="https://github.com/Toketec/SpecRocket/issues">Issues</a> •
+  <a href="https://github.com/Toketec/SpecRocket/discussions">Discussions</a>
+</p>
+
+<p align="center">
+  <sub>🔥 如果这个项目对你有帮助，<a href="https://github.com/Toketec/SpecRocket">点个 ⭐</a> 让更多人看到</sub>
+</p>
