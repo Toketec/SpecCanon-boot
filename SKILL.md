@@ -52,9 +52,9 @@ SpecRocket/                      ← 本仓库
 ```
 
 **AI 斜杠命令执行时：**
-1. 检查当前是否为空目录（或用户指定了新项目路径）
-2. 从本仓库的 `template/` 子模块复制完整骨架到目标目录
-3. 执行 `git init`
+1. **获取模板：** 如果当前不在 SpecRocket 仓库内，先 `git clone --recursive https://github.com/Toketec/SpecRocket.git` 到临时目录，获取 `template/` 内容
+2. 复制 `template/` 全部内容到目标目录（用户指定的新项目路径或当前目录）
+3. 执行 `git init` + 首次提交
 4. 判断：
    - 用户需求清晰 → 继续写 `docs/product-overview.md` + 第一个 sprint
    - 需求不清晰 → 告诉用户完成，建议下一步跑 `/spec-rocket brainstorm`
@@ -87,19 +87,55 @@ SpecRocket/                      ← 本仓库
 
 **用途：** 给已有项目（非 SpecRocket）添加骨架文件。
 
-**执行规则：** 只添加不存在的文件，不修改现有代码。
+**执行规则：** 只添加不存在的文件，不修改现有代码。从 template/ 中复制。
 
-添加清单：
-- `AGENTS.md`、`ssot-convention.zh.md`、`.gitignore`
-- 目录模板：`docs/sprints/_template`、`apps/_template`、`businesses/_template`、`tools/_template`、`ADR/_template`
+**操作步骤：**
+1. **获取模板：** 如果当前不在 SpecRocket 仓库内，先克隆到临时目录
+2. 对每个文件，检查目标目录是否已存在：
+   - 已存在 → 跳过（不覆盖）
+   - 不存在 → 从 template/ 对应路径复制
+3. **添加清单（源路径 → 目标路径）：**
+
+   | 源（template/ 内） | 目标 |
+   |:-----------------|:-----|
+   | `AGENTS.md` | `./AGENTS.md` |
+   | `ssot-convention.zh.md` | `./ssot-convention.zh.md` |
+   | `.gitignore` | `./.gitignore` |
+   | `docs/sprints/_template/` | `docs/sprints/_template/` |
+   | `apps/_template/` | `apps/_template/` |
+   | `businesses/_template/` | `businesses/_template/` |
+   | `tools/_template/` | `tools/_template/` |
+   | `ADR/_template/` | `ADR/_template/` |
+
+4. 完成时列出添加的文件清单，告诉用户做了什么
 
 ---
 
 ## `/spec-rocket preview` — 可视化预览
 
-**用途：** 扫描当前项目，生成 `docs/preview.html`（dark-theme 预览页）。
+**用途：** 扫描当前项目，生成 `docs/preview.html`（dark-theme 可视化预览页）。
 
-页面包含：产品定位、用户画像、核心场景、模块清单、Sprint 路线图、ADR 决策树、技术栈、项目统计。
+**扫描内容：**
+
+| 信息来源 | 读取哪个文件 | 预览页展示什么 |
+|:---------|:-----------|:--------------|
+| 产品定位 | `docs/product-overview.md` | 标题、一句话描述 |
+| 用户画像 | 同上（用户画像表格） | 角色列表 |
+| 核心场景 | 同上（核心场景章节） | 场景清单 |
+| 模块清单 | `apps/` `businesses/` `tools/` 目录 | 各模块名称 + 说明 |
+| Sprint 路线图 | `docs/sprints/` 目录 | 所有 sprint 编号 + 标题 |
+| ADR 决策树 | `ADR/` 目录 | ADR 标题 + 状态 |
+| 技术栈 | `docs/non-functional-reqs.md` | 技术选型列表 |
+| 项目统计 | 全目录扫描 | 文件数、目录数、总行数 |
+
+**输出格式：** 生成 `docs/preview.html`，dark 主题，单页 HTML（内联 CSS，无外部依赖），包含以上所有信息卡片布局。
+
+**操作步骤：**
+1. 确认 `docs/` 目录存在，没有则创建
+2. 逐项读取上述文件（不存在则跳过）
+3. 用 HTML/CSS 生成可视化预览页
+4. 保存到 `docs/preview.html`
+5. 告诉用户："预览页已生成 → docs/preview.html，可在浏览器打开查看"
 
 ---
 
