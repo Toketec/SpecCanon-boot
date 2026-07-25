@@ -175,13 +175,24 @@ In terminal, only `init` is available (bootstrap skeleton). Other commands run a
 
 ### 🤖 AI Slash Commands (in AI chat)
 
-**Install skill first (Hermes Agent only):**
-```bash
-hermes skills install spec-rocket
-```
-Once installed, slash commands work in Hermes chat. Other AI tools (Claude Code, Cursor, Cline, etc.) auto-detect via `CLAUDE.md` — no installation needed.
+All AI tools need the commands registered first. The method depends on the tool:
 
-Type these commands in your AI chat and it will execute them:
+| AI Tool | How | One-time or per-project |
+|:--------|:----|:----------------------|
+| **Hermes Agent** | `hermes skills install spec-rocket` | ✅ One-time, global |
+| **Claude Code / Cursor / Cline / etc.** | Manually `init` the project first → open the directory in AI tool. `CLAUDE.md` teaches the AI automatically | ⚠️ Per-project |
+
+```bash
+# Option 1: Hermes Agent — install skill (global, one-time)
+hermes skills install spec-rocket
+
+# Option 2: Claude Code / Cursor etc. — manually init first
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "project-name"
+cd project-name
+# Then open this directory in your AI tool — CLAUDE.md kicks in automatically
+```
+
+Once set up, type these in your AI chat:
 
 ```chat
 /spec-rocket init "project-name" → Bootstrap skeleton (AI can continue to guide docs)
