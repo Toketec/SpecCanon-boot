@@ -12,7 +12,8 @@
 ```text
 project-root/
 │
-├── AGENTS.md                         # ★ AI 协作入口（开发规范浓缩版）
+├── AGENTS.md                         # ★ AI 协作入口（五步开发流程规范）
+├── CLAUDE.md                         # ★ AI 指令文件（agent 自动加载）
 ├── README.md                         # ★ 项目介绍
 │
 ├── docs/                             # ★ 稳定层 — 全版本通用的产品规划文档
@@ -23,64 +24,62 @@ project-root/
 │   └── judge-qa.md                   # 评委/投资人 Q&A（可选）
 │
 │   └── sprints/                      # ★ 版本层 — 每次迭代的完整产品设计容器
-│       ├── _template/                # 模板（创建新 sprint 时 cp 此目录）
-│       │   ├── SPRINT-features.md    # 冲刺目标 + 功能清单 + 业务验收
+│       ├── _template/                # sprint 模板（创建新 sprint 时 cp）
+│       │   ├── SPRINT-features.md    # 冲刺目标 + 功能清单 + 业务验收条件
 │       │   ├── functional-overview.md # 本版本功能总览 + 路线图
 │       │   ├── user-scenarios.md     # 本版本用户旅程 + 用例
 │       │   ├── ux-flows.md           # 本版本业务流程
 │       │   ├── ui-wireframes.md      # 本版本页面布局 + 组件
-│       │   └── prototypes/           # 本版本的可交互 HTML 原型（完整覆盖交互）
+│       │   └── prototypes/           # 本版本的可交互 HTML 原型
 │       │       └── prototype.html
 │       │
-│       ├── sprint-000_initial/       # v1.0 初始版本 — 产品设计基线
-│       │   ├── SPRINT-features.md
-│       │   ├── functional-overview.md
-│       │   ├── user-scenarios.md
-│       │   ├── ux-flows.md
-│       │   ├── ui-wireframes.md
-│       │   └── prototypes/
-│       │       └── prototype.html
+│       ├── sprint-000_initial/       # v1.0 初始版本基线（同上 6 文件 + 原型）
+│       │   └── ...                   # 每次迭代一个完整的 sprint 容器
 │       │
-│       └── sprint-001_xxx/           # 后续版本 — 每次迭代完整的文档集
+│       └── sprint-001_功能名/         # 后续版本
 │           └── ...
 │
-├── ssot-convention.zh.md             # 完整开发规范（本文档）
+├── ADR/                              # ★ 架构决策记录（全局可见，按编号顺序）
+│   ├── _template/ADR.md              # ADR 模板
+│   ├── ADR-001_database-choice.md    # "为什么选 PostgreSQL"
+│   ├── ADR-002_auth-scheme.md        # "JWT + refresh token 方案"
+│   ├── ADR-003_xxx.md                # 后续 ADR…
+│   └── ...
 │
-├── ADR/                              # ★ 架构决策记录（全局可见）
-│   ├── _template/ADR.md
-│   ├── ADR-001_database-choice.md
-│   └── ADR-002_auth-scheme.md
-│
-├── apps/                             # ★ 前端/客户端应用代码
+├── apps/                             # ★ 前端/客户端应用（每个应用独立）
 │   ├── _template/
-│   │   ├── src/                      # 代码
-│   │   └── specs/                    # ★ 自己的 specs
-│   │       ├── requirements.md
-│   │       ├── plan.md
-│   │       ├── tasks.md
-│   │       └── check.md
-│   ├── app-web/                      # 具体应用
+│   │   ├── src/                      # 代码目录
+│   │   └── specs/                    # ★ 自己的规格四文件
+│   │       ├── requirements.md       # 技术方案 + 边界 + 验收条件
+│   │       ├── plan.md               # 实现步骤 + 文件清单
+│   │       ├── tasks.md              # 任务拆分 + 验证 + 审计追踪
+│   │       └── check.md              # AI 自检 + 人工验收清单
+│   ├── app-web/                      # 具体应用 — Web 端
 │   │   ├── src/
 │   │   └── specs/
-│   └── app-mobile/
-│
-├── businesses/                       # ★ 后端业务服务代码
-│   ├── _template/
-│   │   ├── src/
-│   │   └── specs/
-│   ├── user-service/
-│   │   ├── src/
-│   │   └── specs/
-│   └── order-service/
+│   └── app-mobile/                   # 具体应用 — 移动端
 │       ├── src/
 │       └── specs/
 │
-└── tools/                            # ★ 非大型工作流类工具/脚本
-    ├── _template/
-    │   ├── src/
-    │   └── specs/
-    └── deploy-tool/
-        └── specs/
+├── businesses/                       # ★ 后端业务服务（按领域划分）
+│   ├── _template/
+│   │   ├── src/
+│   │   └── specs/
+│   ├── user-service/                 # 用户服务
+│   │   ├── src/
+│   │   └── specs/
+│   └── order-service/                # 订单服务
+│       ├── src/
+│       └── specs/
+│
+├── tools/                            # ★ 非大型工作流类工具/脚本
+│   └── _template/
+│       ├── src/
+│       └── specs/
+│
+├── .gitignore
+├── LICENSE
+├── ssot-convention.zh.md             # 完整开发规范（本文档）
 ```
 
 **核心原则**:
