@@ -7,16 +7,21 @@
 
 ## 可用命令
 
-### 📟 本地手动运行（终端执行，非斜杠命令）
+### 📟 本地手动运行（终端执行）
+
+无 AI 工具时手动建模板，仅 `init` 可用：
 
 | 命令 | 用途 |
 |:----|:------|
-| `init [项目名]` | 在当前目录建空壳 + git init。**仅手动终端执行，AI 不执行此命令** |
+| `init [项目名]` | 建空壳 + git init |
 
 ### 🤖 AI 斜杠命令（在对话中执行）
 
+全部四个命令在 AI 对话中均为斜杠命令：
+
 | 命令 | 用途 |
 |:----|:------|
+| `init [项目名]` | AI 执行建空壳 + git init。完成后若需求清晰可继续引导写产品文档 |
 | `brainstorm` | 引导填充产品文档 + 创建 sprint |
 | `migrate` | 给现有项目嵌入骨架（不修改代码） |
 | `preview` | 生成 dark-theme 预览页 `docs/preview.html` |
@@ -41,11 +46,16 @@ curl ... | bash -s migrate
 curl ... | bash -s preview
 ```
 
-## init 执行流程（手动终端执行）
+## init 执行流程
 
+### 手动终端执行
 只做三件事：下载 SpecRocket 模板 → 复制骨架 → git init。
-**AI 不执行 init。**
-用户手动跑完 init 后，如果需求清晰，AI 可直接引导写产品文档和 sprint；若不清晰，建议用户跑 `/spec-rocket brainstorm`。
+完成后提示用户下一步可找 AI 运行 `/spec-rocket brainstorm`。
+
+### AI 斜杠命令执行
+AI 执行 init 的三件事，然后判断：
+- 用户需求清晰 → 继续写 `docs/product-overview.md` + 第一个 sprint
+- 需求不清晰 → 告诉用户好了，建议下一步跑 `/spec-rocket brainstorm`
 
 ## brainstorm 执行流程
 
@@ -80,7 +90,8 @@ curl ... | bash -s preview
 
 ```
 1. cd ~/projects/photo-app
-2. ./spec-rocket init              → 建空壳（手动终端执行，非斜杠命令）
+2. 📟 手动 `./spec-rocket init` 或 🤖 AI `/spec-rocket init`
+                                        → 建空壳
 3. /spec-rocket brainstorm         → 填产品文档 + 创建 sprint（AI 引导）
 4. Dev：sprint 拖到新 AI 对话    → 引导写 specs → 评审
 5. /spec-rocket preview            → 看项目全貌

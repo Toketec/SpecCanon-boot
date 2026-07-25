@@ -178,7 +178,7 @@ curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket
 
 | Command | What it does | How long | Execution |
 |:--------|:-------------|:---------|:----------|
-| `init` | Bootstrap skeleton + git init | ⚡ 1 second | 📟 **Manual terminal only** |
+| `init` | Bootstrap skeleton + git init | ⚡ 1 second | 📟 Manual / 🤖 AI slash command |
 | `brainstorm` | Guided product doc → sprint creation | 💬 5 questions | 🤖 AI slash command |
 | `migrate` | Embed skeleton into existing project | 🔄 Zero code touch | 🤖 AI slash command |
 | `preview` | Generate full project overview page | 👁️ Instant | 🤖 AI slash command |
@@ -274,11 +274,11 @@ SpecRocket is designed to work with **any AI coding agent**. If your tool can re
 
 | Scenario | Recommended path |
 |:---------|:-----------------|
-| 🆕 **New project kickoff** | 📟 Manual `init` → 🤖 AI `brainstorm` → 5-step flow |
+| 🆕 **New project kickoff** | 📟 Manual `init` or 🤖 AI `/spec-rocket init` → 🤖 AI `brainstorm` → 5-step flow |
 | 🔄 **Add AI collaboration to existing project** | 🤖 AI `migrate` → write ADRs → retrospec |
-| 🏁 **Hackathon rapid validation** | 📟 Manual `init` → skip Step 1 → straight to Step 4 AI coding |
-| 👥 **Team onboarding / training** | 📟 Manual init to see skeleton → read convention → PPT |
-| 🤖 **AI-only project** | 📟 Manual init → 🤖 AI does the rest. Dev only reviews |
+| 🏁 **Hackathon rapid validation** | 📟/🤖 `init` → skip Step 1 → straight to Step 4 AI coding |
+| 👥 **Team onboarding / training** | 📟 Manual `init` to see skeleton → read convention → PPT |
+| 🤖 **AI-only project** | 🤖 `/spec-rocket init` → AI does the rest. Dev only reviews |
 | 📦 **Enterprise standardization** | Unify project structure. New hire or new agent, ready in minutes |
 
 ---
