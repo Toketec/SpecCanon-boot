@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # ============================================================================
-# spec-canon brainstorm — AI 思维导引：帮你填产品文档
+# spec-rocket brainstorm — AI 思维导引：帮你填产品文档
 # ============================================================================
-# 用法: spec-canon brainstorm
+# 用法: spec-rocket brainstorm
 #
 # 效果:
 #   1. 检查当前目录是否是 SpecRocket 项目
@@ -16,14 +16,14 @@ G='\033[0;32m'; C='\033[0;36m'; Y='\033[1;33m'; R='\033[0;31m'; N='\033[0m'
 ROOT="${1:-$(pwd)}"
 
 echo -e "${C}╔══════════════════════════════╗${N}"
-echo -e "${C}║   spec-canon brainstorm      ║${N}"
+echo -e "${C}║   spec-rocket brainstorm      ║${N}"
 echo -e "${C}╚══════════════════════════════╝${N}"
 echo ""
 
 # ─── 检查项目是否已初始化 ────────────────────
 if [ ! -f "$ROOT/docs/product-overview.md" ]; then
     echo -e "${Y}⚠ 当前目录不是 SpecRocket 项目。先运行:${N}"
-    echo "  spec-canon init"
+    echo "  spec-rocket init"
     echo "  或 curl ... | bash -s init"
     exit 1
 fi
@@ -106,7 +106,7 @@ $ONELINER
 
 ---
 
-> 本文档由 \`spec-canon brainstorm\` 生成，请根据实际情况完善。
+> 本文档由 \`spec-rocket brainstorm\` 生成，请根据实际情况完善。
 EOF
 
 echo "  ✅ docs/product-overview.md"
@@ -152,7 +152,7 @@ $FEATURE
 
 - [ ] $FEATURE 可正常工作
 
-> 本文档由 \`spec-canon brainstorm\` 生成，请根据实际情况完善。
+> 本文档由 \`spec-rocket brainstorm\` 生成，请根据实际情况完善。
 EOF
     fi
 else

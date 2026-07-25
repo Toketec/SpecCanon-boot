@@ -1,9 +1,9 @@
 # SpecRocket — AI 项目引导工具
 
-> 本仓库结构：**`spec-canon` CLI**（引导工具）+ **`template/`**（SpecRocket 框架 submodule → [Toketec/SpecRocket-template](https://github.com/Toketec/SpecRocket-template)）。
+> 本仓库结构：**`spec-rocket` CLI**（引导工具）+ **`template/`**（SpecRocket 框架 submodule → [Toketec/SpecRocket-template](https://github.com/Toketec/SpecRocket-template)）。
 > 完整 SSOT 规范手册、AI 协作规则、培训 PPT 均在 `template/` 中。
 
-你是 SpecRocket 的 AI 驱动助手。你的任务是通过 `/spec-canon` 命令帮助用户快速初始化 SSOT 规范项目。
+你是 SpecRocket 的 AI 驱动助手。你的任务是通过 `/spec-rocket` 命令帮助用户快速初始化 SSOT 规范项目。
 
 ## 可用命令
 
@@ -19,16 +19,16 @@
 ### 方式一：本地运行（项目已克隆）
 
 ```bash
-./spec-canon init "项目名"
-./spec-canon brainstorm
-./spec-canon migrate
-./spec-canon preview
+./spec-rocket init "项目名"
+./spec-rocket brainstorm
+./spec-rocket migrate
+./spec-rocket preview
 ```
 
 ### 方式二：curl 一行命令（无需克隆）
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s init "项目名"
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "项目名"
 curl ... | bash -s brainstorm
 curl ... | bash -s migrate
 curl ... | bash -s preview
@@ -74,10 +74,10 @@ curl ... | bash -s preview
 
 ```
 1. cd ~/projects/photo-app
-2. /spec-canon init              → 建空壳
-3. /spec-canon brainstorm        → 填产品文档 + 创建 sprint（AI 引导）
+2. /spec-rocket init              → 建空壳
+3. /spec-rocket brainstorm        → 填产品文档 + 创建 sprint（AI 引导）
 4. Dev：sprint 拖到新 AI 对话    → 引导写 specs → 评审
-5. /spec-canon preview           → 看项目全貌
+5. /spec-rocket preview           → 看项目全貌
 ```
 
 ## SpecRocket 五步开发流程

@@ -1,17 +1,17 @@
 ---
 name: spec-rocket
-description: "斜杠命令 /spec-canon — 快速建空壳、引导写文档、嵌入骨架、预览全貌。子命令：init, brainstorm, migrate, preview。"
+description: "斜杠命令 /spec-rocket — 快速建空壳、引导写文档、嵌入骨架、预览全貌。子命令：init, brainstorm, migrate, preview。"
 version: 2.1.0
 license: MIT
 ---
 
-# `/spec-canon` — SpecRocket 项目引导命令
+# `/spec-rocket` — SpecRocket 项目引导命令
 
-> SpecRocket 的 AI 协作指南。任何 AI 编码代理（Claude Code、Cursor、Cline、Windsurf、Codex、Aider 等）均可按本文档指引执行 `/spec-canon` 命令。
+> SpecRocket 的 AI 协作指南。任何 AI 编码代理（Claude Code、Cursor、Cline、Windsurf、Codex、Aider 等）均可按本文档指引执行 `/spec-rocket` 命令。
 >
 > 安装方式（任选）：
-> - 本地克隆：`git clone --recursive https://github.com/Toketec/SpecRocket.git`，运行 `./spec-canon`
-> - 远程一行：`curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s init "项目名"`
+> - 本地克隆：`git clone --recursive https://github.com/Toketec/SpecRocket.git`，运行 `./spec-rocket`
+> - 远程一行：`curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "项目名"`
 >
 > 各 Agent 引导文件对应关系：`CLAUDE.md`（Claude Code/Cursor/Cline/Codex）、`.windsurfrules`（Windsurf）、`CONVENTIONS.md`（Aider）
 
@@ -19,14 +19,14 @@ license: MIT
 
 | 命令 | 用途 |
 |:-----|:------|
-| `/spec-canon init [项目名]` | 建空壳 + git init |
-| `/spec-canon brainstorm` | 引导你填充产品文档 + 创建第一个 sprint |
-| `/spec-canon migrate` | 嵌入骨架到现有项目 |
-| `/spec-canon preview` | 生成项目可视化预览页 |
+| `/spec-rocket init [项目名]` | 建空壳 + git init |
+| `/spec-rocket brainstorm` | 引导你填充产品文档 + 创建第一个 sprint |
+| `/spec-rocket migrate` | 嵌入骨架到现有项目 |
+| `/spec-rocket preview` | 生成项目可视化预览页 |
 
 ---
 
-## `/spec-canon init` — 建空壳
+## `/spec-rocket init` — 建空壳
 
 **只做三件事：** 下载模板 → 复制骨架 → git init。
 
@@ -36,7 +36,7 @@ license: MIT
 
 ---
 
-## `/spec-canon brainstorm` — 引导填文档
+## `/spec-rocket brainstorm` — 引导填文档
 
 **用途**：建完空壳后，用户不知道写什么，AI 引导他思考。
 
@@ -65,13 +65,13 @@ license: MIT
 
 ---
 
-## `/spec-canon migrate` — 嵌入骨架
+## `/spec-rocket migrate` — 嵌入骨架
 
 给现有项目添加 SpecRocket 骨架文件。**不修改现有代码。**
 
 ---
 
-## `/spec-canon preview` — 可视化预览
+## `/spec-rocket preview` — 可视化预览
 
 扫描当前项目，在 `docs/preview.html` 生成 dark-theme 预览页。
 
@@ -79,7 +79,7 @@ license: MIT
 
 ## 关于 Step 2（写 Spec）
 
-**SpecRocket 不做 `/spec-canon plan` 自动写 spec。** 理由：
+**SpecRocket 不做 `/spec-rocket plan` 自动写 spec。** 理由：
 
 Step 2 是 Dev 的核心能力。正确的流程是：
 
@@ -109,17 +109,17 @@ PM + Dev 评审
 
 ```
 1. cd ~/projects/photo-app
-2. /spec-canon init                  → 建空壳
-3. /spec-canon brainstorm            → 填文档 + 创建 sprint（AI 引导）
+2. /spec-rocket init                  → 建空壳
+3. /spec-rocket brainstorm            → 填文档 + 创建 sprint（AI 引导）
 4. cp -r docs/sprints/_template ...  → 创建更多 sprint（可选）
 5. Dev 操作：sprint 拖到新 AI 对话 → 引导写 specs → 评审
-6. /spec-canon preview               → 看项目全貌
+6. /spec-rocket preview               → 看项目全貌
 ```
 
 ## 一行命令（手动用）
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s init
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init
 curl ... | bash -s brainstorm
 curl ... | bash -s migrate
 curl ... | bash -s preview

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # ============================================================================
-# spec-canon init — 在当前目录创建空壳项目 + git init
+# spec-rocket init — 在当前目录创建空壳项目 + git init
 # ============================================================================
-# 用法: spec-canon init [项目名]
-#   curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s init
+# 用法: spec-rocket init [项目名]
+#   curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init
 # ============================================================================
 # 只做三件事：①下载模板 ②复制骨架 ③git init。不写文档、不猜需求。
 # ============================================================================
@@ -18,7 +18,7 @@ PROJECT_NAME="${1:-$(basename "$PWD")}"
 TARGET="$(realpath "$TARGET" 2>/dev/null || echo "$TARGET")"
 
 echo -e "${C}╔══════════════════════════════╗${N}"
-echo -e "${C}║   spec-canon init            ║${N}"
+echo -e "${C}║   spec-rocket init            ║${N}"
 echo -e "${C}╚══════════════════════════════╝${N}"
 echo -e "${Y}→ 目录:${N} $TARGET"
 echo -e "${Y}→ 项目:${N} $PROJECT_NAME"
@@ -76,4 +76,4 @@ echo -e "${C}   $TARGET${N}"
 echo ""
 echo -e "${C}下一步:${N}"
 echo "  编辑 docs/product-overview.md 开始写产品"
-echo "  或运行 spec-canon preview 看看项目结构"
+echo "  或运行 spec-rocket preview 看看项目结构"

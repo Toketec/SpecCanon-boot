@@ -103,12 +103,12 @@ SSOT 是一种 **规格驱动开发（Spec-Driven Development）** 方法论，�
 
 | 组件 | 位置 | 用途 |
 |:----|:----|:-----|
-| **`spec-canon` CLI** | 根目录 | 一行命令初始化/引导/预览，**宣传入口** |
+| **`spec-rocket` CLI** | 根目录 | 一行命令初始化/引导/预览，**宣传入口** |
 | **SpecRocket 框架模板** | `template/`（submodule） | SSOT 完整骨架文件 + 规范手册 + 培训 PPT，**浏览/初始化参考** |
 
 ```
 SpecRocket/
-├── spec-canon               ← CLI 脚本（curl | bash）
+├── spec-rocket               ← CLI 脚本（curl | bash）
 ├── CLAUDE.md                ← Agent 指令（自动识别）
 ├── template/ (submodule)    ← SpecRocket 框架模板
 │   ├── ssot-convention.zh.md    ← 完整规范手册（580行）
@@ -129,16 +129,16 @@ SpecRocket/
 
 ```bash
 # 初始化新项目（任意目录执行）
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s init "项目名"
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "项目名"
 
 # 引导填写产品文档 + 创建第一个 sprint
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s brainstorm
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s brainstorm
 
 # 给现有项目嵌入 SSOT 骨架（不修改代码）
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s migrate
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s migrate
 
 # 生成 dark-theme 项目预览页（浏览器打开 docs/preview.html）
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s preview
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s preview
 ```
 
 > 🔥 **无需克隆、无需安装**，任何终端可用。
@@ -156,10 +156,10 @@ curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon 
 
 ```
 1. cd ~/projects/photo-app
-2. /spec-canon init                → 建空壳
-3. /spec-canon brainstorm          → 填产品文档 + 创建 sprint
+2. /spec-rocket init                → 建空壳
+3. /spec-rocket brainstorm          → 填产品文档 + 创建 sprint
 4. Dev：sprint 拖到新 AI 对话      → 引导写 specs → 评审
-5. /spec-canon preview             → 看项目全貌
+5. /spec-rocket preview             → 看项目全貌
 ```
 
 ---
