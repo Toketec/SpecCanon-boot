@@ -173,6 +173,20 @@ In terminal, only `init` is available (bootstrap skeleton). Other commands run a
 ./spec-rocket init "project-name"
 ```
 
+### 🤖 AI Slash Commands (in AI chat)
+
+If your project uses an AI coding tool (Claude Code, Cursor, Cline, Windsurf, etc.),
+just type these commands in the chat. The AI will automatically recognize and execute them:
+
+```chat
+/spec-rocket init "project-name" → Bootstrap skeleton (AI can continue to guide docs)
+/spec-rocket brainstorm          → AI guides you to describe the product, auto-generates docs
+/spec-rocket migrate             → AI embeds SSOT skeleton into existing project
+/spec-rocket preview             → AI generates project visualization page
+```
+
+> **Slash commands are shortcuts in AI chat.** No installation needed, no code to memorize. Just type them like you're chatting. The AI agent reads `CLAUDE.md` in the project root to understand each command automatically.
+
 ### Subcommands at a Glance
 
 | Command | What it does | How long | Execution |
