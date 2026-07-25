@@ -78,8 +78,7 @@ project-root/
 │           └── check.md
 │
 ├── .gitignore                        # ★
-├── LICENSE                           # ★ MIT
-├── ssot-convention.zh.md             # ★ 完整开发规范（本文档）
+└── LICENSE                           # ★ MIT
 ```
 
 **核心原则**:
