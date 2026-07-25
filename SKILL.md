@@ -1,5 +1,5 @@
 ---
-name: spec-canon-boot
+name: spec-rocket
 description: "斜杠命令 /spec-canon — 快速建空壳、引导写文档、嵌入骨架、预览全貌。子命令：init, brainstorm, migrate, preview。"
 version: 2.1.0
 author: Hermes Agent

@@ -5,11 +5,11 @@
 # 用法:
 #   /spec-canon init [项目名]     → 在当前目录创建空壳项目
 #   /spec-canon brainstorm       → 引导你填充产品文档 + 创建 sprint
-#   /spec-canon migrate          → 在当前项目嵌入 SpecCanon 骨架
+#   /spec-canon migrate          → 在当前项目嵌入 SpecRocket 骨架
 #   /spec-canon preview          → 生成项目可视化预览页
 #
 # 一行命令（无需克隆仓库）:
-#   curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/spec-canon | bash -s init
+#   curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s init
 #   curl ... | bash -s brainstorm
 #   curl ... | bash -s migrate
 #   curl ... | bash -s preview
@@ -21,7 +21,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 G='\033[0;32m'; Y='\033[1;33m'; C='\033[0;36m'; R='\033[0;31m'; N='\033[0m'
 
 usage() {
-    echo -e "${C}SpecCanon — 快速创建规范项目${N}"
+    echo -e "${C}SpecRocket — 快速创建规范项目${N}"
     echo ""
     echo "用法: spec-canon <子命令>"
     echo ""
