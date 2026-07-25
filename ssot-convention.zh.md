@@ -79,7 +79,7 @@ project-root/
 │
 ├── .gitignore                        # ★
 ├── LICENSE                           # ★ MIT
-├── ssot-convention.zh.md             # ★ 完整开发规范（本文档，位于 SpecCanon-boot 主仓库）
+├── ssot-convention.zh.md             # ★ 完整开发规范（本文档）
 ```
 
 **核心原则**:
