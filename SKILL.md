@@ -1,6 +1,6 @@
 ---
 name: spec-rocket
-description: "斜杠命令 /spec-rocket — 快速建空壳、引导写文档、嵌入骨架、预览全貌。子命令：init, brainstorm, migrate, preview。"
+description: "斜杠命令 /spec-rocket — 快速引导写文档、嵌入骨架、预览全貌。子命令（AI）：brainstorm, migrate, preview。init 仅手动终端执行。"
 version: 2.1.0
 license: MIT
 ---
@@ -17,22 +17,29 @@ license: MIT
 
 ## 子命令
 
+### 📟 本地手动运行（终端执行，非斜杠命令）
+
 | 命令 | 用途 |
 |:-----|:------|
-| `/spec-rocket init [项目名]` | 建空壳 + git init |
-| `/spec-rocket brainstorm` | 引导你填充产品文档 + 创建第一个 sprint |
-| `/spec-rocket migrate` | 嵌入骨架到现有项目 |
-| `/spec-rocket preview` | 生成项目可视化预览页 |
+| `init [项目名]` | 建空壳 + git init。**仅手动终端执行，AI 不执行此命令** |
+
+### 🤖 AI 斜杠命令（在对话中执行）
+
+| 命令 | 用途 |
+|:-----|:------|
+| `brainstorm` | 引导你填充产品文档 + 创建第一个 sprint |
+| `migrate` | 嵌入骨架到现有项目 |
+| `preview` | 生成项目可视化预览页 |
 
 ---
 
-## `/spec-rocket init` — 建空壳
+## `/spec-rocket init` — 建空壳（手动终端执行）
 
 **只做三件事：** 下载模板 → 复制骨架 → git init。
 
-**然后判断：**
-- 如果用户需求清晰 → 写 product-overview.md + 第一个 sprint
-- 如果需求不清晰 → 告诉用户好了，建议下一步跑 brainstorm
+**关键规则：AI 不执行 init。** 仅限用户在终端手动运行。
+init 完成后，如果用户需求清晰，AI 可直接引导写 product-overview.md + 第一个 sprint；
+如果需求不清晰，建议用户下一步跑 `/spec-rocket brainstorm`。
 
 ---
 
@@ -109,7 +116,7 @@ PM + Dev 评审
 
 ```
 1. cd ~/projects/photo-app
-2. /spec-rocket init                  → 建空壳
+2. ./spec-rocket init                  → 建空壳（手动终端执行）
 3. /spec-rocket brainstorm            → 填文档 + 创建 sprint（AI 引导）
 4. cp -r docs/sprints/_template ...  → 创建更多 sprint（可选）
 5. Dev 操作：sprint 拖到新 AI 对话 → 引导写 specs → 评审

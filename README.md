@@ -181,12 +181,12 @@ curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket
 
 ### 子命令速查
 
-| 命令 | 效果 | 多久 |
-|:----|:-----|:-----|
-| `init` | 建空壳 + git init | ⚡ 1 秒 |
-| `brainstorm` | 引导式填写产品文档 → 创建 sprint | 💬 5 问 |
-| `migrate` | 给现有项目嵌入骨架 | 🔄 不碰代码 |
-| `preview` | 生成项目全貌预览页 | 👁️ 即时 |
+| 命令 | 效果 | 多久 | 执行方式 |
+|:----|:-----|:-----|:---------|
+| `init` | 建空壳 + git init | ⚡ 1 秒 | 📟 **手动终端执行** |
+| `brainstorm` | 引导式填写产品文档 → 创建 sprint | 💬 5 问 | 🤖 AI 斜杠命令 |
+| `migrate` | 给现有项目嵌入骨架 | 🔄 不碰代码 | 🤖 AI 斜杠命令 |
+| `preview` | 生成项目全貌预览页 | 👁️ 即时 | 🤖 AI 斜杠命令 |
 
 ---
 
@@ -279,11 +279,11 @@ SpecRocket 设计为 **任何 AI 编码代理均可驱动**。只要你的 AI �
 
 | 场景 | 推荐路径 |
 |:----|:---------|
-| 🆕 **新项目启动** | `init` → `brainstorm` → 五步流程 |
-| 🔄 **现有项目引入 AI 协作** | `migrate` → 写 ADR → Retrospec |
-| 🏁 **Hackathon 快速验证** | `init` → 跳过 Step 1 → 直接 Step 4 AI 编码 |
-| 👥 **团队培训** | 跑 init 看骨架 → 读 ssot-convention → PPT |
-| 🤖 **AI-only 项目** | 全部步骤由 AI，Dev 只做评审 |
+| 🆕 **新项目启动** | 📟 手动 `init` → 🤖 AI `brainstorm` → 五步流程 |
+| 🔄 **现有项目引入 AI 协作** | 🤖 AI `migrate` → 写 ADR → Retrospec |
+| 🏁 **Hackathon 快速验证** | 📟 手动 `init` → 跳过 Step 1 → 直接 Step 4 AI 编码 |
+| 👥 **团队培训** | 📟 手动跑 init 看骨架 → 读 ssot-convention → PPT |
+| 🤖 **AI-only 项目** | 📟 手动 init → 🤖 AI 完成其余步骤。Dev 只做评审 |
 | 📦 **企业标准化** | 统一项目结构，新人/新 AI 即开即用 |
 
 ---
