@@ -1,78 +1,76 @@
 ---
 name: spec-canon-boot
-description: "在当前目录快速创建 SpecCanon 项目骨架 + git init。如果需求清晰，进一步编写产品文档和 sprint。"
+description: "斜杠命令 /spec-canon — 快速建空壳、嵌入骨架、预览项目全貌。子命令：init, migrate, preview。"
 version: 2.0.0
 author: Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [spec-canon, bootstrap, project-init, template]
+    tags: [spec-canon, project-init, template]
     trigger_phrases: [
-      "spec-canon-boot",
-      "SpecCanon new",
-      "SpecCanon migrate",
-      "初始化项目",
+      "/spec-canon",
+      "spec-canon",
+      "初始化",
       "新建项目",
-      "使用SpecCanon",
     ]
 ---
 
-# SpecCanon-boot
+# `/spec-canon` — SpecCanon 项目引导命令
 
-> 在当前目录快速创建 SpecCanon 模板项目。
+## 子命令
 
-## 用户怎么说
+| 命令 | 用途 |
+|:-----|:------|
+| `/spec-canon init [项目名]` | 在当前目录建空壳 + git init（核心） |
+| `/spec-canon migrate` | 在当前项目嵌入 SpecCanon 骨架 |
+| `/spec-canon preview` | 生成项目可视化预览页 |
 
-| 用户说 | 我做什么 |
-|:-------|:---------|
-| `spec-canon-boot new` | 在当前目录创建骨架 + git init |
-| `spec-canon-boot new "照片SaaS"` | 创建骨架，项目名叫"照片SaaS" |
-| `spec-canon-boot new ../photo-app` | 在指定目录创建 |
-| `spec-canon-boot migrate` | 在当前项目嵌入 SpecCanon 骨架（不改代码） |
+## 执行流程
 
-## AI 执行流程
+### `/spec-canon init [项目名]`
 
-### Step 1: 创建骨架（必须做）
+**核心功能。只做三件事：**
+1. 下载 SpecCanon 模板
+2. 复制骨架到当前目录（不写业务内容）
+3. git init + 初始提交
+
+**然后判断用户需求清晰度：**
+- **需求清晰**（用户说了要做什么）→ 继续写 `docs/product-overview.md` 和第一个 sprint
+- **需求不清晰** → 告诉用户：「空壳已就绪，可以编辑 product-overview.md 开始」
+
+### `/spec-canon migrate`
+
+在当前项目嵌入 SpecCanon 骨架文件（AGENTS.md、模板目录），**不修改现有代码**。
+
+### `/spec-canon preview`
+
+扫描当前项目，在 `docs/preview.html` 生成可视化预览页：
+
+```
+🎯 产品预览 — 定位、用户画像、场景
+🗺️ 业务地图 — 模块清单、Sprint 路线
+🏗️ 技术架构 — ADR 决策树、技术栈
+```
+
+## 手动一行命令
 
 ```bash
-# 方法A：用当前 Hermes skill（推荐）
-# 直接调用本 skill 的逻辑来完成
+# 建空壳
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/spec-canon | bash -s init
 
-# 方法B：运行 init.sh
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/init.sh | bash -s new
+# 指定项目名
+curl ... | bash -s init "学校照片SaaS"
+
+# 嵌入骨架
+curl ... | bash -s migrate
+
+# 可视化预览
+curl ... | bash -s preview
 ```
 
-这一步始终执行，不论需求是否清晰。
+## 安装
 
-### Step 2: 判断需求清晰度
-
-骨架就绪后，看用户对**这个项目**的描述：
-
-- **需求清晰**（用户说了项目做什么、目标用户、核心功能）→ 继续写：
-  - `docs/product-overview.md` — 产品概览（用户画像、术语表、一句话定位）
-  - `docs/sprints/sprint-001_name/` — 复制模板并填写 SPRINT-features.md
-  - 告诉用户：「骨架已创建，产品文档初稿也写好了，你看看对不对」
-
-- **需求不清晰**（用户只说「帮我初始化项目」，没提具体做什么）→ 停：
-  - 告诉用户：「骨架已建好，下一步可以写产品文档。你想做什么类型的项目？」
-  - 列出 `docs/product-overview.md` 需要填的内容
-
-### 目录结构（创建后）
-
+```bash
+hermes curator install https://github.com/Toketec/SpecCanon-boot
 ```
-项目目录/
-├── docs/product-overview.md   ← 产品概览（AI 可帮你写）
-├── docs/sprints/_template/    ← 冲刺模板（创建新 sprint 时复制）
-├── apps/                      ← 前端应用
-├── businesses/                ← 后端服务
-├── tools/                     ← 工具脚本
-├── ADR/                       ← 架构决策记录
-├── AGENTS.md                  ← AI 协作入口
-└── ssot-convention.zh.md      ← 完整规范
-```
-
-### 相关链接
-
-- 模板仓库: https://github.com/Toketec/SpecCanon
-- 本工具: https://github.com/Toketec/SpecCanon-boot

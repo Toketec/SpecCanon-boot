@@ -1,42 +1,46 @@
 # SpecCanon-boot
 
-> 在当前目录快速创建 SpecCanon 模板项目，一句话完成初始化。
+> `/spec-canon` — 快速建空壳、嵌入骨架、预览项目全貌。
+
+## 子命令
+
+```
+spec-canon init [项目名]    → 建空壳 + git init（核心）
+spec-canon migrate          → 嵌入骨架到现有项目
+spec-canon preview          → 生成项目可视化预览页
+```
 
 ## 一行命令（手动用）
 
 ```bash
-# 先进到你的项目目录
 cd ~/projects/photo-app
 
-# 一键创建骨架 + git init
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/init.sh | bash -s new
+# 建空壳
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/spec-canon | bash -s init
 
-# 也可以指定项目名
-curl ... | bash -s new "学校照片SaaS"
+# 指定项目名
+curl ... | bash -s init "学校照片SaaS"
 
-# 或指定路径
-curl ... | bash -s new ../photo-app "学校照片SaaS"
-
-# 给现有项目嵌入骨架
+# 嵌入骨架
 curl ... | bash -s migrate
+
+# 可视化预览（在浏览器打开 docs/preview.html）
+curl ... | bash -s preview
 ```
 
-## Hermes Agent（AI 用）
+## Hermes Agent
 
 ```bash
 hermes curator install https://github.com/Toketec/SpecCanon-boot
 ```
 
-然后在对话中说：
+对话中：
 
 ```
-spec-canon-boot new
+/spec-canon init "学校照片SaaS"
+/spec-canon migrate
+/spec-canon preview
 ```
-
-AI 会：
-1. ✅ 在当前目录创建骨架 + git init
-2. ✅ 如果需求清晰 → 帮你写 `product-overview.md` 和 `sprint`
-3. ✅ 如果需求不清晰 → 停，问你做什么项目
 
 ## 安装
 
