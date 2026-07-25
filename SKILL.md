@@ -18,6 +18,13 @@ metadata:
 
 # `/spec-canon` — SpecCanon 项目引导命令
 
+> **本文件是 Hermes Agent 的 skill 安装入口。**
+> SpecCanon-boot 本身是 agent 无关的 CLI 工具，任何 AI 编码代理均可驱动。
+>
+> - **Claude Code / Cursor / Cline / Windsurf / Trae / Workbudy / OpenClaw / Codex** → 读 `CLAUDE.md`
+> - **Hermes Agent** → `hermes curator install https://github.com/Toketec/SpecCanon-boot`
+> - **纯终端手动** → `curl ... | bash -s init`（见 README）
+
 ## 子命令
 
 | 命令 | 用途 |
