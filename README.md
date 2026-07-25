@@ -180,8 +180,13 @@ curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket
 
 ### 🤖 AI 斜杠命令（在 AI 对话中使用）
 
-如果项目已关联 AI 编码工具（Claude Code、Cursor、Cline、Windsurf 等），
-直接在聊天框输入以下命令，AI 会自动识别并执行：
+**先装 skill（仅 Hermes Agent 需要）：**
+```bash
+hermes skills install spec-rocket
+```
+装完后即可在 Hermes 对话中使用斜杠命令。其他 AI 工具（Claude Code、Cursor、Cline 等）通过项目根目录的 `CLAUDE.md` 自动识别，无需安装。
+
+在聊天框输入以下命令，AI 会自动执行：
 
 ```chat
 /spec-rocket init "项目名"      → 建空壳（AI 建完后可继续引导写文档）
@@ -190,7 +195,7 @@ curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket
 /spec-rocket preview            → AI 生成项目可视化预览页
 ```
 
-> **斜杠命令是 AI 对话中的快捷指令**，不需要安装、不需要记代码，像和 AI 聊天一样输入即可。AI Agent 通过项目根目录的 `CLAUDE.md` 自动理解每个命令的含义。
+> **斜杠命令是 AI 对话中的快捷指令**，像和 AI 聊天一样输入即可，不需要记代码。
 
 ### 子命令速查
 
