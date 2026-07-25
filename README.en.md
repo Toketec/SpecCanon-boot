@@ -3,7 +3,10 @@
   <img src="https://img.shields.io/github/license/Toketec/SpecRocket?style=flat-square" alt="License">
   <img src="https://img.shields.io/github/last-commit/Toketec/SpecRocket?style=flat-square" alt="Last Commit">
   <img src="https://img.shields.io/badge/PRs-welcome-ff69b4?style=flat-square" alt="PRs Welcome">
-  <img src="https://img.shields.io/badge/curl-▶%20bash-blue?style=flat-square" alt="curl | bash">
+</p>
+
+<p align="center">
+  <a href="README.md">🇨🇳 中文</a> · 🇬🇧 <b>English</b>
 </p>
 
 <h1 align="center">🚀 SpecRocket</h1>
@@ -14,7 +17,7 @@
 </p>
 
 <p align="center">
-  <b>👤 Tony Wang (王圣滔)</b> — AI×Web3 at FLYKITES · Serial entrepreneur · Former senior expert at鼎捷软件 (Digiwin Software)
+  <b>👤 Tony Wang (王圣滔)</b> — AI×Web3 at FLYKITES · Serial entrepreneur · Former senior expert at Digiwin Software
 </p>
 
 <p align="center">
@@ -37,28 +40,19 @@
 
 ---
 
-https://github.com/user-attachments/assets/your-demo-gif-here
-
-> 👇 **One command to start**
-> ```bash
-> curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "my-project"
-> ```
-
----
-
-## 🤯 The Pain: AI Development's Missing Contract
+## 🤯 The Problem: AI Development Chaos
 
 ### Scene 1: You vs AI — Talking Past Each Other
 
 ```
 You:  "Build me an e-commerce checkout page"
-AI:   "Sure!"  → 2000 lines of code
+AI:   "Sure!"  →  2000 lines of code
 
-You:  "No, I meant B2B wholesale checkout, not retail"
-AI:   "Got it, rewriting!" → another 2000 lines
+You:  "No, I said B2B wholesale checkout, not retail"
+AI:   "OK, rewrite!"  →  Another 2000 lines
 
-You:  "Wait, payments need to support letters of credit"
-AI:   "Alright... re-architecting..." → third time
+You:  "And we need letter of credit support"
+AI:   "OK… restructure…"  →  Third time's the charm
 
 A day later. Code exists. Can it ship? No.
 ```
@@ -67,31 +61,21 @@ A day later. Code exists. Can it ship? No.
 
 ```
 PM:   "AI is amazing, I'll code directly!"
-Week 1-2 → shipping 3 features a day, everyone's thrilled
-Month 1 → code mountain, changing a button label needs 8 files
-Month 2 → "Add search" → AI touches one file → breaks three pages
-Month 3 → Team decides to hire a dev to take over
-Dev:  "No folder conventions, no module boundaries, no docs... I can't touch this"
+Week 1-2 →  3 features/day, boss is thrilled
+Month 1  →  Code mountain, changing a button needs 8 files
+Month 2  →  "Add search" → AI changes one thing → 3 pages break
+Month 3  →  Team hires a developer to take over
+Dev:     "What is this? No conventions, no boundaries, no docs… I'm out"
 ```
 
-> **The truth about vibecoding:** AI gives you the illusion of speed but transfers structural complexity to the future. **Speed without specs = tech debt accelerator.**
+> **The truth about vibecoding:** AI gives you the illusion of speed but shifts complexity to the future. **Speed without standards = technical debt accelerator.**
 
-### Scene 3: Traditional Dev vs the AI Monolith
+### The Core Problem
 
-Good engineering teams have discipline — modularity, interfaces, code review, CI/CD. But when AI code lands:
+**Every root cause is the same: no "spec contract" between human and machine.**
 
-- **No module boundaries** → no one knows what breaks
-- **No spec docs** → no one knows why AI wrote it that way
-- **No acceptance criteria** → no one knows if changes are correct
-- **No architecture records** → no one touches the critical path
-
-> **AI code runs, but the team can't take it over. AI writes features, not products.**
-
-### The Root Cause
-
-**All these problems have one cause: there's no spec contract between human and machine.**
-
-AI doesn't know what you want → You guess what AI understood → Everyone loses.
+AI doesn't know what you want → you guess what AI understood → lose-lose.
+AI wrote something → nobody understands → nobody dares to touch → rewrite.
 
 **SpecRocket's answer:**
 > **Every decision has a single source of truth. Every implementation has a spec to follow.**
@@ -100,82 +84,62 @@ AI doesn't know what you want → You guess what AI understood → Everyone lose
 
 ## 👤 Author's Note
 
-I'm **Tony Wang (王圣滔)** — AI×Web3 senior expert at FLYKITES PTE LTD (Singapore), serial entrepreneur from the Greater Bay Area.
+I'm **Tony Wang (王圣滔)**. AI×Web3 Senior Technical Expert at FLYKITES PTE LTD (Singapore), serial entrepreneur in the Greater Bay Area.
 
-8 years from enterprise software to AI Native: former senior expert at Digiwin Software, launched one of China's earliest O2O delivery services (Paoku / Dada) in 2015, Outstanding Project Lead of Jiangsu Brand Association, long-term partner of Singapore's National Youth Council (NYC & Youth Plan). Led multiple enterprise-grade AI Native projects, contributed to Funtana Web3 community localization and Pannetwork's AI on-chain payment (funded).
+8 years from enterprise software to AI Native — former Senior Expert at Digiwin Software. Led multiple enterprise-grade AI Native projects, participated in Funtana Web3 community operations, Pannetwork AI on-chain payments (funded).
 
-Tried every methodology, burned every finger — all of it crystallized into SpecRocket. Not a lab theory, just paid tuition turned into answers.
+I've tried every mainstream approach and hit every wall — SpecRocket is the distillation. Not a lab theory, but an answer paid for with tuition.
 
-Issues, PRs, and honest feedback are all welcome.
+Issues and PRs welcome.
 
 ---
 
 ## 🎯 Why SpecRocket
 
-| # | Problem it solves | How |
-|:-:|:------------------|:----|
-| 1 | **AI context loss** | The 5-step flow produces artifacts at each step — AI always has full context |
-| 2 | **Endless requirement churn** | PM writes product docs → Dev+AI write specs → one review and done |
-| 3 | **Architecture decisions lost** | ADR directory lives forever — new dev or new AI catches up in 3 minutes |
-| 4 | **Unclear acceptance criteria** | `check.md` built into every spec — AI self-checks, QA signs off |
-| 5 | **Vibecoding handover disaster** | The 5-step flow enforces clean structure and clear module boundaries. **Code written by AI = code a developer can own** |
+| # | Problem | Solution |
+|:-:|:--------|:---------|
+| 1 | **AI context loss** | 5-step flow, each step produces artifacts, AI has full context |
+| 2 | **Endless requirements back-and-forth** | PM writes product docs → Dev+AI write spec → one review pass |
+| 3 | **Architecture decisions lost** | ADR directory persists forever — newcomers and new AIs understand the full picture in 3 minutes |
+| 4 | **Unclear acceptance criteria** | `check.md` built-in checklist — AI self-checks + QA signs off |
+| 5 | **Vibecoding handover disaster** | 5-step guarantees structured code with clear module boundaries. Code written by AI, handled by devs |
 | 6 | **Tool lock-in** | Not a plugin, not a CLI dependency — pure file structure. **Any terminal + Git = it works** |
 
-> 💡 **It's not another scaffold. It's a human-AI collaboration protocol for the age of agentic coding.**
-
-### 🔮 Future-proof: Even When LLMs Absorb SDD
-
-One day, LLMs might internalize all of SDD's rules — just say "follow the standard process" and it does everything automatically.
-
-Would SpecRocket still matter?
-
-**Yes — and it would matter more.** Because what you need isn't an "SDD-capable AI." It's a set of **stable, human-readable artifacts the team can work with**:
-
-| Scenario | With SpecRocket | Without (AI Blackbox) |
-|:---------|:---------------|:---------------------|
-| 📋 **Handover reqs** | PM opens `product-overview.md` — same view as AI | "Let me ask the AI what we discussed last time…" |
-| 🧠 **Architecture decisions** | ADR directory: 3 minutes to understand the reasoning | "AI, why did you pick this database?" |
-| 🔍 **Code acceptance** | Dev checks off `check.md` item by item | Staring at AI's code, guessing if it's correct |
-| 👥 **Team division of labor** | Module/specs/ are independent — frontend & backend don't collide | One file modified three modules — no one dares touch it |
-| 🚧 **New hire onboarding** | Read spec → review ADR → run `preview` → productive | "First, let me ask the AI to walk me through the project…" |
-
-**SpecRocket doesn't just optimize your workflow — it produces tangible work products that humans can see, review, and hand over.** These files are as durable as Git and longer than any LLM context window.
-
-Even if every AI disappeared tomorrow, your project structure would still be clear, your docs would still be complete, and your team would still know what to do.
-
-> **SpecRocket's value isn't teaching AI how to work — it's putting what humans need to see, own, and hand over in black and white.**
+> 💡 **It's not just another scaffold. It's a human-AI collaboration protocol for the AI era.**
 
 ---
 
 ## ⚡ Quick Start
 
-### 📟 Manual (no AI tool)
-
-Only `init` is available — bootstrap a template project, then edit docs by hand.
+### 📟 Manual (no AI tools)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "project-name"
-cd project-name
+git clone --recursive https://github.com/Toketec/SpecRocket.git
+cd SpecRocket
+./init.sh "my-project"
+cd my-project
 ```
 
 The project skeleton is ready. You can edit `docs/product-overview.md` to start writing product docs.
+
+> If you already have a clone, just run `./init.sh project-name`.
 
 ---
 
 ### 🤖 AI (with AI agent)
 
-First, get SpecRocket's skill installed. SpecRocket isn't on mainstream skill hubs (it's just a small repo). The installation method is to let your AI access the `CLAUDE.md` file:
+First, get SpecRocket's skill installed. The skill file is `SKILL.md` — the universal entry point for any AI agent.
 
 **Pick your tool:**
 
 | AI Tool | How to install the skill |
 |:--------|:------------------------|
-| **Hermes Agent** | Clone repo → `hermes skills install spec-rocket` |
-| **Claude Code** | Clone repo → run `claude` in the dir → tell AI "install this GitHub skill" |
-| **Trae / Cursor** | Clone repo → open dir in the tool → tell AI "install this GitHub skill" |
-| **OpenClaw** | Clone repo → run `claw` in the dir → tell AI "install this GitHub skill" |
-| **Prompt-based (universal)** | Copy the `CLAUDE.md` content into your AI as system prompt |
-| **Any other AI** | Same as above — feed `CLAUDE.md` to your AI and say "this is your workflow spec" |
+| **Hermes Agent** | Clone → `hermes skills install spec-rocket` |
+| **Claude Code** | Clone → run `claude` in the dir → tell AI "install this GitHub skill" |
+| **Trae / Cursor** | Clone → open dir in the tool → tell AI "install this GitHub skill" |
+| **OpenClaw** | Clone → run `claw` in the dir → tell AI "install this GitHub skill" |
+| **Prompt-based (universal)** | Copy the `SKILL.md` content into your AI as system prompt |
+| **Any other AI** | Same — feed `SKILL.md` to your AI and say "this is your workflow spec" |
 
 Once installed, the AI knows all slash commands. Now choose your scenario:
 
@@ -185,9 +149,9 @@ Once installed, the AI knows all slash commands. Now choose your scenario:
 You: Enter a new empty directory
 AI: Now in ~/projects/my-app (empty)
 → You: /spec-rocket init "my project"
-→ AI: Bootstraps the project skeleton
+→ AI: Copies skeleton from template/ → git init
 → You: /spec-rocket brainstorm
-→ AI: Guides you step by step to describe the product, auto-generates docs
+→ AI: 5 questions → generates product docs + sprint
 ```
 
 **Scenario B: Existing project**
@@ -195,11 +159,11 @@ AI: Now in ~/projects/my-app (empty)
 ```chat
 You: Enter ~/projects/legacy-app
 → You: /spec-rocket preview
-→ AI: Analyzes the project, generates full overview
+→ AI: Analyzes the project → generates full overview
 → You: /spec-rocket migrate
-→ AI: Embeds skeleton into existing project (zero code change)
+→ AI: Embeds skeleton (zero code change)
 → Or: /spec-rocket brainstorm
-→ AI: Guides you to describe the product, generates docs
+→ AI: Guides you to describe the product → generates docs
 ```
 
 > **Slash commands are shortcuts in AI chat.** Just type them like you're chatting — the AI executes them automatically.
@@ -225,23 +189,24 @@ You: Enter ~/projects/legacy-app
 │         │ docs/ + sprints/ + prototypes/                          │
 │         │ AI assists with polish, diagrams, prototype templates   │
 ├────────────────────────────────────────────────────────────────────┤
-│ Step 2 │ Dev + AI solo                                             │
-│         │ ADR/ + {apps|biz|tools}/*/specs/                       │
-│         │ Dev sets 4 directions (10min) → AI writes complete specs │
+│ Step 2 │ Dev+AI solo                                               │
+│         │ ADR/ + {apps|biz|tools}/*/specs/                        │
+│         │ Dev gives 4 directions (10min) → AI writes 4 files      │
 ├────────────────────────────────────────────────────────────────────┤
-│ Step 3 │ PM + Dev joint review                                     │
-│         │ PM: "Does this meet the business?"  TL: "Is the arch OK?"│
-│         │ → Approve or bounce back to Step 2                      │
+│ Step 3 │ PM + Dev review                                          │
+│         │ PM: "Does the spec solve the business need?"            │
+│         │ TL: "Is the architecture sound?"                        │
+│         │ → Pass or back to Step 2                                │
 ├────────────────────────────────────────────────────────────────────┤
-│ Step 4 │ AI codes from spec                                        │
-│         │ Read requirements.md + plan.md → implement → self-check  │
+│ Step 4 │ AI codes per spec                                        │
+│         │ Read requirements.md + plan.md → implement → self-test   │
 ├────────────────────────────────────────────────────────────────────┤
-│ Step 5 │ Dev wraps up                                              │
-│         │ Fix minor bugs → integrate → QA runs check.md → sign off │
+│ Step 5 │ Dev final review                                         │
+│         │ Fix bugs → integration → QA runs check.md → sign off    │
 └────────────────────────────────────────────────────────────────────┘
 ```
 
-**Key insight:** PM and Dev only do 2 real-human things (product design + review). Everything else is AI. **AI codes by spec, no step-skipping, no scope creep.**
+**Key design:** PM and Dev only do 2 real decision-making tasks (product design + review). Everything else is AI. **AI codes per spec, no skipping steps, no changing plans.**
 
 ---
 
@@ -249,18 +214,19 @@ You: Enter ~/projects/legacy-app
 
 ```
 SpecRocket/
-├── spec-rocket               ← CLI script (curl | bash ready)
-├── CLAUDE.md                 ← Auto-detected by AI agents
-├── template/ (submodule)     ← Full framework template + convention manual
-│   ├── ssot-convention.zh.md     ← 580-line complete convention (Chinese)
-│   ├── AGENTS.md                 ← AI collaboration rules
-│   ├── SSOT-开发方法论-培训.pptx ← Team training PPT (Chinese)
-│   ├── docs/                     ← Product doc templates
-│   ├── ADR/                     ← Architecture decision record templates
-│   ├── apps/ / businesses/ / tools/  ← Module templates
+├── SKILL.md          ← Standard skill file (AI slash command entry)
+├── init.sh           ← Manual init script (no AI)
+├── template/ (submodule) → SpecRocket-template  ← Project template framework
+│   ├── ssot-convention.zh.md  ← Full SSOT spec handbook
+│   ├── AGENTS.md              ← AI collaboration rules
+│   ├── SSOT-开发方法论-培训.pptx ← Training PPT
+│   ├── docs/                  ← Product doc templates
+│   ├── ADR/                   ← Architecture decision record templates
+│   ├── apps/businesses/tools/ ← Module templates
 │   └── ...
-├── README.md                 ← Chinese version (what you're reading)
-└── README.en.md              ← English version (this file)
+├── README.md         ← 🇨🇳 Chinese version
+├── README.en.md      ← 🇬🇧 English version
+└── LICENSE           ← MIT License
 ```
 
 ---
@@ -268,129 +234,98 @@ SpecRocket/
 ## ⚔️ Comparison with Alternatives
 
 | Dimension | **SpecRocket** 🚀 | spec-kit | superpowers | OpenSpec | nx/turborepo |
-|:----------|:----------------:|:---------:|:-----------:|:--------:|:------------:|
-| **Positioning** | 🎯 Lightweight SDD framework | Template generator | Prompt collection | Open standard | Build orchestration |
+|:----|:----------------:|:---------:|:-----------:|:--------:|:------------:|
+| **Focus** | 🎯 Lightweight SDD framework | Template generator | Prompt collection | Open standard | Build orchestrator |
 | **Lock-in** | 🔓 **Pure files + Git** | CLI required | VS Code exclusive | None | nx CLI required |
-| **AI independent delivery** | ✅ `_template/` works standalone | ❌ CLI-dependent | ❌ Plugin-dependent | ✅ Pure convention | ❌ |
-| **Team role clarity** | ✅ 5-step flow defines boundaries | ❌ | ❌ | ❌ | ❌ |
+| **AI-independent delivery** | ✅ Just `_template/` | ❌ CLI required | ❌ Plugin required | ✅ Convention only | ❌ |
+| **Team roles** | ✅ 5-step method | ❌ | ❌ | ❌ | ❌ |
 | **Iteration support** | ✅ sprints/NNN | ❌ One-shot | ❌ | ❌ | ❌ |
-| **Product docs** | ✅ Full templates | ❌ Spec-only | ❌ | ❌ | ❌ |
-| **ADR / Architecture** | ✅ Built-in | ❌ | ❌ | ❌ | ❌ |
+| **Product documentation** | ✅ Complete templates | ❌ Spec only | ❌ | ❌ | ❌ |
+| **ADR/Architecture** | ✅ Built-in | ❌ | ❌ | ❌ | ❌ |
 | **Acceptance strategy** | ✅ check.md | ❌ | ❌ | ❌ | ❌ |
 | **Learning curve** | ⭐ **30 minutes** | ⭐⭐ | ⭐ | ⭐ | ⭐⭐⭐⭐⭐ |
 
-**Bottom line:** SpecRocket is the only SDD framework that **defines team role boundaries, bakes in iteration mechanics, and can deliver without AI at all.**
+**Bottom line:** SpecRocket is the only SDD framework that **defines team role boundaries, has built-in iteration support, and works without AI.**
 
 ---
 
 ## 🤖 Agent Compatibility
 
-SpecRocket is designed to work with **any AI coding agent**. If your tool can read files, it works.
+SpecRocket works with **any AI coding agent**. As long as your AI can read files, it can use SpecRocket.
 
-| Agent | How it auto-discovers |
+| Agent | How it reads the skill |
 |:------|:----------------------|
-| Claude Code | Auto-reads `CLAUDE.md` |
-| Cursor | Reads `CLAUDE.md` / `.cursorrules` |
-| Windsurf | Reads `.windsurfrules` |
-| Cline / Roo Code | `CLAUDE.md` compatible |
-| Trae | `CLAUDE.md` compatible |
-| Codex CLI | `CLAUDE.md` compatible |
-| Aider | `CONVENTIONS.md` |
-| Any agent | Read the file tree → understand the spec → go |
+| **Hermes Agent** | Native `SKILL.md` format |
+| Claude Code | Import `SKILL.md` content |
+| Cursor | Import `SKILL.md` content |
+| Windsurf | Import `SKILL.md` content |
+| Cline / Roo Code | Import `SKILL.md` content |
+| Trae | Import `SKILL.md` content |
+| Codex CLI | Import `SKILL.md` content |
+| Aider | Import `SKILL.md` content |
+| OpenClaw | Import `SKILL.md` content |
 
-> Bring your own AI. We don't lock you in.
+> **`SKILL.md` is the universal entry point.** Any AI can use it by injecting the content.
 
 ---
 
 ## 🏗️ Use Cases
 
 | Scenario | Recommended path |
-|:---------|:-----------------|
-| 🆕 **New project kickoff** | 📟 Manual `init` or 🤖 AI `/spec-rocket init` → 🤖 AI `brainstorm` → 5-step flow |
-| 🔄 **Add AI collaboration to existing project** | 🤖 AI `migrate` → write ADRs → retrospec |
-| 🏁 **Hackathon rapid validation** | 📟/🤖 `init` → skip Step 1 → straight to Step 4 AI coding |
-| 👥 **Team onboarding / training** | 📟 Manual `init` to see skeleton → read convention → PPT |
+|:----|:---------|
+| 🆕 **New project** | 📟 Manual `./init.sh` or 🤖 AI `/spec-rocket init` → 🤖 `brainstorm` → 5-step flow |
+| 🔄 **Existing project + AI** | 🤖 AI `migrate` → write ADR → Retrospec |
+| 🏁 **Hackathon** | 📟/🤖 `init` → skip Step 1 → Step 4 AI coding |
+| 👥 **Team training** | 📟 Manual `init` → read ssot-convention → PPT |
 | 🤖 **AI-only project** | 🤖 `/spec-rocket init` → AI does the rest. Dev only reviews |
-| 📦 **Enterprise standardization** | Unify project structure. New hire or new agent, ready in minutes |
-
----
-
-## 🌟 Who's Using It
-
-> *"Before SpecRocket: one week to onboard a new dev. After: three hours. Just drop a SpecRocket project in their lap."*
-> — Tech Lead at a SaaS company
-
-> *"We used SpecRocket for a hackathon. PM wrote specs, AI wrote code, we focused on the pitch. Won first place."*
-> — Winning team at a Big Tech internal hackathon
-
-> *"Migrated from a messy monorepo. Now every module's boundary is painfully clear."*
-> — CTO of a startup
-
-> *"Finally — a workflow where AI code doesn't become tomorrow's technical debt. The check.md mechanism is worth the price of admission alone."*
-> — Senior Developer
-
-*(Share [your story here](https://github.com/Toketec/SpecRocket/issues/new)!)*
 
 ---
 
 ## 🗺️ Roadmap
 
-- [x] `init` / `brainstorm` / `migrate` / `preview` CLI commands
-- [x] 5-step development flow & complete convention manual
-- [x] Bilingual documentation structure (EN + ZH)
-- [ ] English version of ssot-convention
+- [x] `init` / `brainstorm` / `migrate` / `preview` slash commands
+- [x] 5-step development flow & complete spec handbook
+- [x] Bilingual (Chinese + English) documentation
+- [ ] English ssot-convention
 - [ ] GitHub Actions templates (CI + spec validation)
 - [ ] VSCode extension (one-click init)
-- [ ] `retrospec` subcommand (auto-analyze existing project → generate skeleton)
+- [ ] `retrospec` command (auto-analyze existing project → generate skeleton)
 - [ ] Web UI configuration panel
-
-> Want to contribute? See 👇
 
 ---
 
 ## 🤝 Contributing
 
-SpecRocket is a community-driven project. All contributions are welcome:
+SpecRocket is a community-driven project. Contributions welcome:
 
-- ⭐ **Star the repo** — the best support
-- 🐛 **Open an Issue** — bug reports or suggestions
-- 🔧 **Submit a PR** — code, docs, or translation
-- 💬 **Share** — write a blog post, record a video, tweet about it
+- ⭐ **Star the repo** — best support
+- 🐛 **Open an Issue** — bugs & suggestions
+- 🔧 **Submit a PR** — code, docs, translations
+- 💬 **Share** — write, record, tweet
 
 ```bash
 git clone --recursive https://github.com/Toketec/SpecRocket.git
 cd SpecRocket
-# Hack away and submit a PR!
+# Make changes and PR!
 ```
-
----
-
-## 📚 Learning Resources
-
-| Resource | Where | Audience |
-|:---------|:------|:---------|
-| 📖 **SSOT Convention Manual** (CN) | `template/ssot-convention.zh.md` | All members, read first |
-| 📊 **Training PPT** (CN) | `template/SSOT-开发方法论-培训.pptx` | Team training |
-| 🤖 **AI Collaboration Guide** | `template/AGENTS.md` | AI Agents |
-| 📋 **Project Preview** | Run `preview` | PM / stakeholders |
 
 ---
 
 ## 📄 License
 
-**MIT** — belonging to the [Toketec](https://github.com/Toketec) organization.
+**MIT** — [Toketec](https://github.com/Toketec) organization.
 
-Do whatever you want. Commercial use, modification, redistribution. It's all fine.
+Do whatever you want. Commercial use, modification, redistribution — all allowed.
 
 ---
 
 <p align="center">
-  <b>SpecRocket — Spec-driven development. Make AI get it right the first time.</b><br>
+  <b>SpecRocket — Spec-Driven Development. Get it right the first time.</b><br>
   <a href="https://github.com/Toketec/SpecRocket">GitHub</a> •
   <a href="https://github.com/Toketec/SpecRocket/issues">Issues</a> •
   <a href="https://github.com/Toketec/SpecRocket/discussions">Discussions</a>
 </p>
 
 <p align="center">
-  <sub>🔥 If this project helps you, <a href="https://github.com/Toketec/SpecRocket">give it a ⭐</a> so others can find it</sub>
+  <sub>🔥 If this project helps you, <a href="https://github.com/Toketec/SpecRocket">⭐ star it</a> to help others find it.</sub>
 </p>

@@ -3,7 +3,6 @@
   <img src="https://img.shields.io/github/license/Toketec/SpecRocket?style=flat-square" alt="License">
   <img src="https://img.shields.io/github/last-commit/Toketec/SpecRocket?style=flat-square" alt="Last Commit">
   <img src="https://img.shields.io/badge/PRs-welcome-ff69b4?style=flat-square" alt="PRs Welcome">
-  <img src="https://img.shields.io/badge/curl-▶%20bash-blue?style=flat-square" alt="curl | bash">
 </p>
 
 <p align="center">
@@ -38,15 +37,6 @@
     <img src="https://img.shields.io/badge/Tweet-%F0%9F%93%A3-blue?style=social&logo=twitter" alt="Tweet">
   </a>
 </p>
-
----
-
-https://github.com/user-attachments/assets/your-demo-gif-here
-
-> 👇 **一行命令，立即开始**
-> ```bash
-> curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "我的项目"
-> ```
 
 ---
 
@@ -156,31 +146,33 @@ AI 写了什么 → 没人懂 → 没人敢改 → 重写。
 
 ### 📟 手动使用（没有 AI 工具）
 
-仅 `init` 可用，初始化模版项目后手动写文档。
-
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "项目名"
-cd 项目名
+git clone --recursive https://github.com/Toketec/SpecRocket.git
+cd SpecRocket
+./init.sh "我的项目"
+cd 我的项目
 ```
 
 完成后项目骨架已就位，可手动编辑 `docs/product-overview.md` 开始写产品文档。
+
+> 如果已有克隆，直接 `./init.sh 项目名` 即可。
 
 ---
 
 ### 🤖 AI 使用（有 AI 工具）
 
-先让 AI 装上 SpecRocket skill。SpecRocket 不在主流 skill hub 上（它只是个小仓库），所以安装方式就是让 AI 拿到 `CLAUDE.md`：
+先让 AI 装上 SpecRocket skill。安装方式就是让 AI 拿到 `SKILL.md`：
 
 **选你的工具：**
 
 | AI 工具 | 怎么装 skill |
 |:--------|:------------|
 | **Hermes Agent** | 克隆项目 → `hermes skills install spec-rocket` |
-| **Claude Code** | 克隆项目 → 在目录下启动 `claude`→ 和 AI 说"安装这个 github 上的 skill" |
-| **Trae / Cursor** | 克隆项目 → 用工具打开目录 → 和 AI 说"安装这个 github 上的 skill" |
-| **OpenClaw** | 克隆项目 → 在目录下启动 `claw`→ 和 AI 说"安装这个 github 上的 skill" |
-| **通用提示词方式** | 把项目内 `CLAUDE.md` 内容复制给 AI 作为系统提示词即可 |
-| **其他任意 AI** | 同上——通用方法：把 `CLAUDE.md` 丢给 AI，告诉它"这是你的工作规范" |
+| **Claude Code** | 克隆项目 → 在目录下启动 `claude` → 和 AI 说"安装这个 GitHub 上的 skill" |
+| **Trae / Cursor** | 克隆项目 → 用工具打开目录 → 和 AI 说"安装这个 GitHub 上的 skill" |
+| **OpenClaw** | 克隆项目 → 在目录下启动 `claw` → 和 AI 说"安装这个 GitHub 上的 skill" |
+| **通用提示词方式** | 把 `SKILL.md` 内容复制给 AI 作为系统提示词即可 |
+| **其他任意 AI** | 同上——通用方法：把 `SKILL.md` 丢给 AI，告诉它"这是你的工作规范" |
 
 装好后，AI 就知道全部斜杠命令了。接下来看你要做什么：
 
@@ -190,7 +182,7 @@ cd 项目名
 你：帮我进入一个新项目目录
 AI：已进入 ~/projects/my-app（空目录）
 → 你：/spec-rocket init "我的项目"
-→ AI：建好模版骨架
+→ AI：从 template/ 复制骨架 → git init
 → 你：/spec-rocket brainstorm
 → AI：一步步引导你描述产品，自动生成文档
 ```
@@ -254,18 +246,19 @@ AI：已进入 ~/projects/my-app（空目录）
 
 ```
 SpecRocket/
-├── spec-rocket               ← CLI 脚本（curl | bash 即用）
-├── CLAUDE.md                 ← AI Agent 自动识别
-├── template/ (submodule)     ← 完整框架模板 + 规范手册
-│   ├── ssot-convention.zh.md     ← 580 行完整规范
-│   ├── AGENTS.md                 ← AI 协作规则
-│   ├── SSOT-开发方法论-培训.pptx ← 团队培训 PPT
-│   ├── docs/                     ← 产品文档模板
-│   ├── ADR/                     ← 架构决策模板
-│   ├── apps/ / businesses/ / tools/  ← 模块模板
+├── SKILL.md          ← 标准 skill 文件（AI 斜杠命令入口）
+├── init.sh           ← 手动 init 脚本（无 AI 时用）
+├── template/ (submodule) → SpecRocket-template  ← 项目模板框架
+│   ├── ssot-convention.zh.md  ← 完整 SSOT 规范手册
+│   ├── AGENTS.md              ← AI 协作规则
+│   ├── SSOT-开发方法论-培训.pptx ← 培训 PPT
+│   ├── docs/                  ← 产品文档模板
+│   ├── ADR/                   ← 架构决策模板
+│   ├── apps/businesses/tools/ ← 模块模板
 │   └── ...
-├── README.md                 ← 🇨🇳 中文版（就是你现在看的）
-└── README.en.md              ← 🇬🇧 English version
+├── README.md         ← 🇨🇳 中文版
+├── README.en.md      ← 🇬🇧 English version
+└── LICENSE           ← MIT License
 ```
 
 ---
@@ -294,16 +287,17 @@ SpecRocket 设计为 **任何 AI 编码代理均可驱动**。只要你的 AI �
 
 | Agent | 识别方式 |
 |:------|:---------|
-| Claude Code | `CLAUDE.md` 自动加载 |
-| Cursor | `CLAUDE.md` / `.cursorrules` |
-| Windsurf | `.windsurfrules` |
-| Cline / Roo Code | `CLAUDE.md` 兼容 |
-| Trae | `CLAUDE.md` 兼容 |
-| Codex CLI | `CLAUDE.md` 兼容 |
-| Aider | `CONVENTIONS.md` |
-| **Hermes Agent** | `CLAUDE.md` 兼容 |
+| **Hermes Agent** | `SKILL.md` 标准格式 |
+| Claude Code | 导入 `SKILL.md` 内容 |
+| Cursor | 导入 `SKILL.md` 内容 |
+| Windsurf | 导入 `SKILL.md` 内容 |
+| Cline / Roo Code | 导入 `SKILL.md` 内容 |
+| Trae | 导入 `SKILL.md` 内容 |
+| Codex CLI | 导入 `SKILL.md` 内容 |
+| Aider | 导入 `SKILL.md` 内容 |
+| OpenClaw | 导入 `SKILL.md` 内容 |
 
-> 不挑 AI，不锁平台。你的工具你做主。
+> 不挑 AI，不锁平台。**`SKILL.md` 是通用入口，任何 AI 都可通过注入内容的方式使用。**
 
 ---
 
@@ -311,7 +305,7 @@ SpecRocket 设计为 **任何 AI 编码代理均可驱动**。只要你的 AI �
 
 | 场景 | 推荐路径 |
 |:----|:---------|
-| 🆕 **新项目启动** | 📟 手动 `init` 或 🤖 AI `/spec-rocket init` → 🤖 AI `brainstorm` → 五步流程 |
+| 🆕 **新项目启动** | 📟 手动 `./init.sh` 或 🤖 AI `/spec-rocket init` → 🤖 AI `brainstorm` → 五步流程 |
 | 🔄 **现有项目引入 AI 协作** | 🤖 AI `migrate` → 写 ADR → Retrospec |
 | 🏁 **Hackathon 快速验证** | 📟/🤖 `init` → 跳过 Step 1 → 直接 Step 4 AI 编码 |
 | 👥 **团队培训** | 📟 手动 `init` 看骨架 → 读 ssot-convention → PPT |
@@ -337,7 +331,7 @@ SpecRocket 设计为 **任何 AI 编码代理均可驱动**。只要你的 AI �
 
 ## 🗺️ Roadmap
 
-- [x] `init` / `brainstorm` / `migrate` / `preview` CLI
+- [x] `init` / `brainstorm` / `migrate` / `preview` 斜杠命令
 - [x] 五步开发流程 & 完整规范手册
 - [x] 中英双语文档结构
 - [ ] 英文版 ssot-convention
@@ -373,8 +367,8 @@ cd SpecRocket
 |:----|:----|:----|
 | 📖 **SSOT 完整规范手册** | `template/ssot-convention.zh.md` | 所有成员首读 |
 | 📊 **培训 PPT** | `template/SSOT-开发方法论-培训.pptx` | 团队内训 |
-| 🤖 **AI 协作规范** | `template/AGENTS.md` | AI Agent |
-| 📋 **项目演示** | 跑 `preview` 看！ | 给 PM/老板看 |
+| 🤖 **AI 协作规范** | `SKILL.md` | AI Agent |
+| 📋 **项目演示** | 跑 `/spec-rocket preview` 看！ | 给 PM/老板看 |
 
 ---
 
