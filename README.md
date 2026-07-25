@@ -156,18 +156,17 @@ AI 写了什么 → 没人懂 → 没人敢改 → 重写。
 
 ### 🤖 有 AI 工具 → 先装 skill，然后用斜杠命令
 
-所有 AI agent 都需先装 SpecRocket skill，AI 才能识别斜杠命令：
-
-| AI 工具 | 安装 skill | 装一次还是每项目 |
-|:-------|:----------|:--------------|
-| **Hermes Agent** | `hermes skills install spec-rocket` | ✅ 全局一次 |
-| **Claude Code / Cursor / Cline 等** | 先手动 `init` 建项目 → 在项目目录启动 AI，`CLAUDE.md` 自动生效 | ⚠️ 每项目一次 |
+所有 AI agent 都需先安装 SpecRocket skill 才能识别斜杠命令：
 
 ```bash
-# 以 Claude Code 为例：先建项目，再打开
+# 1. 安装 skill（所有 AI agent 通用）
 curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "项目名"
+
+# 2. 进入项目目录
 cd 项目名
-claude
+
+# 3. 在此目录启动你的 AI agent（Claude Code、Cursor、Cline、Hermes 等）
+#    项目中的 CLAUDE.md 会自动教 AI 识别全部斜杠命令
 ```
 
 装好后，在 AI 对话中输入斜杠命令：

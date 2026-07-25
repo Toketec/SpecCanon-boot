@@ -153,16 +153,15 @@ Even if every AI disappeared tomorrow, your project structure would still be cle
 
 All AI agents need the SpecRocket skill installed first to recognize slash commands:
 
-| AI Tool | Install skill | One-time or per-project |
-|:--------|:-------------|:----------------------|
-| **Hermes Agent** | `hermes skills install spec-rocket` | ✅ Global, one-time |
-| **Claude Code / Cursor / Cline / etc.** | Manually `init` a project → open the directory in AI tool. `CLAUDE.md` kicks in automatically | ⚠️ Per-project |
-
 ```bash
-# Example: Claude Code — init first, then open
+# 1. Install skill (universal for all AI agents)
 curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "project-name"
+
+# 2. Enter the project directory
 cd project-name
-claude
+
+# 3. Start your AI agent here (Claude Code, Cursor, Cline, Hermes, etc.)
+#    CLAUDE.md in the project will teach the AI all slash commands automatically
 ```
 
 Once installed, type slash commands in your AI chat:
