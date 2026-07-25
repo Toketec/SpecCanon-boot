@@ -154,65 +154,55 @@ AI 写了什么 → 没人懂 → 没人敢改 → 重写。
 
 ## ⚡ 快速开始
 
-### 一行命令（无需克隆）
+### 🤖 有 AI 工具 → 先装 skill，然后用斜杠命令
+
+所有 AI agent 都需先装 SpecRocket skill，AI 才能识别斜杠命令：
+
+| AI 工具 | 安装 skill | 装一次还是每项目 |
+|:-------|:----------|:--------------|
+| **Hermes Agent** | `hermes skills install spec-rocket` | ✅ 全局一次 |
+| **Claude Code / Cursor / Cline 等** | 先手动 `init` 建项目 → 在项目目录启动 AI，`CLAUDE.md` 自动生效 | ⚠️ 每项目一次 |
+
+```bash
+# 以 Claude Code 为例：先建项目，再打开
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "项目名"
+cd 项目名
+claude
+```
+
+装好后，在 AI 对话中输入斜杠命令：
+
+```chat
+/spec-rocket init "项目名"      → AI 建空壳（可继续引导写文档）
+/spec-rocket brainstorm         → AI 引导你描述产品，自动生成文档
+/spec-rocket migrate            → AI 嵌入骨架到现有项目
+/spec-rocket preview            → AI 生成可视化预览页
+```
+
+> **斜杠命令是 AI 对话中的快捷指令**，像聊天一样输入，AI 会自动执行。
+
+---
+
+### 📟 没有 AI 工具 → 手动命令行
+
+仅 `init` 可用（建模板），其余命令需配合 AI 工具使用：
 
 ```bash
 # 🔥 初始化新项目
 curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "项目名"
 
-# 💡 引导填充产品文档 + 创建第一个 sprint
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s brainstorm
-
-# 🚚 给现有项目嵌入 SSOT 骨架（不碰代码）
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s migrate
-
-# 👁️ 生成 dark-theme 可视化预览页
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s preview
+# 或本地克隆后执行
+# git clone --recursive https://github.com/Toketec/SpecRocket.git
+# ./spec-rocket init "项目名"
 ```
 
-### 本地运行（已克隆仓库）
+---
 
-手动终端仅支持 `init`（建模板），其余命令需在 AI 对话中以斜杠命令执行。
-
-```bash
-./spec-rocket init "项目名"
-```
-
-### 🤖 AI 斜杠命令（在 AI 对话中使用）
-
-所有 AI 工具都需要先让 AI 认识这些命令才能用，方式不同：
-
-| AI 工具 | 怎么做 | 装一次还是每项目 |
-|:-------|:------|:--------------|
-| **Hermes Agent** | `hermes skills install spec-rocket` | ✅ 装一次，全局可用 |
-| **Claude Code / Cursor / Cline 等** | 先手动 `init` 建好项目 → 在项目目录启动 AI，`CLAUDE.md` 会自动教 AI | ⚠️ 每项目一次 |
-
-```bash
-# 方式一：Hermes Agent — 装 skill（全局，一劳永逸）
-hermes skills install spec-rocket
-
-# 方式二：Claude Code / Cursor 等 — 先手动建项目
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "项目名"
-cd 项目名
-# 然后用 AI 工具打开此目录，CLAUDE.md 自动生效
-```
-
-装好后，在 AI 聊天框输入：
-
-```chat
-/spec-rocket init "项目名"      → 建空壳（AI 建完后可继续引导写文档）
-/spec-rocket brainstorm         → AI 引导你描述产品，自动生成文档
-/spec-rocket migrate            → AI 给现有项目嵌入 SSOT 骨架
-/spec-rocket preview            → AI 生成项目可视化预览页
-```
-
-> **斜杠命令是 AI 对话中的快捷指令**，像聊天一样输入即可，不需要记代码。
-
-### 子命令速查
+### 命令一览
 
 | 命令 | 效果 | 多久 | 执行方式 |
 |:----|:-----|:-----|:---------|
-| `init` | 建空壳 + git init | ⚡ 1 秒 | 📟 手动终端 / 🤖 AI 斜杠命令 |
+| `init` | 建空壳 + git init | ⚡ 1 秒 | 📟 手动 / 🤖 斜杠命令 |
 | `brainstorm` | 引导式填写产品文档 → 创建 sprint | 💬 5 问 | 🤖 AI 斜杠命令 |
 | `migrate` | 给现有项目嵌入骨架 | 🔄 不碰代码 | 🤖 AI 斜杠命令 |
 | `preview` | 生成项目全貌预览页 | 👁️ 即时 | 🤖 AI 斜杠命令 |

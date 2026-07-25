@@ -149,65 +149,55 @@ Even if every AI disappeared tomorrow, your project structure would still be cle
 
 ## ⚡ Quick Start
 
-### One Command (no clone needed)
+### 🤖 Have an AI agent → Install skill first, then use slash commands
+
+All AI agents need the SpecRocket skill installed first to recognize slash commands:
+
+| AI Tool | Install skill | One-time or per-project |
+|:--------|:-------------|:----------------------|
+| **Hermes Agent** | `hermes skills install spec-rocket` | ✅ Global, one-time |
+| **Claude Code / Cursor / Cline / etc.** | Manually `init` a project → open the directory in AI tool. `CLAUDE.md` kicks in automatically | ⚠️ Per-project |
+
+```bash
+# Example: Claude Code — init first, then open
+curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "project-name"
+cd project-name
+claude
+```
+
+Once installed, type slash commands in your AI chat:
+
+```chat
+/spec-rocket init "project-name" → AI bootstraps skeleton (can continue to guide docs)
+/spec-rocket brainstorm          → AI guides you to describe the product, auto-generates docs
+/spec-rocket migrate             → AI embeds SSOT skeleton into existing project
+/spec-rocket preview             → AI generates project overview page
+```
+
+> **Slash commands are shortcuts in AI chat.** Just type them like you're chatting — the AI executes them automatically.
+
+---
+
+### 📟 No AI tool → Manual terminal
+
+Only `init` is available (bootstrap skeleton). Other commands require an AI agent.
 
 ```bash
 # 🔥 Bootstrap a new project
 curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "project-name"
 
-# 💡 Guided product doc + first sprint creation
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s brainstorm
-
-# 🚚 Embed SSOT skeleton into existing project (zero code changes)
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s migrate
-
-# 👁️ Generate a dark-theme project overview page
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s preview
+# Or locally:
+# git clone --recursive https://github.com/Toketec/SpecRocket.git
+# ./spec-rocket init "project-name"
 ```
 
-### Local Run (repo cloned)
+---
 
-In terminal, only `init` is available (bootstrap skeleton). Other commands run as AI slash commands.
-
-```bash
-./spec-rocket init "project-name"
-```
-
-### 🤖 AI Slash Commands (in AI chat)
-
-All AI tools need the commands registered first. The method depends on the tool:
-
-| AI Tool | How | One-time or per-project |
-|:--------|:----|:----------------------|
-| **Hermes Agent** | `hermes skills install spec-rocket` | ✅ One-time, global |
-| **Claude Code / Cursor / Cline / etc.** | Manually `init` the project first → open the directory in AI tool. `CLAUDE.md` teaches the AI automatically | ⚠️ Per-project |
-
-```bash
-# Option 1: Hermes Agent — install skill (global, one-time)
-hermes skills install spec-rocket
-
-# Option 2: Claude Code / Cursor etc. — manually init first
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "project-name"
-cd project-name
-# Then open this directory in your AI tool — CLAUDE.md kicks in automatically
-```
-
-Once set up, type these in your AI chat:
-
-```chat
-/spec-rocket init "project-name" → Bootstrap skeleton (AI can continue to guide docs)
-/spec-rocket brainstorm          → AI guides you to describe the product, auto-generates docs
-/spec-rocket migrate             → AI embeds SSOT skeleton into existing project
-/spec-rocket preview             → AI generates project visualization page
-```
-
-> **Slash commands are shortcuts in AI chat.** Just type them like you're chatting — no code to memorize.
-
-### Subcommands at a Glance
+### Command Overview
 
 | Command | What it does | How long | Execution |
 |:--------|:-------------|:---------|:----------|
-| `init` | Bootstrap skeleton + git init | ⚡ 1 second | 📟 Manual / 🤖 AI slash command |
+| `init` | Bootstrap skeleton + git init | ⚡ 1 second | 📟 Manual / 🤖 Slash command |
 | `brainstorm` | Guided product doc → sprint creation | 💬 5 questions | 🤖 AI slash command |
 | `migrate` | Embed skeleton into existing project | 🔄 Zero code touch | 🤖 AI slash command |
 | `preview` | Generate full project overview page | 👁️ Instant | 🤖 AI slash command |
