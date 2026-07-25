@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <b>👤 Tony (王圣滔)</b> — 8 年架构经验 · 历经多个 AI 协作框架 · 真实项目血泪结晶
+  **👤 Tony (王圣滔)** — 8 年架构经验 · 试遍主流方案（spec-kit / Cursor / Claude Code）· 真实项目血泪结晶
 </p>
 
 <p align="center">
@@ -101,9 +101,9 @@ AI 写了什么 → 没人懂 → 没人敢改 → 重写。
 
 ## 👤 作者：不是理论派，是实战派
 
-> **SpecRocket 由 Tony（王圣滔）创作**——8 年架构经验，经历从瀑布 → 敏捷 → TDD → 领域驱动 → 再到 AI 时代数种协作框架的完整演变过程。
+> **SpecRocket 由 Tony（王圣滔）创作**——8 年架构经验，经历从瀑布 → 敏捷 → TDD → 领域驱动 → 再到 AI 时代协作开发的完整演变过程。
 
-Tony 在多家企业落地过 AI 辅助开发项目，试过 cursorrules、CLAUDE.md、AGENTS.md、Hermes Agent 技能等几乎所有主流方案——踩遍了所有坑之后，意识到**问题不在用什么工具，而在人机之间缺少一个规范契约**。
+Tony 在多家企业落地过 AI 辅助开发项目，先后试过 **spec-kit、superpowers、OpenSpec、monorepo（nx/turborepo）** 等多种方法论，也在 **Cursor、Codex、Claude Code** 等工具上一一踩过坑——踩遍所有方案后，意识到**问题不在用什么工具或方法论，而在人机之间缺少一个规范契约**。
 
 > **不是灵光一现的发明，是 8 年经验 + 多个 AI 框架试错 + 真实项目交付血泪后，沉淀出的方法论。**
 
