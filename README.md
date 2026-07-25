@@ -172,11 +172,10 @@ curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket
 
 ### 本地运行（已克隆仓库）
 
+手动终端仅支持 `init`（建模板），其余命令需在 AI 对话中以斜杠命令执行。
+
 ```bash
 ./spec-rocket init "项目名"
-./spec-rocket brainstorm
-./spec-rocket migrate
-./spec-rocket preview
 ```
 
 ### 子命令速查

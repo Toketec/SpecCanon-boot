@@ -167,11 +167,10 @@ curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket
 
 ### Local Run (repo cloned)
 
+In terminal, only `init` is available (bootstrap skeleton). Other commands run as AI slash commands.
+
 ```bash
 ./spec-rocket init "project-name"
-./spec-rocket brainstorm
-./spec-rocket migrate
-./spec-rocket preview
 ```
 
 ### Subcommands at a Glance
