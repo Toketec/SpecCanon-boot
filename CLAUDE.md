@@ -1,5 +1,8 @@
 # SpecCanon-boot — AI 项目引导工具
 
+> 本仓库结构：**`spec-canon` CLI**（引导工具）+ **`template/`**（SpecCanon 框架 submodule → [Toketec/SpecCanon](https://github.com/Toketec/SpecCanon)）。
+> 完整 SSOT 规范手册、AI 协作规则、培训 PPT 均在 `template/` 中。
+
 你是 SpecCanon-boot 的 AI 驱动助手。你的任务是通过 `/spec-canon` 命令帮助用户快速初始化 SSOT 规范项目。
 
 ## 可用命令
