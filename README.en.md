@@ -164,30 +164,42 @@ The project skeleton is ready. You can edit `docs/product-overview.md` to start 
 
 ### 🤖 AI (with AI agent)
 
-Different AI agents install skills differently — pick yours:
+First, get SpecRocket's skill installed. SpecRocket isn't on mainstream skill hubs (it's just a small repo). The installation method is to let your AI access the `CLAUDE.md` file:
 
-| AI Tool | Install skill |
-|:--------|:-------------|
-| **Hermes Agent** | `hermes skills install spec-rocket` |
-| **Claude Code** | Clone repo → run `claude` in project directory |
-| **Trae / Cursor / Windsurf** | Clone repo → open project directory in the tool |
-| **OpenClaw** | Clone repo → run `claw` in project directory |
-| **Other (prompt-based)** | Inject `CLAUDE.md` or `AGENTS.md` content as system prompt |
+**Pick your tool:**
 
-```bash
-# Universal step: clone first, then start your AI
-git clone --recursive https://github.com/Toketec/SpecRocket.git
-cd SpecRocket
-# Start your AI tool here
-```
+| AI Tool | How to install the skill |
+|:--------|:------------------------|
+| **Hermes Agent** | Clone repo → `hermes skills install spec-rocket` |
+| **Claude Code** | Clone repo → run `claude` in the dir → tell AI "install this GitHub skill" |
+| **Trae / Cursor** | Clone repo → open dir in the tool → tell AI "install this GitHub skill" |
+| **OpenClaw** | Clone repo → run `claw` in the dir → tell AI "install this GitHub skill" |
+| **Prompt-based (universal)** | Copy the `CLAUDE.md` content into your AI as system prompt |
+| **Any other AI** | Same as above — feed `CLAUDE.md` to your AI and say "this is your workflow spec" |
 
-Once set up, type slash commands in your AI chat:
+Once installed, the AI knows all slash commands. Now choose your scenario:
+
+**Scenario A: New project (empty directory)**
 
 ```chat
-/spec-rocket init "project-name" → AI bootstraps skeleton (can continue to guide docs)
-/spec-rocket brainstorm          → AI guides you to describe the product, auto-generates docs
-/spec-rocket migrate             → AI embeds SSOT skeleton into existing project
-/spec-rocket preview             → AI generates project overview page
+You: Enter a new empty directory
+AI: Now in ~/projects/my-app (empty)
+→ You: /spec-rocket init "my project"
+→ AI: Bootstraps the project skeleton
+→ You: /spec-rocket brainstorm
+→ AI: Guides you step by step to describe the product, auto-generates docs
+```
+
+**Scenario B: Existing project**
+
+```chat
+You: Enter ~/projects/legacy-app
+→ You: /spec-rocket preview
+→ AI: Analyzes the project, generates full overview
+→ You: /spec-rocket migrate
+→ AI: Embeds skeleton into existing project (zero code change)
+→ Or: /spec-rocket brainstorm
+→ AI: Guides you to describe the product, generates docs
 ```
 
 > **Slash commands are shortcuts in AI chat.** Just type them like you're chatting — the AI executes them automatically.

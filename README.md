@@ -169,30 +169,42 @@ cd 项目名
 
 ### 🤖 AI 使用（有 AI 工具）
 
-不同 AI agent 安装 skill 的方式不同，选你的工具：
+先让 AI 装上 SpecRocket skill。SpecRocket 不在主流 skill hub 上（它只是个小仓库），所以安装方式就是让 AI 拿到 `CLAUDE.md`：
 
-| AI 工具 | 安装 skill |
-|:--------|:----------|
-| **Hermes Agent** | `hermes skills install spec-rocket` |
-| **Claude Code** | 克隆仓库 → 在项目目录启动 `claude` |
-| **Trae / Cursor / Windsurf** | 克隆仓库 → 用工具打开项目目录 |
-| **OpenClaw** | 克隆仓库 → 在项目目录启动 `claw` |
-| **其他（通用提示词方式）** | 将项目中的 `CLAUDE.md` 或 `AGENTS.md` 内容作为系统提示词注入即可 |
+**选你的工具：**
 
-```bash
-# 通用步骤：先克隆，再启动 AI
-git clone --recursive https://github.com/Toketec/SpecRocket.git
-cd SpecRocket
-# 然后在此目录启动你的 AI 工具
-```
+| AI 工具 | 怎么装 skill |
+|:--------|:------------|
+| **Hermes Agent** | 克隆项目 → `hermes skills install spec-rocket` |
+| **Claude Code** | 克隆项目 → 在目录下启动 `claude`→ 和 AI 说"安装这个 github 上的 skill" |
+| **Trae / Cursor** | 克隆项目 → 用工具打开目录 → 和 AI 说"安装这个 github 上的 skill" |
+| **OpenClaw** | 克隆项目 → 在目录下启动 `claw`→ 和 AI 说"安装这个 github 上的 skill" |
+| **通用提示词方式** | 把项目内 `CLAUDE.md` 内容复制给 AI 作为系统提示词即可 |
+| **其他任意 AI** | 同上——通用方法：把 `CLAUDE.md` 丢给 AI，告诉它"这是你的工作规范" |
 
-装好后，在 AI 对话中直接输入斜杠命令：
+装好后，AI 就知道全部斜杠命令了。接下来看你要做什么：
+
+**场景 A：新项目（空目录）**
 
 ```chat
-/spec-rocket init "项目名"      → AI 建空壳（可继续引导写文档）
-/spec-rocket brainstorm         → AI 引导你描述产品，自动生成文档
-/spec-rocket migrate            → AI 嵌入骨架到现有项目
-/spec-rocket preview            → AI 生成可视化预览页
+你：帮我进入一个新项目目录
+AI：已进入 ~/projects/my-app（空目录）
+→ 你：/spec-rocket init "我的项目"
+→ AI：建好模版骨架
+→ 你：/spec-rocket brainstorm
+→ AI：一步步引导你描述产品，自动生成文档
+```
+
+**场景 B：已有老项目**
+
+```chat
+你：帮我进入 ~/projects/legacy-app
+→ 你：/spec-rocket preview
+→ AI：分析现有项目，生成全貌预览
+→ 你：/spec-rocket migrate
+→ AI：嵌入骨架到现有项目（不碰代码）
+→ 或：/spec-rocket brainstorm
+→ AI：引导你描述产品，生成文档
 ```
 
 > **斜杠命令是 AI 对话中的快捷指令**，像聊天一样输入，AI 自动识别执行。
