@@ -28,11 +28,10 @@ if [ ! -f "$ROOT/docs/product-overview.md" ]; then
     exit 1
 fi
 
-# ─── 检查是否已有内容 ────────────────────────
-HAS_CONTENT=$(grep -v '^{.*}$' "$ROOT/docs/product-overview.md" 2>/dev/null | grep -c '[a-zA-Z0-9]' || true)
-if [ "$HAS_CONTENT" -gt 5 ]; then
-    echo -e "${Y}⚠ product-overview.md 已有内容。重新 brainstorm 会覆盖。${N}"
-    read -p "  继续？(y/N) " confirm
+# ─── 覆盖前确认 ────────────────────────────────
+if [ -f "$ROOT/docs/product-overview.md" ]; then
+    echo -e "${Y}product-overview.md 已存在。覆盖并重新生成？${N}"
+    read -p "  (y/N) " confirm
     [ "$confirm" != "y" ] && [ "$confirm" != "Y" ] && echo "  取消" && exit 0
 fi
 
@@ -123,7 +122,10 @@ for d in "$ROOT/docs/sprints"/sprint-*/; do
     [ "$NUM" -ge "$NEXT_NUM" ] && NEXT_NUM=$((NUM + 1))
 done
 
-SPRINT_DIR="$ROOT/docs/sprints/sprint-$(printf '%03d' $NEXT_NUM)_$(echo "$FEATURE" | tr ' ' '_' | tr -cd 'a-zA-Z0-9_\-')"
+# sprint 名字 = 功能描述前 30 个字符，保留中文
+SPRINT_NAME=$(echo "$FEATURE" | tr '/' '_' | head -c 30)
+[ -z "$SPRINT_NAME" ] && SPRINT_NAME="v1"
+SPRINT_DIR="$ROOT/docs/sprints/sprint-$(printf '%03d' $NEXT_NUM)_$SPRINT_NAME"
 
 # 从模板复制
 if [ -d "$ROOT/docs/sprints/_template" ]; then
