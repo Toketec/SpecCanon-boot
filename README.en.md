@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <b>👤 Tony (王圣滔)</b> — 8 years of architecture · Tried every mainstream approach (spec-kit / Cursor / Claude Code) · Forged in real projects and real scars
+  <b>👤 Tony Wang (王圣滔)</b> — AI×Web3 at FLYKITES · Serial entrepreneur · Former senior expert at鼎捷软件 (Digiwin Software)
 </p>
 
 <p align="center">
@@ -100,17 +100,11 @@ AI doesn't know what you want → You guess what AI understood → Everyone lose
 
 ## 👤 Author's Note
 
-Hi, I'm Tony (王圣滔).
+I'm **Tony Wang (王圣滔)** — AI×Web3 senior expert at FLYKITES PTE LTD (Singapore), serial entrepreneur from the Greater Bay Area.
 
-I've been in this industry for 8 years, evolving from waterfall through agile, TDD, and domain-driven design into the AI-assisted development era. I've tried **spec-kit, superpowers, OpenSpec, monorepo (nx/turborepo)** — pretty much every methodology out there. I've also burned my fingers on **Cursor, Codex, and Claude Code** more times than I'd like to admit.
+8 years from enterprise software to AI Native: former senior expert at Digiwin Software, launched one of China's earliest O2O delivery services (Paoku / Dada) in 2015, Outstanding Project Lead of Jiangsu Brand Association, long-term partner of Singapore's National Youth Council (NYC & Youth Plan). Led multiple enterprise-grade AI Native projects, contributed to Funtana Web3 community localization and Pannetwork's AI on-chain payment (funded).
 
-One question kept stinging:
-
-> **AI is fast, but the faster it goes, the messier it gets. The code works, but no team can own it.**
-
-So I built SpecRocket.
-
-It's not a theoretical framework from a lab — it's the answer I arrived at after 8 years of trying everything and bleeding on every mistake. It might not be perfect yet, but I hope it saves you from the detours I took.
+Tried every methodology, burned every finger — all of it crystallized into SpecRocket. Not a lab theory, just paid tuition turned into answers.
 
 Issues, PRs, and honest feedback are all welcome.
 

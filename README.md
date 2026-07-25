@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  **👤 Tony (王圣滔)** — 8 年架构经验 · 试遍主流方案（spec-kit / Cursor / Claude Code）· 真实项目血泪结晶
+  **👤 Tony Wang (王圣滔)** — FLYKITES AI×Web3 资深技术专家 · 大湾区连续创业者 · 前鼎捷软件资深专家
 </p>
 
 <p align="center">
@@ -105,17 +105,13 @@ AI 写了什么 → 没人懂 → 没人敢改 → 重写。
 
 ## 👤 作者的话
 
-你好，我是 Tony（王圣滔）。
+我是 **Tony Wang（王圣滔）**。现 FLYKITES PTE LTD（Singapore）AI×Web3 资深技术专家，大湾区连续创业者。
 
-我在这个行业做了 8 年，一路从瀑布、敏捷、TDD、领域驱动走过来，后来又投身 AI 辅助开发。我先后试过 **spec-kit、superpowers、OpenSpec、monorepo（nx/turborepo）** 这些方法论，也在 **Cursor、Codex、Claude Code** 这些工具上踩过无数坑。项目交付了不少，但始终有一个问题反复刺痛我：
+8 年来从企业软件走到 AI Native——前鼎捷软件资深专家，2015 年发起早期互联网跑腿（跑酷/达达）从 0 验证 O2O 配送需求，江苏省品牌学会优秀项目负责人，新加坡国家青年理事会 NYC & Youth Plan 长期合作伙伴。主导多个企业级 AI Native 落地项目，参与 Funtana Web3 社群本地化运营、Pannetwork AI 链上支付（已获融资）。
 
-> **AI 很快，但越快到后期越乱。代码能用，团队却接不住。**
+这一路试遍所有主流方案，踩遍所有坑——最终凝结成 SpecRocket。它不是实验室理论，是我交过的学费换来的答案。
 
-所以我做了 SpecRocket。
-
-它不是实验室里的理论产物——是我 8 年下来，把能试的都试了、能踩的坑都踩了之后，沉淀出的答案。也许它还不够完美，但我希望它能帮你绕开我走过的那些弯路。
-
-欢迎提 Issue、提 PR，一起把它变得更好。
+欢迎提 Issue、提 PR，一起让它变得更好。
 
 ---
 
