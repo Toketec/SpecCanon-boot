@@ -129,6 +129,28 @@ Issues, PRs, and honest feedback are all welcome.
 
 > 💡 **It's not another scaffold. It's a human-AI collaboration protocol for the age of agentic coding.**
 
+### 🔮 Future-proof: Even When LLMs Absorb SDD
+
+One day, LLMs might internalize all of SDD's rules — just say "follow the standard process" and it does everything automatically.
+
+Would SpecRocket still matter?
+
+**Yes — and it would matter more.** Because what you need isn't an "SDD-capable AI." It's a set of **stable, human-readable artifacts the team can work with**:
+
+| Scenario | With SpecRocket | Without (AI Blackbox) |
+|:---------|:---------------|:---------------------|
+| 📋 **Handover reqs** | PM opens `product-overview.md` — same view as AI | "Let me ask the AI what we discussed last time…" |
+| 🧠 **Architecture decisions** | ADR directory: 3 minutes to understand the reasoning | "AI, why did you pick this database?" |
+| 🔍 **Code acceptance** | Dev checks off `check.md` item by item | Staring at AI's code, guessing if it's correct |
+| 👥 **Team division of labor** | Module/specs/ are independent — frontend & backend don't collide | One file modified three modules — no one dares touch it |
+| 🚧 **New hire onboarding** | Read spec → review ADR → run `preview` → productive | "First, let me ask the AI to walk me through the project…" |
+
+**SpecRocket doesn't just optimize your workflow — it produces tangible work products that humans can see, review, and hand over.** These files are as durable as Git and longer than any LLM context window.
+
+Even if every AI disappeared tomorrow, your project structure would still be clear, your docs would still be complete, and your team would still know what to do.
+
+> **SpecRocket's value isn't teaching AI how to work — it's putting what humans need to see, own, and hand over in black and white.**
+
 ---
 
 ## ⚡ Quick Start
