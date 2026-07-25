@@ -154,22 +154,31 @@ AI 写了什么 → 没人懂 → 没人敢改 → 重写。
 
 ## ⚡ 快速开始
 
-### 🤖 有 AI 工具 → 先装 skill，然后用斜杠命令
+### 📟 手动使用（没有 AI 工具）
 
-所有 AI agent 都需先安装 SpecRocket skill 才能识别斜杠命令：
+仅 `init` 可用，初始化模版项目后手动写文档。
 
 ```bash
-# 1. 安装 skill（所有 AI agent 通用）
 curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "项目名"
-
-# 2. 进入项目目录
 cd 项目名
-
-# 3. 在此目录启动你的 AI agent（Claude Code、Cursor、Cline、Hermes 等）
-#    项目中的 CLAUDE.md 会自动教 AI 识别全部斜杠命令
 ```
 
-装好后，在 AI 对话中输入斜杠命令：
+完成后项目骨架已就位，可手动编辑 `docs/product-overview.md` 开始写产品文档。
+
+---
+
+### 🤖 AI 使用（有 AI 工具）
+
+先在 SpecRocket 仓库目录安装 skill，然后启动 AI agent：
+
+```bash
+git clone --recursive https://github.com/Toketec/SpecRocket.git
+cd SpecRocket
+# 在此目录启动你的 AI agent（Claude Code、Cursor、Cline、Hermes 等）
+# SpecRocket 自带的 CLAUDE.md 会自动教 AI 全部斜杠命令
+```
+
+装好后，在 AI 对话中直接输入斜杠命令：
 
 ```chat
 /spec-rocket init "项目名"      → AI 建空壳（可继续引导写文档）
@@ -178,22 +187,7 @@ cd 项目名
 /spec-rocket preview            → AI 生成可视化预览页
 ```
 
-> **斜杠命令是 AI 对话中的快捷指令**，像聊天一样输入，AI 会自动执行。
-
----
-
-### 📟 没有 AI 工具 → 手动命令行
-
-仅 `init` 可用（建模板），其余命令需配合 AI 工具使用：
-
-```bash
-# 🔥 初始化新项目
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "项目名"
-
-# 或本地克隆后执行
-# git clone --recursive https://github.com/Toketec/SpecRocket.git
-# ./spec-rocket init "项目名"
-```
+> **斜杠命令是 AI 对话中的快捷指令**，像聊天一样输入，AI 自动识别执行。
 
 ---
 

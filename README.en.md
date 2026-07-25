@@ -149,22 +149,31 @@ Even if every AI disappeared tomorrow, your project structure would still be cle
 
 ## ⚡ Quick Start
 
-### 🤖 Have an AI agent → Install skill first, then use slash commands
+### 📟 Manual (no AI tool)
 
-All AI agents need the SpecRocket skill installed first to recognize slash commands:
+Only `init` is available — bootstrap a template project, then edit docs by hand.
 
 ```bash
-# 1. Install skill (universal for all AI agents)
 curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "project-name"
-
-# 2. Enter the project directory
 cd project-name
-
-# 3. Start your AI agent here (Claude Code, Cursor, Cline, Hermes, etc.)
-#    CLAUDE.md in the project will teach the AI all slash commands automatically
 ```
 
-Once installed, type slash commands in your AI chat:
+The project skeleton is ready. You can edit `docs/product-overview.md` to start writing product docs.
+
+---
+
+### 🤖 AI (with AI agent)
+
+Clone SpecRocket to install the skill, then start your AI agent here:
+
+```bash
+git clone --recursive https://github.com/Toketec/SpecRocket.git
+cd SpecRocket
+# Start your AI agent here (Claude Code, Cursor, Cline, Hermes, etc.)
+# SpecRocket's CLAUDE.md will teach the AI all slash commands automatically
+```
+
+Once set up, type slash commands in your AI chat:
 
 ```chat
 /spec-rocket init "project-name" → AI bootstraps skeleton (can continue to guide docs)
@@ -174,21 +183,6 @@ Once installed, type slash commands in your AI chat:
 ```
 
 > **Slash commands are shortcuts in AI chat.** Just type them like you're chatting — the AI executes them automatically.
-
----
-
-### 📟 No AI tool → Manual terminal
-
-Only `init` is available (bootstrap skeleton). Other commands require an AI agent.
-
-```bash
-# 🔥 Bootstrap a new project
-curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-rocket | bash -s init "project-name"
-
-# Or locally:
-# git clone --recursive https://github.com/Toketec/SpecRocket.git
-# ./spec-rocket init "project-name"
-```
 
 ---
 
