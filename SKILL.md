@@ -2,28 +2,18 @@
 name: spec-rocket
 description: "斜杠命令 /spec-canon — 快速建空壳、引导写文档、嵌入骨架、预览全貌。子命令：init, brainstorm, migrate, preview。"
 version: 2.1.0
-author: Hermes Agent
 license: MIT
-platforms: [linux, macos]
-metadata:
-  hermes:
-    tags: [spec-canon, project-init, template]
-    trigger_phrases: [
-      "/spec-canon",
-      "spec-canon",
-      "初始化",
-      "新建项目",
-    ]
 ---
 
 # `/spec-canon` — SpecRocket 项目引导命令
 
-> **本文件是 Hermes Agent 的 skill 安装入口。**
-> SpecRocket 本身是 agent 无关的 CLI 工具，任何 AI 编码代理均可驱动。
+> SpecRocket 的 AI 协作指南。任何 AI 编码代理（Claude Code、Cursor、Cline、Windsurf、Codex、Aider 等）均可按本文档指引执行 `/spec-canon` 命令。
 >
-> - **Claude Code / Cursor / Cline / Windsurf / Trae / Workbudy / OpenClaw / Codex** → 读 `CLAUDE.md`
-> - **Hermes Agent** → `hermes curator install https://github.com/Toketec/SpecRocket`
-> - **纯终端手动** → `curl ... | bash -s init`（见 README）
+> 安装方式（任选）：
+> - 本地克隆：`git clone --recursive https://github.com/Toketec/SpecRocket.git`，运行 `./spec-canon`
+> - 远程一行：`curl -fsSL https://raw.githubusercontent.com/Toketec/SpecRocket/main/spec-canon | bash -s init "项目名"`
+>
+> 各 Agent 引导文件对应关系：`CLAUDE.md`（Claude Code/Cursor/Cline/Codex）、`.windsurfrules`（Windsurf）、`CONVENTIONS.md`（Aider）
 
 ## 子命令
 

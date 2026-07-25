@@ -175,11 +175,9 @@ SpecRocket 设计为 **任何 AI 编码代理均可驱动**。
 | Windsurf | `.windsurfrules` |
 | Cline / Roo Code | `CLAUDE.md` 兼容 |
 | Trae | `CLAUDE.md` 兼容 |
-| Workbudy | `CLAUDE.md` 兼容 |
 | OpenClaw | `CLAUDE.md` 兼容 |
 | Codex CLI | `CLAUDE.md` 兼容 |
 | Aider | `CONVENTIONS.md` |
-| Hermes Agent | `hermes curator install https://github.com/Toketec/SpecRocket` |
 | Cursor | `CLAUDE.md` 自动加载 |
 
 ---
