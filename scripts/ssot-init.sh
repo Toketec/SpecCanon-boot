@@ -2,7 +2,10 @@
 # ============================================================================
 # SpecCanon Init — 从模板快速创建新项目
 # ============================================================================
-# 用法: 同 init.sh（本脚本是 init.sh 的内核，被调用）
+# 用法: 同 init.sh（本脚本是 init.sh 的内核）
+#   不传路径 → 在当前目录创建
+#   传路径    → 在指定目录创建
+#   传项目名  → 使用指定名称，否则用目录名
 # ============================================================================
 
 set -euo pipefail
@@ -11,13 +14,27 @@ TEMPLATE_REPO="https://github.com/Toketec/SpecCanon.git"
 G='\033[0;32m'; Y='\033[1;33m'; C='\033[0;36m'; R='\033[0;31m'; N='\033[0m'
 
 usage() {
-    echo "用法: $0 {new|migrate} <目标路径> [项目名称]"
+    echo "用法: $0 {new|migrate} [目标路径|项目名] [项目名]"
     exit 1
 }
 
-MODE="${1:-}"; TARGET="${2:-}"; PROJECT_NAME="${3:-$(basename "${TARGET:-.}")}"
-[ -z "$MODE" ] || [ -z "$TARGET" ] && usage
+MODE="${1:-}"; [ -z "$MODE" ] && usage
 [ "$MODE" != "new" ] && [ "$MODE" != "migrate" ] && usage
+
+if [ -n "${2:-}" ]; then
+    if [ -n "${3:-}" ]; then
+        TARGET="$2"; PROJECT_NAME="$3"
+    else
+        if [[ "$2" == *"/"* ]] || [ "$2" = "." ] || [ "$2" = ".." ]; then
+            TARGET="$2"
+            PROJECT_NAME="$(basename "$(realpath "$TARGET" 2>/dev/null || echo "$TARGET")")"
+        else
+            TARGET="."; PROJECT_NAME="$2"
+        fi
+    fi
+else
+    TARGET="."; PROJECT_NAME="$(basename "$PWD")"
+fi
 
 TARGET="$(realpath "$TARGET" 2>/dev/null || echo "$TARGET")"
 MODE_LABEL="创建新项目"; [ "$MODE" = migrate ] && MODE_LABEL="迁移现有项目"
@@ -35,7 +52,6 @@ TMPDIR=""; cleanup() { [ -n "$TMPDIR" ] && rm -rf "$TMPDIR" 2>/dev/null || true;
 trap cleanup EXIT
 
 echo -e "${G}[1/3]${N} 获取 SpecCanon 模板..."
-
 METHODOLOGY_DIR=""
 for d in "$HOME/SpecCanon" "$(dirname "$0")/../SpecCanon" "$(pwd)/SpecCanon"; do
     [ -f "$d/docs/product-overview.md" ] && { METHODOLOGY_DIR="$d"; break; }
@@ -49,22 +65,17 @@ if [ -z "$METHODOLOGY_DIR" ]; then
     fi
     METHODOLOGY_DIR="$TMPDIR/SpecCanon"
 fi
-
 echo "  ✅ 模板就绪"
 
 # ─── 步骤 2: 创建项目骨架 ────────────────────
 echo -e "${G}[2/3]${N} 创建项目骨架..."
-
 if [ "$MODE" = "new" ]; then
     mkdir -p "$TARGET"
     find "$METHODOLOGY_DIR" -not -path '*/.git/*' -not -name '.git' | while read -r src; do
         [ "$src" = "$METHODOLOGY_DIR" ] && continue
         dst="$TARGET${src#$METHODOLOGY_DIR}"
-        if [ -d "$src" ]; then
-            mkdir -p "$dst"
-        elif [ ! -f "$dst" ]; then
-            cp "$src" "$dst"
-        fi
+        if [ -d "$src" ]; then mkdir -p "$dst"
+        elif [ ! -f "$dst" ]; then cp "$src" "$dst"; fi
     done
     echo "  ✅ 骨架已创建"
 else
@@ -101,7 +112,7 @@ echo -e "${G}✅ 完成!${N}"
 echo -e "${C}   目标: $TARGET${N}"
 echo ""
 echo -e "${C}下一步:${N}"
-echo "  1. cd $TARGET"
-echo "  2. 编辑 docs/product-overview.md — 写产品概览"
-echo "  3. cp -r docs/sprints/_template docs/sprints/sprint-001_name"
+echo "  1. 编辑 docs/product-overview.md — 写产品概览"
+echo "  2. cp -r docs/sprints/_template docs/sprints/sprint-001_name"
+echo "  3. cp -r apps/_template apps/my-app"
 echo "  4. cat ssot-convention.zh.md — 完整规范"

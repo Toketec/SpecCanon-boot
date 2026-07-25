@@ -3,36 +3,64 @@
 # SpecCanon Init — 从模板快速创建新项目的一行命令
 # ============================================================================
 # 用法:
-#   curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/init.sh | bash -s new ./my-app "项目名"
-#   curl ... | bash -s migrate ./existing-project "项目名"
+#   在目标目录运行:  curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/init.sh | bash -s new
+#   指定项目名:     curl ... | bash -s new "学校照片SaaS"
+#   指定路径:        curl ... | bash -s new ./some-path "项目名"
+#   迁移:            curl ... | bash -s migrate
 #
 # 效果:
-#   new     → 克隆 SpecCanon 模板 → 替换项目名 → git init → 完成
-#   migrate → 在现有项目中嵌入骨架（不改现有代码）
+#   new     → 在当前目录创建 SpecCanon 骨架 + git init
+#   migrate → 在当前目录嵌入骨架（不改现有代码）
 # ============================================================================
 
 set -euo pipefail
 
 TEMPLATE_REPO="https://github.com/Toketec/SpecCanon.git"
-
 G='\033[0;32m'; Y='\033[1;33m'; C='\033[0;36m'; R='\033[0;31m'; N='\033[0m'
 
 # ─── 参数解析 ───────────────────────────────────
+# arg1 = 模式（new/migrate）
+# arg2 = 可选：项目名或目标路径
+# arg3 = 可选：项目名（当 arg2 是路径时）
 usage() {
-    echo "用法: init.sh {new|migrate} <目标路径> [项目名称]"
+    echo "用法: init.sh {new|migrate} [目标路径|项目名] [项目名]"
     echo ""
-    echo "  new      创建新项目（克隆模板 → 重命名 → git init）"
-    echo "  migrate  在现有项目中嵌入 SpecCanon 骨架"
+    echo "  不传路径 → 在当前目录创建"
+    echo "  传路径    → 在指定目录创建"
+    echo "  传项目名  → 使用指定名称，否则用目录名"
     echo ""
     echo "示例:"
-    echo "  curl -fsSL https://raw.githubusercontent.com/Toketec/SpecCanon-boot/main/init.sh | bash -s new ./photo-app \"学校照片SaaS\""
+    echo "  cd ~/projects/photo-app && curl ... | bash -s new"
+    echo "  cd ~/projects && curl ... | bash -s new photo-app \"学校照片SaaS\""
+    echo "  cd ~/legacy && curl ... | bash -s migrate"
     exit 1
 }
 
-MODE="${1:-}"; TARGET="${2:-}"; PROJECT_NAME="${3:-$(basename "${TARGET:-.}")}"
-[ -z "$MODE" ] || [ -z "$TARGET" ] && usage
-
+MODE="${1:-}"
+[ -z "$MODE" ] && usage
 [ "$MODE" != "new" ] && [ "$MODE" != "migrate" ] && usage
+
+# 智能解析路径和项目名
+if [ -n "${2:-}" ]; then
+    # arg2 存在
+    if [ -n "${3:-}" ]; then
+        # arg3 也存在 → arg2=路径, arg3=项目名
+        TARGET="$2"
+        PROJECT_NAME="$3"
+    else
+        # 只有 arg2 → 判断是路径还是名字
+        if [[ "$2" == *"/"* ]] || [ "$2" = "." ] || [ "$2" = ".." ]; then
+            TARGET="$2"
+            PROJECT_NAME="$(basename "$(realpath "$TARGET" 2>/dev/null || echo "$TARGET")")"
+        else
+            TARGET="."
+            PROJECT_NAME="$2"
+        fi
+    fi
+else
+    TARGET="."
+    PROJECT_NAME="$(basename "$PWD")"
+fi
 
 TARGET="$(realpath "$TARGET" 2>/dev/null || echo "$TARGET")"
 MODE_LABEL="创建新项目"; [ "$MODE" = migrate ] && MODE_LABEL="迁移现有项目"
@@ -51,7 +79,6 @@ trap cleanup EXIT
 
 echo -e "${G}[1/3]${N} 获取 SpecCanon 模板..."
 
-# 优先本地缓存
 METHODOLOGY_DIR=""
 for d in "$HOME/SpecCanon" "$(dirname "$0")/../SpecCanon" "$(pwd)/SpecCanon"; do
     [ -f "$d/docs/product-overview.md" ] && { METHODOLOGY_DIR="$d"; break; }
@@ -73,7 +100,6 @@ echo -e "${G}[2/3]${N} 创建项目骨架..."
 
 if [ "$MODE" = "new" ]; then
     mkdir -p "$TARGET"
-    # 非 git 文件（排除 .git 目录和 .gitkeep 类文件）
     find "$METHODOLOGY_DIR" -not -path '*/.git/*' -not -name '.git' | while read -r src; do
         [ "$src" = "$METHODOLOGY_DIR" ] && continue
         dst="$TARGET${src#$METHODOLOGY_DIR}"
@@ -85,7 +111,6 @@ if [ "$MODE" = "new" ]; then
     done
     echo "  ✅ 骨架已创建"
 else
-    # migrate 模式：只添加不存在的核心文件
     for f in AGENTS.md ssot-convention.zh.md .gitignore; do
         [ -f "$METHODOLOGY_DIR/$f" ] && [ ! -f "$TARGET/$f" ] && cp "$METHODOLOGY_DIR/$f" "$TARGET/$f" && echo "  ✅ $f"
     done
@@ -120,13 +145,12 @@ echo -e "${G}✅ 完成!${N}"
 echo -e "${C}   目标: $TARGET${N}"
 echo ""
 echo -e "${C}下一步:${N}"
-echo "  1. cd $TARGET"
-echo "  2. 编辑 docs/product-overview.md — 写产品概览"
-echo "  3. 创建第一个 sprint:"
+echo "  1. 编辑 docs/product-overview.md — 写产品概览"
+echo "  2. 创建第一个 sprint:"
 echo "     cp -r docs/sprints/_template docs/sprints/sprint-001_name"
-echo "  4. 创建后端服务:"
-echo "     cp -r businesses/_template businesses/my-service"
-echo "  5. 完整规范: cat ssot-convention.zh.md"
+echo "  3. 创建模块:"
+echo "     cp -r apps/_template apps/my-app"
+echo "  4. 完整规范: cat ssot-convention.zh.md"
 echo ""
 
 if [ "$MODE" = "migrate" ]; then
