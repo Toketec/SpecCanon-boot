@@ -9,77 +9,77 @@
 
 ## 一、目录结构总览
 
+> ★ = SpecCanon 骨架文件（`init` 时创建）
+> ✦ = 开发过程中创建的文件/目录
+
 ```text
 project-root/
 │
 ├── AGENTS.md                         # ★ AI 协作入口（五步开发流程规范）
 ├── CLAUDE.md                         # ★ AI 指令文件（agent 自动加载）
-├── README.md                         # ★ 项目介绍
+├── README.md                         # ★ 项目介绍（`init` 时填入项目名）
 │
 ├── docs/                             # ★ 稳定层 — 全版本通用的产品规划文档
-│   ├── product-overview.md           # 产品概览（含业务术语表）— 变动极小
-│   ├── non-functional-reqs.md        # 非功能需求 — 性能/SLA/安全/合规
-│   ├── visual-design.md              # 视觉设计规范 — 设计系统或UI框架选型
-│   ├── competition-strategy.md       # 竞品策略（可选）
-│   └── judge-qa.md                   # 评委/投资人 Q&A（可选）
-│
+│   ├── product-overview.md           # ★ 产品概览（用户画像、核心场景、术语表）
+│   ├── non-functional-reqs.md        # ★ 非功能需求 — 性能/SLA/安全/合规
+│   ├── visual-design.md              # ★ 视觉设计规范
+│   │
 │   └── sprints/                      # ★ 版本层 — 每次迭代的完整产品设计容器
-│       ├── _template/                # sprint 模板（创建新 sprint 时 cp）
-│       │   ├── SPRINT-features.md    # 冲刺目标 + 功能清单 + 业务验收条件
-│       │   ├── functional-overview.md # 本版本功能总览 + 路线图
-│       │   ├── user-scenarios.md     # 本版本用户旅程 + 用例
-│       │   ├── ux-flows.md           # 本版本业务流程
-│       │   ├── ui-wireframes.md      # 本版本页面布局 + 组件
-│       │   └── prototypes/           # 本版本的可交互 HTML 原型
+│       ├── _template/                # ★ sprint 模板（创建新 sprint 时 cp）
+│       │   ├── SPRINT-features.md    #   冲刺目标 + 功能清单 + 业务验收条件
+│       │   ├── functional-overview.md #   本版本功能总览 + 路线图
+│       │   ├── user-scenarios.md     #   本版本用户旅程 + 用例
+│       │   ├── ux-flows.md           #   本版本业务流程
+│       │   ├── ui-wireframes.md      #   本版本页面布局 + 组件
+│       │   └── prototypes/           #   本版本的可交互 HTML 原型
 │       │       └── prototype.html
 │       │
-│       ├── sprint-000_initial/       # v1.0 初始版本基线（同上 6 文件 + 原型）
-│       │   └── ...                   # 每次迭代一个完整的 sprint 容器
-│       │
-│       └── sprint-001_功能名/         # 后续版本
-│           └── ...
+│       └── sprint-000_initial/       # ★ v1.0 初始版本基线（6 文件 + 原型）
+│           ├── SPRINT-features.md
+│           ├── functional-overview.md
+│           ├── user-scenarios.md
+│           ├── ux-flows.md
+│           ├── ui-wireframes.md
+│           └── prototypes/
+│               └── prototype.html
 │
-├── ADR/                              # ★ 架构决策记录（全局可见，按编号顺序）
-│   ├── _template/ADR.md              # ADR 模板
-│   ├── ADR-001_database-choice.md    # "为什么选 PostgreSQL"
-│   ├── ADR-002_auth-scheme.md        # "JWT + refresh token 方案"
-│   ├── ADR-003_xxx.md                # 后续 ADR…
-│   └── ...
+├── ADR/                              # ★ 架构决策记录目录
+│   └── _template/ADR.md              # ★ ADR 模板
+│   └── ADR-001_xxx.md                # ✦ 后续开发中创建的 ADR…
 │
-├── apps/                             # ★ 前端/客户端应用（每个应用独立）
-│   ├── _template/
-│   │   ├── src/                      # 代码目录
-│   │   └── specs/                    # ★ 自己的规格四文件
-│   │       ├── requirements.md       # 技术方案 + 边界 + 验收条件
-│   │       ├── plan.md               # 实现步骤 + 文件清单
-│   │       ├── tasks.md              # 任务拆分 + 验证 + 审计追踪
-│   │       └── check.md              # AI 自检 + 人工验收清单
-│   ├── app-web/                      # 具体应用 — Web 端
-│   │   ├── src/
-│   │   └── specs/
-│   └── app-mobile/                   # 具体应用 — 移动端
-│       ├── src/
+├── apps/                             # ★ 前端/客户端应用目录
+│   └── _template/                    # ★ 应用模板（创建新应用时 cp）
+│       └── specs/                    # ★ 规格四文件模板
+│           ├── requirements.md       #   技术方案 + 边界 + 验收条件
+│           ├── plan.md               #   实现步骤 + 文件清单
+│           ├── tasks.md              #   任务拆分 + 验证 + 审计追踪
+│           └── check.md              #   AI 自检 + 人工验收清单
+│       └── 应用名/                   # ✦ 开发中用 `cp _template 应用名` 创建
+│           ├── src/                  #   代码目录（开发者创建）
+│           └── specs/                #   该应用的规格文件
+│
+├── businesses/                       # ★ 后端业务服务目录
+│   └── _template/                    # ★ 服务模板
 │       └── specs/
+│           ├── requirements.md
+│           ├── plan.md
+│           ├── tasks.md
+│           └── check.md
+│       └── 服务名/                   # ✦ 同上
+│           ├── src/
+│           └── specs/
 │
-├── businesses/                       # ★ 后端业务服务（按领域划分）
-│   ├── _template/
-│   │   ├── src/
-│   │   └── specs/
-│   ├── user-service/                 # 用户服务
-│   │   ├── src/
-│   │   └── specs/
-│   └── order-service/                # 订单服务
-│       ├── src/
+├── tools/                            # ★ 工具/脚本目录
+│   └── _template/                    # ★ 工具模板
 │       └── specs/
+│           ├── requirements.md
+│           ├── plan.md
+│           ├── tasks.md
+│           └── check.md
 │
-├── tools/                            # ★ 非大型工作流类工具/脚本
-│   └── _template/
-│       ├── src/
-│       └── specs/
-│
-├── .gitignore
-├── LICENSE
-├── ssot-convention.zh.md             # 完整开发规范（本文档）
+├── .gitignore                        # ★
+├── LICENSE                           # ★ MIT
+├── ssot-convention.zh.md             # ★ 完整开发规范（本文档，位于 SpecCanon-boot 主仓库）
 ```
 
 **核心原则**:
