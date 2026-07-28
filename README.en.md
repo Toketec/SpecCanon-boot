@@ -116,13 +116,13 @@ Issues and PRs welcome.
 ```bash
 git clone --recursive https://github.com/Toketec/SpecRocket.git
 cd SpecRocket
-./init.sh "my-project"
+./init.sh "my-project"    # or ./init.sh (init in current directory)
 cd my-project
 ```
 
 The project skeleton is ready. You can edit `docs/product-overview.md` to start writing product docs.
 
-> If you already have a clone, just run `./init.sh project-name`.
+> If you already have a clone, just run `./init.sh project-name` (new dir) or `./init.sh` (current dir).
 
 ---
 
@@ -148,8 +148,9 @@ Once installed, the AI knows all slash commands. Now choose your scenario:
 ```chat
 You: Enter a new empty directory
 AI: Now in ~/projects/my-app (empty)
-→ You: /spec-rocket init "my project"
-→ AI: Copies skeleton from template/ → git init
+|→ You: /spec-rocket init         # init in current directory
+|→ AI: No arg → copies skeleton to current dir → git init
+|   # With arg: /spec-rocket init "my-project" → creates dir + init
 → You: /spec-rocket brainstorm
 → AI: 5 questions → generates product docs + sprint
 ```

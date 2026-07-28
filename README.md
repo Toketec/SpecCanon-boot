@@ -149,13 +149,13 @@ AI 写了什么 → 没人懂 → 没人敢改 → 重写。
 ```bash
 git clone --recursive https://github.com/Toketec/SpecRocket.git
 cd SpecRocket
-./init.sh "我的项目"
+./init.sh "我的项目"   # 或 ./init.sh（在当前目录初始化）
 cd 我的项目
 ```
 
 完成后项目骨架已就位，可手动编辑 `docs/product-overview.md` 开始写产品文档。
 
-> 如果已有克隆，直接 `./init.sh 项目名` 即可。
+> 如果已有克隆，直接 `./init.sh 项目名`（新建目录）或 `./init.sh`（当前目录）即可。
 
 ---
 
@@ -181,8 +181,9 @@ cd 我的项目
 ```chat
 你：帮我进入一个新项目目录
 AI：已进入 ~/projects/my-app（空目录）
-→ 你：/spec-rocket init "我的项目"
-→ AI：从 template/ 复制骨架 → git init
+|→ 你：/spec-rocket init          # 在当前目录初始化
+|→ AI：无参 → 在当前目录复制骨架 → git init
+|   # 有参：/spec-rocket init "我的项目" → 新建目录并初始化
 → 你：/spec-rocket brainstorm
 → AI：一步步引导你描述产品，自动生成文档
 ```
