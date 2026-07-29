@@ -249,7 +249,7 @@ AI：已进入 ~/projects/my-app（空目录）
 SpecRocket/
 ├── SKILL.md          ← 标准 skill 文件（AI 斜杠命令入口）
 ├── init.sh           ← 手动 init 脚本（无 AI 时用）
-├── template/ (submodule) → SpecRocket-template  ← 项目模板框架
+├── template/               ← 项目模板框架（含 AGENTS.md + ssot-convention）
 │   ├── ssot-convention.zh.md  ← 完整 SSOT 规范手册
 │   ├── AGENTS.md              ← AI 协作规则
 │   ├── SSOT-开发方法论-培训.pptx ← 培训 PPT
@@ -371,11 +371,55 @@ cd SpecRocket
 | 🤖 **AI 协作规范** | `SKILL.md` | AI Agent |
 | 📋 **项目演示** | 跑 `/spec-rocket preview` 看！ | 给 PM/老板看 |
 
----
-
-## 📄 License
-
-**MIT** — 属于 [Toketec](https://github.com/Toketec) 组织。
+|---
+|
+|## ❓ FAQ
+|
+|### Q1: SpecRocket 是一个 "Harness" 吗？
+|
+|**不是。** 我们称它为 **SDD Framework（规格驱动开发框架）+ Human-AI Collaboration Protocol（人机协作协议）**。
+|
+|"Harness" 在软件工程中通常指"约束/封装某物以便控制它"（如 test harness、evaluation harness），有上层支配下层的含义。但 SpecRocket 的设计不是约束 AI——而是**定义角色边界，让各司其职**：
+|
+|| Harness 的特点 | SpecRocket 的做法 |
+||:---------------|:------------------|
+|| 封装/约束下层 | 不约束 AI，给 AI 干净的上下文 |
+|| 上层支配下层 | 定义 PM→Dev→AI 的角色边界，非支配 |
+|| 依赖特定运行时 | 纯文件结构，任何终端+Git 即工作 |
+|| 替换成本高 | 零工具锁定，AGENTS.md 是通用入口 |
+|
+|**一句话：SpecRocket 不"套住"AI，它给人和 AI 约定一个双方都遵守的协作协议。** 就像 HTTP 定义了浏览器和服务器的对话方式，SpecRocket 定义了「PM 写文档→Dev 给方向→AI 编码→人验收」的交互流程。
+|
+|---
+|
+|### Q2: 不同 AI 工具扫描项目的方式不同，会影响 SpecRocket 的效果吗？
+|
+|**框架设计已做了三层缓解，总体无需担心。** 但你的担忧合理——文档之前没有明说这件事。
+|
+|**第一层：不依赖工具能力，依赖文件结构**
+|
+|SpecRocket 只要求 AI 能做三件事：（1）读 markdown 文件；（2）按指令做文件操作；（3）按 spec 写代码。任何编码代理都支持。它不要求 AI 有特殊的上下文管理或代码理解能力。
+|
+|**第二层：每个 AI 介入环节都是「有边界的单任务」**
+|
+|```chat
+|Step 2: Dev 把 sprint 文档 → 拖到新的 AI 对话（干净上下文）
+|       → AI 写 specs 四文件 → PM+Dev 评审
+|Step 4: AI 只读 requirements.md + plan.md → 编码
+|```
+|
+|AI 不需要自己"扫描整个项目"。每个环节的输入和输出都是预先定义好的文件，不同工具的扫描方式差异在这个流程中几乎没有影响。
+|
+|**第三层：Context Contract（≤15 行）的边界约束**
+|
+|跨模块依赖被压缩到 ≤15 行，即使不同工具的上下文处理方式有差异，15 行的信息量也不足以产生实际偏差。
+|
+|**AI 执行补充规则（已在 AGENTS.md 中更新）：**
+|> AI 禁止自行探索项目目录结构来"理解项目"——必须按固定读顺序逐文件读取。Step 4 编码时严格按 plan.md 的文件清单实现，不自动搜索项目其他位置。
+|
+|**结论：不是零风险，但框架设计让风险可控。** 真正重要的不是 AI 工具怎么扫描项目，而是 AI 有没有规范可循。而 SpecRocket 给的就是这个规范。
+|
+|---
 
 想干什么干什么。商用、改、二次分发，都可以。
 

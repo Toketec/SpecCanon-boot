@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPRINT-{NNN}: {冲刺名称} — 原型</title>
+  <!-- 纯 HTML 原型 — 不需要框架、后端、真实数据 -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, "PingFang SC", sans-serif; background: #f5f5f5; padding: 20px; }
+    .container { max-width: 480px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,.08); overflow: hidden; }
+    /* ========== 组件样式 ========== */
+    .header { padding: 16px; border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; }
+    .header h1 { font-size: 18px; font-weight: 600; }
+    .content { padding: 16px; }
+    .btn { display: block; width: 100%; padding: 12px; text-align: center; border-radius: 8px; font-size: 16px; cursor: pointer; border: none; }
+    .btn-primary { background: #4F46E5; color: #fff; }
+    .btn-secondary { background: #f0f0f0; color: #333; }
+    .card { padding: 12px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 8px; cursor: pointer; transition: all .2s; }
+    .card:hover { border-color: #4F46E5; box-shadow: 0 2px 8px rgba(79,70,229,.12); }
+    .card.selected { border-color: #4F46E5; background: #F5F3FF; }
+    .input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; outline: none; }
+    .input:focus { border-color: #4F46E5; }
+    .input.error { border-color: #EF4444; }
+    .tag { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 12px; background: #EEF2FF; color: #4F46E5; }
+    /* ========== 页面状态 ========== */
+    .empty-state { text-align: center; padding: 60px 20px; color: #999; }
+    .empty-state .icon { font-size: 48px; margin-bottom: 12px; }
+    .error-state { text-align: center; padding: 60px 20px; color: #EF4444; }
+    .loading { text-align: center; padding: 40px; }
+    .loading .spinner { width: 32px; height: 32px; border: 3px solid #eee; border-top-color: #4F46E5; border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto 12px; }
+    /* ========== 弹窗 ========== */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 100; align-items: center; justify-content: center; }
+    .modal-overlay.active { display: flex; }
+    .modal { background: #fff; border-radius: 12px; max-width: 400px; width: 90%; padding: 24px; animation: fadeIn .2s ease; }
+    .modal h3 { margin-bottom: 12px; }
+    .modal .modal-actions { display: flex; gap: 8px; margin-top: 16px; }
+    .modal .modal-actions .btn { flex: 1; }
+    /* ========== 导航 ========== */
+    .nav-bar { display: flex; border-bottom: 1px solid #eee; }
+    .nav-bar .tab { flex: 1; text-align: center; padding: 12px; cursor: pointer; color: #666; border-bottom: 2px solid transparent; transition: all .2s; }
+    .nav-bar .tab.active { color: #4F46E5; border-bottom-color: #4F46E5; font-weight: 600; }
+    .page { display: none; }
+    .page.active { display: block; animation: fadeIn .3s ease; }
+    /* ========== 动画 ========== */
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    /* ========== 成功提示 Toast ========== */
+    .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #10B981; color: #fff; padding: 12px 24px; border-radius: 8px; font-size: 14px; z-index: 200; display: none; animation: fadeIn .3s ease; }
+    .toast.show { display: block; }
+  </style>
+</head>
+<body>
+  <!-- Toast -->
+  <div class="toast" id="toast">✅ 操作成功</div>
+
+  <div class="container">
+    <!-- ====== 导航标签 ====== -->
+    <div class="nav-bar" id="navBar">
+      <div class="tab active" data-page="page1">{页面 1}</div>
+      <div class="tab" data-page="page2">{页面 2}</div>
+      <div class="tab" data-page="page3">{页面 3}</div>
+    </div>
+
+    <!-- ====== 页面 1 ====== -->
+    <div class="page active" id="page1">
+      <div class="header">
+        <span style="font-weight:600;">{页面 1 标题}</span>
+        <button class="btn btn-primary" style="width:auto;padding:8px 16px;font-size:14px;" onclick="showModal()">{操作}</button>
+      </div>
+      <div class="content" id="page1Content">
+        <!-- 正常状态 -->
+        <div class="card" onclick="this.classList.toggle('selected')">
+          <div style="font-weight:500;margin-bottom:4px;">{项目标题}</div>
+          <div style="font-size:13px;color:#666;">{项目描述}</div>
+        </div>
+        <div class="card" onclick="this.classList.toggle('selected')">
+          <div style="font-weight:500;margin-bottom:4px;">{项目标题 2}</div>
+          <div style="font-size:13px;color:#666;">{项目描述}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== 页面 2 ====== -->
+    <div class="page" id="page2">
+      <div class="header">
+        <span style="font-weight:600;">{页面 2 标题}</span>
+      </div>
+      <div class="content">
+        <label style="display:block;font-size:14px;color:#333;margin-bottom:6px;">{输入框标签}</label>
+        <input class="input" placeholder="{占位文本}" id="demoInput">
+        <div style="height:12px;"></div>
+        <button class="btn btn-primary" onclick="showToast()">{提交}</button>
+      </div>
+    </div>
+
+    <!-- ====== 页面 3 ====== -->
+    <div class="page" id="page3">
+      <div class="header">
+        <span style="font-weight:600;">{页面 3 标题}</span>
+      </div>
+      <div class="loading" id="page3Loading">
+        <div class="spinner"></div>
+        <div style="color:#999;">加载中...</div>
+      </div>
+      <div class="empty-state" id="page3Empty" style="display:none;">
+        <div class="icon">📭</div>
+        <div style="margin-bottom:12px;">暂无{内容}</div>
+        <button class="btn btn-secondary" style="width:auto;display:inline-block;padding:8px 24px;" onclick="showToast()">{引导操作}</button>
+      </div>
+      <div class="content" id="page3Content" style="display:none;">
+        {正常内容}
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 弹窗 ====== -->
+  <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)hideModal()">
+    <div class="modal">
+      <h3>{弹窗标题}</h3>
+      <p style="color:#666;font-size:14px;">{弹窗内容描述}</p>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="hideModal()">取消</button>
+        <button class="btn btn-primary" onclick="hideModal();showToast()">确认</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ========== 交互脚本 ==========
+
+    // 导航切换
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        document.getElementById(this.dataset.page).classList.add('active');
+      });
+    });
+
+    // 弹窗
+    function showModal() {
+      document.getElementById('modalOverlay').classList.add('active');
+    }
+    function hideModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+    }
+
+    // Toast
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg || '✅ 操作成功';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    // 页面 3 模拟切换状态
+    let page3State = 0;
+    function togglePage3State() {
+      const states = ['loading', 'empty', 'normal'];
+      const state = states[page3State % 3];
+      document.getElementById('page3Loading').style.display = state === 'loading' ? '' : 'none';
+      document.getElementById('page3Empty').style.display = state === 'empty' ? '' : 'none';
+      document.getElementById('page3Content').style.display = state === 'normal' ? '' : 'none';
+      page3State++;
+    }
+    // 双击页面3标题切换状态演示
+    document.querySelector('[data-page="page3"]').addEventListener('dblclick', togglePage3State);
+  </script>
+</body>
+</html>

@@ -12,8 +12,8 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 TEMPLATE="$SCRIPT_DIR/template"
 
 if [ ! -d "$TEMPLATE" ]; then
-  echo "错误：找不到 template/ 子模块。请确保已执行："
-  echo "  git clone --recursive https://github.com/Toketec/SpecRocket.git"
+  echo "错误：找不到 template/ 目录。请确保已执行："
+  echo "  git clone https://github.com/Toketec/SpecRocket.git"
   exit 1
 fi
 

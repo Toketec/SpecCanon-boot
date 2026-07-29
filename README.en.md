@@ -217,7 +217,7 @@ You: Enter ~/projects/legacy-app
 SpecRocket/
 ├── SKILL.md          ← Standard skill file (AI slash command entry)
 ├── init.sh           ← Manual init script (no AI)
-├── template/ (submodule) → SpecRocket-template  ← Project template framework
+├── template/               ← Project template framework (AGENTS.md + ssot-convention)
 │   ├── ssot-convention.zh.md  ← Full SSOT spec handbook
 │   ├── AGENTS.md              ← AI collaboration rules
 │   ├── SSOT-开发方法论-培训.pptx ← Training PPT
@@ -312,9 +312,55 @@ cd SpecRocket
 
 ---
 
-## 📄 License
+## ❓ FAQ
 
-**MIT** — [Toketec](https://github.com/Toketec) organization.
+### Q1: Is SpecRocket a "Harness"?
+
+**No.** We call it an **SDD Framework + Human-AI Collaboration Protocol**.
+
+"Harness" in software engineering typically means "constrain/wrap something to control it" (test harness, evaluation harness), implying top-down control. SpecRocket doesn't constrain AI — it **defines role boundaries so everyone (including AI) can do their best work**:
+
+| Harness trait | SpecRocket approach |
+|:-------------|:-------------------|
+| Wraps/constrains the lower layer | Gives AI clean context, doesn't constrain it |
+| Top controls bottom | Defines PM→Dev→AI roles, not control |
+| Depends on a specific runtime | Pure file structure, any terminal + Git works |
+| High replacement cost | Zero tool lock-in, AGENTS.md is a universal entry point |
+
+**In short: SpecRocket doesn't "harness" AI. It defines a protocol that humans and AI both follow.** Like HTTP defines how browsers and servers talk, SpecRocket defines the "PM writes docs → Dev gives directions → AI codes → Human reviews" interaction flow.
+
+---
+
+### Q2: Different AI tools scan projects differently — does this affect SpecRocket?
+
+**The framework design has three built-in mitigations, so generally, no.** But your concern is valid — the docs hadn't addressed this explicitly before.
+
+**Layer 1: Depends on file structure, not tool capabilities**
+
+SpecRocket only requires an AI to: (1) read markdown files, (2) perform file operations per instructions, (3) code per spec. Every coding agent does these. No special context management or code understanding is required.
+
+**Layer 2: Every AI touch-point is a "bounded single task"**
+
+```chat
+Step 2: Dev drops sprint docs → into a fresh AI conversation (clean context)
+       → AI writes 4 spec files → PM+Dev review
+Step 4: AI reads only requirements.md + plan.md → codes
+```
+
+The AI never needs to "scan the whole project" on its own. Every step's input and output are pre-defined files. Differences in how tools scan directories have almost no impact on this flow.
+
+**Layer 3: Context Contract (≤15 lines) boundary**
+
+Cross-module dependencies are compressed to ≤15 lines. Even with different context handling, 15 lines isn't enough data to produce meaningful deviation.
+
+**AI execution rule (updated in AGENTS.md):**
+> AI MUST NOT explore the project directory structure on its own to "understand" the project — it must follow the prescribed reading order file by file. During Step 4 coding, implement strictly per plan.md's file list; do not auto-search other parts of the project.
+
+**Bottom line: not zero risk, but the framework makes the risk controllable.** What matters isn't how an AI tool scans a project — it's whether the AI has a spec to follow. SpecRocket gives it that spec.
+
+---
+
+
 
 Do whatever you want. Commercial use, modification, redistribution — all allowed.
 

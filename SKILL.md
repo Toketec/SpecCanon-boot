@@ -17,7 +17,7 @@ license: MIT
 SpecRocket/                      ← 本仓库
 ├── SKILL.md                    ← 标准 skill 文件（AI 斜杠命令）
 ├── init.sh                     ← 手动 init 脚本（无 AI 时用）
-├── template/ (submodule)       ← 项目模板框架
+├── template/               ← 项目模板框架（含 AGENTS.md + ssot-convention）
 │   ├── ssot-convention.zh.md   ← 完整 SSOT 规范手册
 │   ├── AGENTS.md               ← AI 协作规则
 │   ├── SSOT-开发方法论-培训.pptx ← 培训 PPT
@@ -56,7 +56,7 @@ SpecRocket/                      ← 本仓库
 1. **判断目标：**
    - 无参数 → 在当前目录 `.` 进行初始化
    - 有参数 `项目名` → 创建目录 `项目名` 并进入
-2. **获取模板：** 如果当前不在 SpecRocket 仓库内，先 `git clone --recursive https://github.com/Toketec/SpecRocket.git` 到临时目录，获取 `template/` 内容
+2. **获取模板：** 如果当前不在 SpecRocket 仓库内，先 `git clone https://github.com/Toketec/SpecRocket.git` 到临时目录，获取 `template/` 内容
 3. 复制 `template/` 全部内容到目标目录
 4. 执行 `git init` + 首次提交
 5. 判断：

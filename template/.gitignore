@@ -1,0 +1,6 @@
+node_modules/
+*.pptx
+scripts/
+.DS_Store
+*.local
+.env
