@@ -30,9 +30,7 @@
 2. **获取模板：** 如果当前不在 SpecRocket 仓库内，先 `git clone --recursive https://github.com/Toketec/SpecRocket.git` 到临时目录，获取 `template/` 内容
 3. 复制 `template/` 全部内容到目标目录
 4. 执行 `git init` + 首次提交
-5. 判断：
-   - 用户需求清晰 → 继续写：① `docs/product-overview.md` ② `docs/non-functional-reqs.md`（或占位） ③ `docs/visual-design.md`（或占位） ④ `docs/sprints/sprint-001/`（第一个 sprint）
-   - 需求不清晰 → 告诉用户完成，建议下一步跑 `/spec-rocket brainstorm`
+5. 完成初始化。告诉用户骨架已就位，建议下一步跑 `/spec-rocket brainstorm` 引导填写产品文档。
 
 ---
 
