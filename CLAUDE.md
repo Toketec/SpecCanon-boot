@@ -8,7 +8,7 @@
 | 命令 | 用途 |
 |:----|:------|
 | `init [项目名]` | 从 template/ 子模块复制骨架。**无参=当前目录，有参=新建项目目录** |
-| `brainstorm` | 引导用户描述产品 → 自动生成产品文档 + 创建 sprint |
+| `brainstorm` | 引导用户描述产品 → 按固定顺序生成 4 组文档（产品概览 → 非功能需求 → 视觉设计 → sprint） |
 | `migrate` | 给现有项目嵌入骨架文件 |
 | `preview` | 扫描项目 → 生成 dark-theme 可视化预览页 |
 
@@ -31,7 +31,7 @@
 3. 复制 `template/` 全部内容到目标目录
 4. 执行 `git init` + 首次提交
 5. 判断：
-   - 用户需求清晰 → 继续写 `docs/product-overview.md` + 第一个 sprint
+   - 用户需求清晰 → 继续写：① `docs/product-overview.md` ② `docs/non-functional-reqs.md`（或占位） ③ `docs/visual-design.md`（或占位） ④ `docs/sprints/sprint-001/`（第一个 sprint）
    - 需求不清晰 → 告诉用户完成，建议下一步跑 `/spec-rocket brainstorm`
 
 ---
@@ -40,6 +40,6 @@
 
 | 命令 | 说明 |
 |:----|:------|
-| `/spec-rocket brainstorm` | 5 问引导 → 生成产品文档 + sprint |
+| `/spec-rocket brainstorm` | 按固定顺序生成 4 组文档：产品概览 → 非功能需求 → 视觉设计 → sprint |
 | `/spec-rocket migrate` | 给现有项目嵌入骨架（不碰代码） |
 | `/spec-rocket preview` | 生成 dark-theme 可视化预览页 → `docs/preview.html` |
